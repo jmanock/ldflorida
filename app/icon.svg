@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="16" fill="#087f8c"/>
+  <circle cx="46" cy="18" r="8" fill="#ffb000"/>
+  <path d="M32 9c-10.5 0-19 8.2-19 18.3 0 13.9 19 28.7 19 28.7s19-14.8 19-28.7C51 17.2 42.5 9 32 9Z" fill="#ffffff"/>
+  <path d="M32 17c-5.6 0-10.1 4.4-10.1 9.9 0 7.5 10.1 15.8 10.1 15.8s10.1-8.3 10.1-15.8C42.1 21.4 37.6 17 32 17Z" fill="#dff6f8"/>
+  <circle cx="32" cy="27" r="4.8" fill="#087f8c"/>
+  <path d="M18 23c2.5-6.1 8.2-10.2 14.9-10.2 2.1 0 4 .4 5.8 1.1" fill="none" stroke="#69b34c" stroke-width="3" stroke-linecap="round"/>
+  <text x="32" y="57" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="800" fill="#ffffff">LD</text>
+</svg>

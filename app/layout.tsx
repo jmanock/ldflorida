@@ -2,28 +2,49 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Local Florida Deals | Attractions, Events, Hotels, Food & Family Savings",
+  title: "Florida Local Deals | Restaurants, Events & Things To Do",
   description:
-    "Discover daily Florida deals on attractions, hotels, restaurants, events, theme parks, family fun, resident discounts, and weekend ideas.",
+    "Find local deals across Florida including restaurants, events, attractions, weekend activities, and hidden things to do in Orlando, Miami, Tampa, Jacksonville, and more.",
   keywords: [
-    "Florida deals",
-    "Orlando discounts",
+    "Florida local deals",
+    "restaurants deals Florida",
+    "Florida events",
+    "things to do in Florida",
+    "Orlando deals",
     "Miami deals",
-    "Tampa events",
-    "Fort Lauderdale savings",
-    "Jacksonville family deals",
-    "Florida resident discounts"
+    "Tampa deals",
+    "Jacksonville deals",
+    "Fort Lauderdale deals"
   ],
   openGraph: {
-    title: "Local Florida Deals",
+    title: "Florida Local Deals | Restaurants, Events & Things To Do",
     description:
-      "Daily savings on attractions, hotels, restaurants, events, and family fun across Florida.",
+      "Find local deals across Florida including restaurants, events, attractions, weekend activities, and hidden things to do in Orlando, Miami, Tampa, Jacksonville, and more.",
     type: "website",
     locale: "en_US",
-    siteName: "Local Florida Deals"
+    siteName: "Local Deals Florida",
+    url: "https://localdealsflorida.org",
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&h=630&q=85",
+        width: 1200,
+        height: 630,
+        alt: "Florida local restaurant patio with warm evening light"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Florida Local Deals | Restaurants, Events & Things To Do",
+    description:
+      "Find local deals across Florida including restaurants, events, attractions, weekend activities, and hidden things to do.",
+    images: ["https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&h=630&q=85"]
   },
   alternates: {
-    canonical: "https://localfloridadeals.com"
+    canonical: "https://localdealsflorida.org"
+  },
+  icons: {
+    icon: "/icon.svg"
   }
 };
 
@@ -33,8 +54,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body suppressHydrationWarning>{children}</body>
     </html>
   );
 }

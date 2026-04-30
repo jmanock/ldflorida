@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import InfoPage from "../components/InfoPage";
 
 export const metadata: Metadata = {
-  title: "Contact | Local Florida Deals",
-  description: "Contact Local Florida Deals for partnerships, deal submissions, and general questions."
+  title: "Contact | Local Deals Florida",
+  description: "Contact Local Deals Florida for partnerships, deal submissions, and general questions."
 };
 
 export default function ContactPage() {
@@ -11,11 +11,11 @@ export default function ContactPage() {
     <InfoPage
       eyebrow="Contact"
       title="Send us a Florida deal"
-      intro="Have a local promotion, event special, resident discount, or partnership idea? Reach the Local Florida Deals team by email."
+      intro="Have a local promotion, event special, restaurant discount, or partnership idea? Reach the Local Deals Florida team by email."
       sections={[
         {
           heading: "General inbox",
-          body: "Email hello@localfloridadeals.com for editorial questions, corrections, partnerships, and launch inquiries."
+          body: "Email hello@localdealsflorida.org for editorial questions, corrections, partnerships, and launch inquiries."
         },
         {
           heading: "Deal submissions",

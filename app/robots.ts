@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/"
     },
-    sitemap: "https://localfloridadeals.com/sitemap.xml"
+    sitemap: "https://localdealsflorida.org/sitemap.xml"
   };
 }

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import InfoPage from "../components/InfoPage";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Local Florida Deals",
-  description: "Privacy information for Local Florida Deals."
+  title: "Privacy Policy | Local Deals Florida",
+  description: "Privacy information for Local Deals Florida."
 };
 
 export default function PrivacyPage() {
@@ -11,7 +11,7 @@ export default function PrivacyPage() {
     <InfoPage
       eyebrow="Privacy"
       title="Privacy Policy"
-      intro="This starter policy explains the intended MVP privacy posture for Local Florida Deals. It should be reviewed by counsel before public launch."
+      intro="This starter policy explains the intended MVP privacy posture for Local Deals Florida. It should be reviewed by counsel before public launch."
       sections={[
         {
           heading: "Information collected",

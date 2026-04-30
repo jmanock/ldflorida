@@ -16,10 +16,10 @@ export default function InfoPage({ title, eyebrow, intro, sections }: InfoPagePr
       <header className="border-b border-[#d8e6e3] bg-white">
         <nav className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4 sm:px-6" aria-label="Simple navigation">
           <Link className="font-black text-[#163235]" href="/">
-            Local Florida Deals
+            Local Deals Florida
           </Link>
           <Link className="rounded-full bg-[#087f8c] px-4 py-2 text-sm font-black text-white" href="/#deals" style={{ color: "#ffffff" }}>
-            Browse Deals
+            Browse Local Deals
           </Link>
         </nav>
       </header>

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import InfoPage from "../components/InfoPage";
 
 export const metadata: Metadata = {
-  title: "About | Local Florida Deals",
-  description: "Learn about Local Florida Deals and the Florida savings network."
+  title: "About | Local Deals Florida",
+  description: "Learn about Local Deals Florida and the Florida Deals Hub network."
 };
 
 export default function AboutPage() {
@@ -11,7 +11,7 @@ export default function AboutPage() {
     <InfoPage
       eyebrow="About"
       title="Built for Florida deal seekers"
-      intro="Local Florida Deals helps residents and visitors find useful savings on attractions, hotels, restaurants, events, and family-friendly things to do."
+      intro="Local Deals Florida helps residents and visitors find useful savings on restaurants, events, attractions, hidden gems, and family-friendly things to do."
       sections={[
         {
           heading: "Our focus",
@@ -19,7 +19,7 @@ export default function AboutPage() {
         },
         {
           heading: "Part of a Florida network",
-          body: "The site is designed to connect naturally with Florida Cruise Deals and Florida Flight Deals as a broader travel and savings family."
+          body: "The site is part of Florida Deals Hub, connecting naturally with Florida Flight Deals, Florida Hotel Deals, and Florida Cruise Deals as one broader travel and savings family."
         }
       ]}
     />
