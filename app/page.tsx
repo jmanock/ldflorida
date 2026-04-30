@@ -178,30 +178,32 @@ export default function Home() {
           </div>
           <div className="mt-8 lg:mt-0">
             <a
-              aria-label="View Weekend Brunch Special local deal in Orlando"
+              aria-label="View Gatorland Visit Orlando Special"
               className="card-lift group grid cursor-pointer grid-cols-[104px_1fr] gap-3 rounded-[26px] border border-white/70 bg-white/88 p-3 shadow-2xl shadow-[#163235]/15 backdrop-blur sm:grid-cols-[132px_1fr] lg:ml-auto lg:block lg:max-w-sm lg:rounded-[30px] lg:p-4"
-              href="#featured-orlando-weekend-brunch"
+              href="https://www.gatorland.com/specials/visit-orlando/"
+              rel="noopener noreferrer"
+              target="_blank"
             >
               <div className="overflow-hidden rounded-[20px] lg:rounded-[22px]">
                 <img
-                  alt="Weekend brunch plates with coffee and fresh fruit"
+                  alt="Alligator resting near water at a Florida wildlife attraction"
                   className="h-full min-h-[142px] w-full object-cover transition duration-300 group-hover:scale-[1.03] sm:min-h-[154px] lg:h-56 lg:min-h-0"
-                  src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=900&q=85"
+                  src="https://images.unsplash.com/photo-1614065613125-17553fbc59f6?auto=format&fit=crop&w=900&q=85"
                 />
               </div>
               <div className="py-1 pr-1 lg:p-3">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="rounded-full bg-[#fff0d1] px-3 py-1 text-xs font-black text-[#8a5200]">2-for-1 brunch</span>
-                  <span className="hidden rounded-full bg-[#ffe7e3] px-3 py-1 text-xs font-black text-[#a1372e] sm:inline-flex">This weekend</span>
+                  <span className="rounded-full bg-[#fff0d1] px-3 py-1 text-xs font-black text-[#8a5200]">Save 20%</span>
+                  <span className="hidden rounded-full bg-[#ffe7e3] px-3 py-1 text-xs font-black text-[#a1372e] sm:inline-flex">Official offer</span>
                 </div>
-                <h2 className="mt-2 text-lg font-black leading-tight sm:text-xl lg:text-2xl">Weekend Brunch Special</h2>
+                <h2 className="mt-2 text-lg font-black leading-tight sm:text-xl lg:text-2xl">Gatorland Visit Orlando Special</h2>
                 <div className="mt-3 flex items-center gap-2 text-sm font-black text-[#087f8c]">
                   <MapPin size={15} aria-hidden="true" />
                   Orlando
                 </div>
-                <p className="mt-2 text-xs font-bold leading-5 text-[#52686b] sm:text-sm lg:leading-6">Valid this weekend only.</p>
+                <p className="mt-2 text-xs font-bold leading-5 text-[#52686b] sm:text-sm lg:leading-6">Valid through Dec. 31, 2026. Confirm details before purchase.</p>
                 <span className="mt-3 inline-flex h-10 items-center justify-center rounded-full bg-[#ffb000] px-4 text-sm font-black text-[#163235] transition group-hover:bg-[#ffc84d] lg:h-11 lg:px-5">
-                  View Deal
+                  See Offer
                 </span>
               </div>
             </a>

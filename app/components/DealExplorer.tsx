@@ -13,7 +13,8 @@ type Deal = {
   description: string;
   dates: string;
   badge: string;
-  booking_url: string;
+  affiliateReadyUrl: string;
+  cta: string;
   image: string;
   image_alt: string;
 };
@@ -28,16 +29,19 @@ const filterOptions = [
   "Food & Drinks",
   "Events",
   "Attractions",
-  "Family",
+  "Family Activities",
+  "Things To Do",
+  "Local Experiences",
   "Weekend",
+  "Free / Low-Cost",
   "Under $50"
 ];
 
 const featuredIds = [
-  "orlando-weekend-brunch",
-  "miami-rooftop-happy-hour",
-  "tampa-bay-market-night",
-  "jacksonville-family-museum"
+  "orlando-gatorland-visit-orlando-special",
+  "miami-sandrell-rivers-theater-offers",
+  "tampa-bay-citypass",
+  "cummer-museum-free-admission"
 ];
 
 function badgeTone(badge: string) {
@@ -55,8 +59,9 @@ function dealMatchesFilter(deal: Deal, activeFilter: string) {
   if (deal.category === activeFilter) return true;
   if (deal.badge === activeFilter) return true;
   if (activeFilter === "Food & Drinks") return ["Food & Drinks", "Restaurants", "Nightlife"].includes(deal.category);
-  if (activeFilter === "Family") return ["Family", "Family Activities"].includes(deal.category) || deal.badge === "Family";
+  if (activeFilter === "Family Activities") return deal.category === "Family Activities" || deal.badge === "Family";
   if (activeFilter === "Weekend") return deal.category === "Weekend Deals" || deal.badge === "Weekend" || deal.dates.toLowerCase().includes("weekend");
+  if (activeFilter === "Free / Low-Cost") return deal.category === "Free / Low-Cost Events" || deal.badge === "Free";
   if (activeFilter === "Under $50") return deal.badge === "Under $50" || /\$([0-4]?\d)(?!\d)/.test(deal.price);
   return false;
 }
@@ -89,11 +94,13 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
           </div>
           <a
             className="inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-full bg-[#ffb000] px-4 text-sm font-black text-[#163235] transition hover:bg-[#ffc84d]"
-            href={deal.booking_url}
-            aria-label={`View local deal: ${deal.title} in ${deal.city}`}
+            href={deal.affiliateReadyUrl}
+            aria-label={`${featured ? "View featured local deal" : "View local deal"}: ${deal.title} in ${deal.city}`}
+            rel="noopener noreferrer"
+            target="_blank"
           >
             <Ticket size={16} aria-hidden="true" />
-            View Deal
+            {deal.cta}
           </a>
         </div>
       </div>

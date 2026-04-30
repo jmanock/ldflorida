@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Florida Local Deals | Restaurants, Events & Things To Do",
   description:
-    "Find local deals across Florida including restaurants, events, attractions, weekend activities, and hidden things to do in Orlando, Miami, Tampa, Jacksonville, and more.",
+    "Find local Florida deals for restaurants, events, attractions, family activities, weekend plans, and things to do in Orlando, Miami, Tampa, Jacksonville, and Fort Lauderdale.",
   keywords: [
     "Florida local deals",
     "restaurants deals Florida",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Florida Local Deals | Restaurants, Events & Things To Do",
     description:
-      "Find local deals across Florida including restaurants, events, attractions, weekend activities, and hidden things to do in Orlando, Miami, Tampa, Jacksonville, and more.",
+      "Find local Florida deals for restaurants, events, attractions, family activities, weekend plans, and things to do in Orlando, Miami, Tampa, Jacksonville, and Fort Lauderdale.",
     type: "website",
     locale: "en_US",
     siteName: "Local Deals Florida",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Florida Local Deals | Restaurants, Events & Things To Do",
     description:
-      "Find local deals across Florida including restaurants, events, attractions, weekend activities, and hidden things to do.",
+      "Find local Florida deals for restaurants, events, attractions, family activities, weekend plans, and things to do.",
     images: ["https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&h=630&q=85"]
   },
   alternates: {
