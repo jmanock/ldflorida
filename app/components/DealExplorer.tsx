@@ -67,6 +67,19 @@ function dealMatchesFilter(deal: Deal, activeFilter: string) {
 }
 
 function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }) {
+  function trackDealClick() {
+    const payload = {
+      event: "deal_click",
+      page: window.location.pathname,
+      city: deal.city,
+      category: deal.category,
+      outbound_url: deal.affiliateReadyUrl
+    };
+
+    window.dispatchEvent(new CustomEvent("deal_click", { detail: payload }));
+    (window as Window & { dataLayer?: Array<Record<string, unknown>> }).dataLayer?.push(payload);
+  }
+
   return (
     <article
       className="card-lift scroll-mt-28 overflow-hidden rounded-[26px] border border-[#d8e6e3] bg-white shadow-lg shadow-[#087f8c]/8"
@@ -96,6 +109,7 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
             className="inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-full bg-[#ffb000] px-4 text-sm font-black text-[#163235] transition hover:bg-[#ffc84d]"
             href={deal.affiliateReadyUrl}
             aria-label={`${featured ? "View featured local deal" : "View local deal"}: ${deal.title} in ${deal.city}`}
+            onClick={trackDealClick}
             rel="noopener noreferrer"
             target="_blank"
           >

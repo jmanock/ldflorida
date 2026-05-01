@@ -68,6 +68,15 @@ const stats = [
   ["Free", "deal alerts"]
 ];
 
+const popularSearches = [
+  { label: "Orlando Local Deals", href: "/orlando-local-deals" },
+  { label: "Miami Weekend Deals", href: "/miami-weekend-deals" },
+  { label: "Florida Restaurant Deals", href: "/florida-restaurant-deals" },
+  { label: "Florida Attraction Deals", href: "/florida-attraction-deals" },
+  { label: "Florida Family Deals", href: "/florida-family-deals" },
+  { label: "Free Things To Do In Florida", href: "/florida-free-things-to-do" }
+];
+
 export default function Home() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#f8fbf7] text-[#163235]">
@@ -253,6 +262,24 @@ export default function Home() {
               <p className="mt-3 leading-7 text-[#52686b]">{item.text}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:px-8">
+        <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8">
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Popular Local Deal Searches</p>
+          <h2 className="mt-2 text-3xl font-black text-[#163235]">Find deals by city, category, or plan</h2>
+          <div className="mt-5 flex flex-wrap gap-3">
+            {popularSearches.map((search) => (
+              <Link
+                className="rounded-full bg-[#eef6f5] px-4 py-2 text-sm font-black text-[#385154] transition hover:bg-[#dff6f8] hover:text-[#087f8c]"
+                href={search.href}
+                key={search.href}
+              >
+                {search.label}
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
