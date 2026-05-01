@@ -30,6 +30,8 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
   function trackDealClick() {
     const payload = {
       event: "deal_click",
+      site: "localdealsflorida.org",
+      source: "local",
       page: typeof window === "undefined" ? "" : window.location.pathname,
       city: deal.city,
       category: deal.category,
@@ -38,8 +40,14 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
 
     window.dispatchEvent(new CustomEvent("deal_click", { detail: payload }));
 
-    const dataLayer = (window as Window & { dataLayer?: Array<Record<string, unknown>> }).dataLayer;
-    dataLayer?.push(payload);
+    window.dataLayer?.push(payload);
+    window.gtag?.("event", "deal_click", {
+      site: "localdealsflorida.org",
+      source: "local",
+      city: deal.city,
+      category: deal.category,
+      outbound_url: deal.affiliateReadyUrl
+    });
   }
 
   return (

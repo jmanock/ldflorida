@@ -70,6 +70,8 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
   function trackDealClick() {
     const payload = {
       event: "deal_click",
+      site: "localdealsflorida.org",
+      source: "local",
       page: window.location.pathname,
       city: deal.city,
       category: deal.category,
@@ -77,7 +79,14 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
     };
 
     window.dispatchEvent(new CustomEvent("deal_click", { detail: payload }));
-    (window as Window & { dataLayer?: Array<Record<string, unknown>> }).dataLayer?.push(payload);
+    window.dataLayer?.push(payload);
+    window.gtag?.("event", "deal_click", {
+      site: "localdealsflorida.org",
+      source: "local",
+      city: deal.city,
+      category: deal.category,
+      outbound_url: deal.affiliateReadyUrl
+    });
   }
 
   return (
@@ -129,6 +138,14 @@ export default function DealExplorer() {
 
   const allDeals = deals as Deal[];
   const featuredDeals = allDeals.filter((deal) => featuredIds.includes(deal.id));
+
+  function handleFilterClick(filter: string) {
+    setActiveFilter(filter);
+    window.gtag?.("event", "filter_click", {
+      site: "localdealsflorida.org",
+      filter
+    });
+  }
 
   const filteredDeals = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -197,7 +214,7 @@ export default function DealExplorer() {
                     : "bg-[#eef6f5] text-[#385154] hover:bg-[#dff6f8]"
                 }`}
                 key={filter}
-                onClick={() => setActiveFilter(filter)}
+                onClick={() => handleFilterClick(filter)}
                 type="button"
               >
                 {filter}

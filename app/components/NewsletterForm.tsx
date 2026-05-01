@@ -20,6 +20,10 @@ export default function NewsletterForm() {
 
     setStatus("submitting");
     setMessage("Saving your deal alerts...");
+    window.gtag?.("event", "newsletter_signup_started", {
+      site: "localdealsflorida.org",
+      source: "local"
+    });
 
     try {
       const response = await fetch("/api/newsletter", {
@@ -39,6 +43,10 @@ export default function NewsletterForm() {
       setStatus("success");
       setMessage(result.message ?? "You’re in! Local Deals Florida alerts are on the way.");
       setEmail("");
+      window.gtag?.("event", "newsletter_signup_success", {
+        site: "localdealsflorida.org",
+        source: "local"
+      });
     } catch (error) {
       setStatus("error");
       setMessage(error instanceof Error ? error.message : "We couldn't save your signup. Please try again.");
