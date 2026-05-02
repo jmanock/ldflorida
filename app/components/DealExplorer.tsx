@@ -3,6 +3,7 @@
 import { ArrowRight, MapPin, RefreshCw, Search, SlidersHorizontal, Ticket } from "lucide-react";
 import { useMemo, useState } from "react";
 import deals from "../../data/deals.json";
+import trustRecords from "../../data/local-trust.json";
 
 type Deal = {
   id: string;
@@ -17,6 +18,28 @@ type Deal = {
   cta: string;
   image: string;
   image_alt: string;
+  placeName?: string;
+  neighborhood?: string;
+  address?: string;
+  rating?: number;
+  reviewCount?: number;
+  officialWebsite?: string;
+  eventDate?: string;
+  sourceName?: string;
+  lastVerified?: string;
+};
+
+type TrustRecord = {
+  dealId: string;
+  placeName: string;
+  neighborhood?: string;
+  address?: string;
+  rating?: number;
+  reviewCount?: number;
+  officialWebsite?: string;
+  eventDate?: string;
+  sourceName?: string;
+  lastVerified?: string;
 };
 
 const filterOptions = [
@@ -87,7 +110,19 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
       category: deal.category,
       outbound_url: deal.affiliateReadyUrl
     });
+
+    if (deal.category.includes("Event") || deal.cta.toLowerCase().includes("event")) {
+      window.gtag?.("event", "event_click", {
+        site: "localdealsflorida.org",
+        source: "local",
+        city: deal.city,
+        category: deal.category,
+        outbound_url: deal.affiliateReadyUrl
+      });
+    }
   }
+
+  const hasTrustData = deal.placeName || deal.neighborhood || deal.eventDate || deal.rating;
 
   return (
     <article
@@ -109,6 +144,19 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
         </div>
         <h3 className="mt-3 text-xl font-black leading-tight text-[#163235]">{deal.title}</h3>
         <p className="mt-3 text-sm leading-6 text-[#52686b]">{deal.description}</p>
+        {hasTrustData ? (
+          <div className="mt-4 rounded-2xl bg-[#f8fbf7] p-3 text-xs font-bold leading-5 text-[#52686b]">
+            {deal.placeName ? <p className="text-[#163235]">{deal.placeName}</p> : null}
+            {deal.neighborhood ? <p>{deal.neighborhood}</p> : null}
+            {deal.eventDate ? <p>{deal.eventDate}</p> : null}
+            {deal.rating ? (
+              <p>
+                {deal.rating.toFixed(1)} rating{deal.reviewCount ? ` (${deal.reviewCount.toLocaleString()} reviews)` : ""}
+              </p>
+            ) : null}
+            {deal.lastVerified ? <p>Last checked {deal.lastVerified}</p> : null}
+          </div>
+        ) : null}
         <div className="mt-5 flex items-center justify-between gap-3 border-t border-[#e7eeee] pt-4">
           <div>
             <p className="text-lg font-black text-[#163235]">{deal.price}</p>
@@ -123,9 +171,10 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
             target="_blank"
           >
             <Ticket size={16} aria-hidden="true" />
-            {deal.cta}
+            {hasTrustData ? "Check Current Details" : deal.cta}
           </a>
         </div>
+        <p className="mt-3 text-[11px] font-bold leading-5 text-[#6f8588]">Details may change. Check current details with the source before you go.</p>
       </div>
     </article>
   );
@@ -136,7 +185,8 @@ export default function DealExplorer() {
   const [query, setQuery] = useState("");
   const [shuffleSeed, setShuffleSeed] = useState(0);
 
-  const allDeals = deals as Deal[];
+  const trustByDealId = new Map((trustRecords as TrustRecord[]).map((record) => [record.dealId, record]));
+  const allDeals = (deals as Deal[]).map((deal) => ({ ...deal, ...trustByDealId.get(deal.id) }));
   const featuredDeals = allDeals.filter((deal) => featuredIds.includes(deal.id));
 
   function handleFilterClick(filter: string) {

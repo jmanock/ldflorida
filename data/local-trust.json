@@ -1,0 +1,135 @@
+[
+  {
+    "dealId": "orlando-gatorland-visit-orlando-special",
+    "placeName": "Gatorland",
+    "neighborhood": "South Orlando",
+    "officialWebsite": "https://www.gatorland.com/specials/visit-orlando/",
+    "sourceName": "Official Gatorland offer page",
+    "lastVerified": "2026-05-02"
+  },
+  {
+    "dealId": "orlando-seaworld-limited-time-offers",
+    "placeName": "SeaWorld Orlando",
+    "neighborhood": "International Drive area",
+    "officialWebsite": "https://seaworld.com/orlando/limited-time-offers",
+    "sourceName": "Official SeaWorld offers page",
+    "lastVerified": "2026-05-02"
+  },
+  {
+    "dealId": "orlando-official-offers",
+    "placeName": "Visit Orlando",
+    "neighborhood": "Central Florida",
+    "officialWebsite": "https://www.visitorlando.com/offers/",
+    "sourceName": "Official Orlando tourism offer hub",
+    "lastVerified": "2026-05-02"
+  },
+  {
+    "dealId": "miami-sandrell-rivers-theater-offers",
+    "placeName": "Sandrell Rivers Theater",
+    "neighborhood": "Liberty City",
+    "eventDate": "Through May 31, 2026",
+    "officialWebsite": "https://www.miamiandbeaches.com/deal/fantasy-theatre-factory-at-the-sandrell-rivers-theater/two-for-one-theater-experiences-await/619546",
+    "sourceName": "Greater Miami & Miami Beach deal page",
+    "lastVerified": "2026-05-02"
+  },
+  {
+    "dealId": "miami-official-special-offers",
+    "placeName": "Greater Miami & Miami Beach",
+    "neighborhood": "Miami and Miami Beach",
+    "officialWebsite": "https://www.miamiandbeaches.com/deals",
+    "sourceName": "Official Miami deals hub",
+    "lastVerified": "2026-05-02"
+  },
+  {
+    "dealId": "tampa-bay-citypass",
+    "placeName": "Visit Tampa Bay CityPASS",
+    "neighborhood": "Tampa Bay area",
+    "officialWebsite": "https://www.visittampabay.com/citypass/",
+    "sourceName": "Visit Tampa Bay offer page",
+    "lastVerified": "2026-05-02"
+  },
+  {
+    "dealId": "tampa-fmopa-under-50",
+    "placeName": "Florida Museum of Photographic Arts",
+    "neighborhood": "Ybor City",
+    "officialWebsite": "https://www.fmopa.org/visit/",
+    "sourceName": "Official museum visit page",
+    "lastVerified": "2026-05-02"
+  },
+  {
+    "dealId": "st-pete-pier-events",
+    "placeName": "St. Pete Pier",
+    "neighborhood": "Downtown St. Petersburg waterfront",
+    "eventDate": "Upcoming events listed",
+    "officialWebsite": "https://stpetepier.org/events/",
+    "sourceName": "Official St. Pete Pier calendar",
+    "lastVerified": "2026-05-02"
+  },
+  {
+    "dealId": "st-pete-luna-happy-hour",
+    "placeName": "Luna Lux",
+    "neighborhood": "Downtown St. Petersburg",
+    "officialWebsite": "https://www.lunastpete.com/special-offers",
+    "sourceName": "Official restaurant specials page",
+    "lastVerified": "2026-05-02"
+  },
+  {
+    "dealId": "st-pete-lala-date-night",
+    "placeName": "LALA St. Pete",
+    "neighborhood": "Grand Central District",
+    "officialWebsite": "https://lalakaraoke.com/groups-parties/date-night/",
+    "sourceName": "Official date night page",
+    "lastVerified": "2026-05-02"
+  },
+  {
+    "dealId": "daytona-speedway-tours",
+    "placeName": "Daytona International Speedway",
+    "neighborhood": "Daytona Beach",
+    "officialWebsite": "https://www.daytonainternationalspeedway.com/Tours/",
+    "sourceName": "Official speedway tours page",
+    "lastVerified": "2026-05-02"
+  },
+  {
+    "dealId": "cummer-museum-free-admission",
+    "placeName": "Cummer Museum of Art & Gardens",
+    "neighborhood": "Riverside",
+    "officialWebsite": "https://www.cummermuseum.org/admission-membership/",
+    "sourceName": "Official museum admission page",
+    "lastVerified": "2026-05-02"
+  },
+  {
+    "dealId": "jacksonville-riverside-arts-market",
+    "placeName": "Riverside Arts Market",
+    "neighborhood": "Riverside",
+    "eventDate": "Saturdays, 10 a.m. - 3 p.m.",
+    "officialWebsite": "https://www.visitjacksonville.com/events/riverside-arts-market/",
+    "sourceName": "Visit Jacksonville event page",
+    "lastVerified": "2026-05-02"
+  },
+  {
+    "dealId": "broward-center-events",
+    "placeName": "Broward Center for the Performing Arts",
+    "neighborhood": "Riverwalk Arts & Entertainment District",
+    "eventDate": "Upcoming show calendar",
+    "officialWebsite": "https://www.browardcenter.org/",
+    "sourceName": "Official venue calendar",
+    "lastVerified": "2026-05-02"
+  },
+  {
+    "dealId": "las-olas-events",
+    "placeName": "Las Olas Boulevard",
+    "neighborhood": "Downtown Fort Lauderdale",
+    "eventDate": "Upcoming events listed",
+    "officialWebsite": "https://www.lasolasboulevard.com/event-list",
+    "sourceName": "Official Las Olas event list",
+    "lastVerified": "2026-05-02"
+  },
+  {
+    "dealId": "st-augustine-attraction-coupons",
+    "placeName": "Visit St. Augustine",
+    "neighborhood": "Historic District",
+    "officialWebsite": "https://www.visitstaugustine.com/coupons/attractions",
+    "sourceName": "Visit St. Augustine coupons page",
+    "lastVerified": "2026-05-02"
+  }
+]

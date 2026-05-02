@@ -3,6 +3,24 @@ import Script from "next/script";
 import "./globals.css";
 
 const GA_MEASUREMENT_ID = "G-5DXJ4ERNX6";
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Florida Deals Hub",
+  url: "https://floridadealshub.com",
+  sameAs: ["https://flightdealsflorida.org", "https://hoteldealsflorida.org", "https://cruisedealsflorida.org", "https://localdealsflorida.org"]
+};
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Local Deals Florida",
+  url: "https://localdealsflorida.org",
+  publisher: {
+    "@type": "Organization",
+    name: "Florida Deals Hub",
+    url: "https://floridadealshub.com"
+  }
+};
 
 export const metadata: Metadata = {
   title: "Florida Local Deals | Restaurants, Events & Things To Do",
@@ -59,6 +77,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
         {children}
 
         <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} strategy="afterInteractive" />

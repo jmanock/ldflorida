@@ -9,6 +9,7 @@ export type LandingPageConfig = {
   imageAlt: string;
   dealIds: string[];
   relatedSlugs: string[];
+  localContext?: string[];
 };
 
 export const landingPages: LandingPageConfig[] = [
@@ -30,7 +31,12 @@ export const landingPages: LandingPageConfig[] = [
       "orlando-budget-things-to-do",
       "orlando-free-things-to-do"
     ],
-    relatedSlugs: ["orlando-things-to-do-deals", "florida-attraction-deals", "florida-family-deals", "florida-local-deals-under-50"]
+    relatedSlugs: ["orlando-things-to-do-deals", "florida-attraction-deals", "florida-family-deals", "florida-local-deals-under-50"],
+    localContext: [
+      "Useful for attraction days, visiting family, and Central Florida weekend planning.",
+      "Includes official source pages for theme parks, budget ideas, and free things to do.",
+      "Check date-specific terms before buying tickets or planning around an offer."
+    ]
   },
   {
     slug: "miami-local-deals",
@@ -160,7 +166,12 @@ export const landingPages: LandingPageConfig[] = [
     image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=82",
     imageAlt: "Restaurant dining room with warm lighting",
     dealIds: ["st-pete-luna-happy-hour", "tampa-downtown-community-events", "jacksonville-riverside-arts-market", "miami-day-pass-deals"],
-    relatedSlugs: ["fort-lauderdale-restaurant-deals", "florida-date-night-deals", "florida-food-and-drink-deals", "st-petersburg-date-night-deals"]
+    relatedSlugs: ["fort-lauderdale-restaurant-deals", "florida-date-night-deals", "florida-food-and-drink-deals", "st-petersburg-date-night-deals"],
+    localContext: [
+      "Built for comparing dining, happy hour, market, and date-night-friendly local finds.",
+      "Cards point to restaurant pages, tourism pages, venues, and official public calendars.",
+      "Availability may vary by location, day of week, and provider."
+    ]
   },
   {
     slug: "florida-event-deals",
@@ -188,7 +199,12 @@ export const landingPages: LandingPageConfig[] = [
     image: "https://images.unsplash.com/photo-1570466343961-8a8a4e1b4ca4?auto=format&fit=crop&w=1600&q=82",
     imageAlt: "Theme park roller coaster against the sky",
     dealIds: ["orlando-gatorland-visit-orlando-special", "orlando-seaworld-limited-time-offers", "tampa-bay-citypass", "miami-attraction-deals", "st-augustine-attraction-coupons"],
-    relatedSlugs: ["orlando-local-deals", "florida-family-deals", "florida-things-to-do-deals", "florida-local-deals-under-50"]
+    relatedSlugs: ["orlando-local-deals", "florida-family-deals", "florida-things-to-do-deals", "florida-local-deals-under-50"],
+    localContext: [
+      "Good for checking theme parks, museums, historic sites, tours, and family attractions.",
+      "Official source pages are prioritized when available.",
+      "Ticket prices, blackout dates, and package terms can change."
+    ]
   },
   {
     slug: "florida-family-deals",
@@ -244,7 +260,12 @@ export const landingPages: LandingPageConfig[] = [
     image: "https://images.unsplash.com/photo-1605804522243-7b235996771c?auto=format&fit=crop&w=1600&q=82",
     imageAlt: "Florida waterfront bridge and historic district view",
     dealIds: ["orlando-free-things-to-do", "cummer-museum-free-admission", "st-augustine-free-things", "st-pete-pier-events", "jaxparks-free-events"],
-    relatedSlugs: ["florida-family-deals", "florida-event-deals", "jacksonville-local-deals", "st-augustine-local-deals"]
+    relatedSlugs: ["florida-family-deals", "florida-event-deals", "jacksonville-local-deals", "st-augustine-local-deals"],
+    localContext: [
+      "Useful for parks, museums, markets, beaches, art walks, and local public calendars.",
+      "Free does not always mean registration-free, so check current details with the source.",
+      "Includes low-cost local ideas where official free options are limited."
+    ]
   },
   {
     slug: "florida-date-night-deals",
@@ -258,7 +279,12 @@ export const landingPages: LandingPageConfig[] = [
     image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1600&q=82",
     imageAlt: "Outdoor restaurant table set for date night",
     dealIds: ["st-pete-lala-date-night", "st-pete-luna-happy-hour", "miami-sandrell-rivers-theater-offers", "las-olas-events", "broward-center-events"],
-    relatedSlugs: ["st-petersburg-date-night-deals", "florida-restaurant-deals", "florida-event-deals", "miami-weekend-deals"]
+    relatedSlugs: ["st-petersburg-date-night-deals", "florida-restaurant-deals", "florida-event-deals", "miami-weekend-deals"],
+    localContext: [
+      "Built for nights out, restaurant ideas, shows, waterfront plans, and local experiences.",
+      "Featured finds include real venues and official event or restaurant pages.",
+      "Check reservation requirements, show times, and current terms before heading out."
+    ]
   },
   {
     slug: "florida-food-and-drink-deals",
@@ -314,7 +340,12 @@ export const landingPages: LandingPageConfig[] = [
     image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1600&q=82",
     imageAlt: "Rooftop bar and nightlife setting with city lights",
     dealIds: ["miami-sandrell-rivers-theater-offers", "miami-day-pass-deals", "miami-attraction-deals", "miami-arts-culture-deals", "miami-official-special-offers"],
-    relatedSlugs: ["miami-local-deals", "florida-event-deals", "florida-date-night-deals", "florida-food-and-drink-deals"]
+    relatedSlugs: ["miami-local-deals", "florida-event-deals", "florida-date-night-deals", "florida-food-and-drink-deals"],
+    localContext: [
+      "Built for weekend planning across Miami, Miami Beach, arts districts, attractions, and nightlife.",
+      "Includes official destination pages and venue pages with current details.",
+      "Review event dates, ticket availability, and deal terms directly with each source."
+    ]
   },
   {
     slug: "tampa-events-deals",
@@ -328,7 +359,12 @@ export const landingPages: LandingPageConfig[] = [
     image: "https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?auto=format&fit=crop&w=1600&q=82",
     imageAlt: "Food truck at an outdoor Tampa event",
     dealIds: ["tampa-downtown-community-events", "st-pete-pier-events", "busch-gardens-tampa-offers", "tampa-bay-citypass", "tampa-fmopa-under-50"],
-    relatedSlugs: ["tampa-local-deals", "florida-event-deals", "florida-weekend-deals", "florida-food-and-drink-deals"]
+    relatedSlugs: ["tampa-local-deals", "florida-event-deals", "florida-weekend-deals", "florida-food-and-drink-deals"],
+    localContext: [
+      "Good for checking downtown programming, museum visits, and Tampa Bay event calendars.",
+      "Includes venue and tourism pages where times and ticket details are maintained by the source.",
+      "Availability can change for weather, holidays, and special-event weekends."
+    ]
   },
   {
     slug: "jacksonville-family-deals",
