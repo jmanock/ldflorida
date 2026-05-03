@@ -1,4 +1,26 @@
+"use client";
+
 import Link from "next/link";
+
+const topLinks = [
+  { label: "Orlando Local Deals", href: "/orlando-local-deals" },
+  { label: "Miami Weekend Deals", href: "/miami-weekend-deals" },
+  { label: "Tampa Events Deals", href: "/tampa-events-deals" },
+  { label: "Florida Restaurant Deals", href: "/florida-restaurant-deals" },
+  { label: "Florida Attraction Deals", href: "/florida-attraction-deals" },
+  { label: "Free Things To Do", href: "/florida-free-things-to-do" },
+  { label: "Florida Date Night Deals", href: "/florida-date-night-deals" }
+];
+
+function trackNavigation(label: string, href: string) {
+  window.gtag?.("event", "navigation_click", {
+    site: "localdealsflorida.org",
+    source: "local",
+    label,
+    href,
+    page_path: window.location.pathname
+  });
+}
 
 export default function SiteFooter() {
   return (
@@ -14,11 +36,21 @@ export default function SiteFooter() {
           <div>
             <h3 className="font-black">Network</h3>
             <div className="mt-3 grid gap-2 text-sm font-semibold text-[#52686b]">
-              <a href="https://flightdealsflorida.org">Flight Deals</a>
-              <a href="https://hoteldealsflorida.org">Hotel Deals</a>
-              <a href="https://cruisedealsflorida.org">Cruise Deals</a>
-              <a href="https://localdealsflorida.org">Local Deals</a>
-              <a href="https://floridadealshub.com">Florida Deals Hub</a>
+              <a href="https://flightdealsflorida.org" onClick={() => trackNavigation("Flight Deals", "https://flightdealsflorida.org")} rel="noopener noreferrer" target="_blank">
+                Flight Deals
+              </a>
+              <a href="https://hoteldealsflorida.org" onClick={() => trackNavigation("Hotel Deals", "https://hoteldealsflorida.org")} rel="noopener noreferrer" target="_blank">
+                Hotel Deals
+              </a>
+              <a href="https://cruisedealsflorida.org" onClick={() => trackNavigation("Cruise Deals", "https://cruisedealsflorida.org")} rel="noopener noreferrer" target="_blank">
+                Cruise Deals
+              </a>
+              <a href="https://localdealsflorida.org" onClick={() => trackNavigation("Local Deals", "https://localdealsflorida.org")}>
+                Local Deals
+              </a>
+              <a href="https://floridadealshub.com" onClick={() => trackNavigation("Florida Deals Hub", "https://floridadealshub.com")} rel="noopener noreferrer" target="_blank">
+                Florida Deals Hub
+              </a>
             </div>
           </div>
           <div>
@@ -32,13 +64,13 @@ export default function SiteFooter() {
             </div>
           </div>
           <div>
-            <h3 className="font-black">Markets</h3>
+            <h3 className="font-black">Top Links</h3>
             <div className="mt-3 grid gap-2 text-sm font-semibold text-[#52686b]">
-              <Link href="/orlando-local-deals">Orlando</Link>
-              <Link href="/miami-local-deals">Miami</Link>
-              <Link href="/tampa-local-deals">Tampa</Link>
-              <Link href="/jacksonville-local-deals">Jacksonville</Link>
-              <Link href="/fort-lauderdale-local-deals">Fort Lauderdale</Link>
+              {topLinks.map((link) => (
+                <Link href={link.href} key={link.href} onClick={() => trackNavigation(link.label, link.href)}>
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </div>
         </div>

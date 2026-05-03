@@ -98,7 +98,8 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
       page: window.location.pathname,
       city: deal.city,
       category: deal.category,
-      outbound_url: deal.affiliateReadyUrl
+      outbound_url: deal.affiliateReadyUrl,
+      page_path: window.location.pathname
     };
 
     window.dispatchEvent(new CustomEvent("deal_click", { detail: payload }));
@@ -108,7 +109,8 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
       source: "local",
       city: deal.city,
       category: deal.category,
-      outbound_url: deal.affiliateReadyUrl
+      outbound_url: deal.affiliateReadyUrl,
+      page_path: window.location.pathname
     });
 
     if (deal.category.includes("Event") || deal.cta.toLowerCase().includes("event")) {
@@ -117,7 +119,8 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
         source: "local",
         city: deal.city,
         category: deal.category,
-        outbound_url: deal.affiliateReadyUrl
+        outbound_url: deal.affiliateReadyUrl,
+        page_path: window.location.pathname
       });
     }
   }
@@ -130,7 +133,7 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
       id={featured ? `featured-${deal.id}` : deal.id}
     >
       <div className={`relative overflow-hidden bg-[#dff6f8] ${featured ? "h-56" : "h-48"}`}>
-        <img alt={deal.image_alt} className="h-full w-full object-cover" loading="lazy" src={deal.image} />
+        <img alt={deal.image_alt} className="h-full w-full object-cover" decoding="async" loading="lazy" src={deal.image} />
         <span className={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-black ${badgeTone(deal.badge)}`}>
           {deal.badge}
         </span>
@@ -222,7 +225,10 @@ export default function DealExplorer() {
           <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Local deals near you</p>
           <h2 className="mt-2 text-3xl font-black text-[#163235] sm:text-4xl">Find something useful today</h2>
           <p className="mt-3 max-w-2xl text-base leading-7 text-[#52686b]">
-            Filter real-feeling local finds across restaurants, events, attractions, nightlife, shopping, family activities, and free things to do.
+            Filter current local finds across restaurants, events, attractions, nightlife, shopping, family activities, and free things to do.
+          </p>
+          <p className="mt-3 text-sm font-black uppercase tracking-[0.14em] text-[#087f8c]">
+            Updated regularly · Deals may change · Check current details
           </p>
         </div>
         <button

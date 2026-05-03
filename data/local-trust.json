@@ -67,9 +67,9 @@
   },
   {
     "dealId": "st-pete-luna-happy-hour",
-    "placeName": "Luna Lux",
-    "neighborhood": "Downtown St. Petersburg",
-    "officialWebsite": "https://www.lunastpete.com/special-offers",
+    "placeName": "The Oyster Bar",
+    "neighborhood": "Central Avenue",
+    "officialWebsite": "https://oysterbarstpete.com/specials/",
     "sourceName": "Official restaurant specials page",
     "lastVerified": "2026-05-02"
   },
@@ -85,8 +85,8 @@
     "dealId": "daytona-speedway-tours",
     "placeName": "Daytona International Speedway",
     "neighborhood": "Daytona Beach",
-    "officialWebsite": "https://www.daytonainternationalspeedway.com/Tours/",
-    "sourceName": "Official speedway tours page",
+    "officialWebsite": "https://www.daytonabeach.com/listings/daytona-international-speedway-track-tours/879/",
+    "sourceName": "Daytona Beach tourism listing",
     "lastVerified": "2026-05-02"
   },
   {

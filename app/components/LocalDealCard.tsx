@@ -44,7 +44,8 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
       page: typeof window === "undefined" ? "" : window.location.pathname,
       city: deal.city,
       category: deal.category,
-      outbound_url: deal.affiliateReadyUrl
+      outbound_url: deal.affiliateReadyUrl,
+      page_path: typeof window === "undefined" ? "" : window.location.pathname
     };
 
     window.dispatchEvent(new CustomEvent("deal_click", { detail: payload }));
@@ -55,7 +56,8 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
       source: "local",
       city: deal.city,
       category: deal.category,
-      outbound_url: deal.affiliateReadyUrl
+      outbound_url: deal.affiliateReadyUrl,
+      page_path: window.location.pathname
     });
 
     if (deal.category.includes("Event") || deal.cta.toLowerCase().includes("event")) {
@@ -64,7 +66,8 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
         source: "local",
         city: deal.city,
         category: deal.category,
-        outbound_url: deal.affiliateReadyUrl
+        outbound_url: deal.affiliateReadyUrl,
+        page_path: window.location.pathname
       });
     }
   }
@@ -74,7 +77,7 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
   return (
     <article className="card-lift overflow-hidden rounded-[26px] border border-[#d8e6e3] bg-white shadow-lg shadow-[#087f8c]/8">
       <div className="relative h-48 overflow-hidden bg-[#dff6f8]">
-        <img alt={deal.image_alt} className="h-full w-full object-cover" loading="lazy" src={deal.image} />
+        <img alt={deal.image_alt} className="h-full w-full object-cover" decoding="async" loading="lazy" src={deal.image} />
         <span className={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-black ${badgeTone(deal.badge)}`}>{deal.badge}</span>
       </div>
       <div className="p-5">

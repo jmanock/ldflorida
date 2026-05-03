@@ -1,42 +1,11 @@
 import Link from "next/link";
-import { ArrowRight, Bell, Building2, CheckCircle2, Compass, Hotel, MapPin, PiggyBank, Plane, Sailboat, Sparkles, TrendingUp } from "lucide-react";
+import { ArrowRight, CheckCircle2, Compass, Hotel, MapPin, PiggyBank, Plane, Sailboat, Sparkles, TrendingUp } from "lucide-react";
 import DealExplorer from "./components/DealExplorer";
 import NewsletterForm from "./components/NewsletterForm";
-
-const navItems = [
-  { label: "Flights", href: "https://flightdealsflorida.org" },
-  { label: "Hotels", href: "https://hoteldealsflorida.org" },
-  { label: "Cruises", href: "https://cruisedealsflorida.org" },
-  { label: "Local Deals", href: "/", active: true },
-  { label: "Florida Deals Hub", href: "https://floridadealshub.com" }
-];
-
-const sisterSites = [
-  {
-    title: "Flight Deals",
-    href: "https://flightdealsflorida.org",
-    description: "Cheap airfare alerts for Florida airports, weekend routes, and warm-weather trips.",
-    icon: Plane
-  },
-  {
-    title: "Hotel Deals",
-    href: "https://hoteldealsflorida.org",
-    description: "Resorts, beach stays, family hotels, and Florida staycation rates.",
-    icon: Hotel
-  },
-  {
-    title: "Cruise Deals",
-    href: "https://cruisedealsflorida.org",
-    description: "Sailings from Miami, Port Canaveral, Tampa, Fort Lauderdale, and Jacksonville.",
-    icon: Sailboat
-  },
-  {
-    title: "Florida Deals Hub",
-    href: "https://floridadealshub.com",
-    description: "The parent network for Florida flights, hotels, cruises, and local savings.",
-    icon: Building2
-  }
-];
+import SisterSitesSection from "./components/SisterSitesSection";
+import SiteFooter from "./components/SiteFooter";
+import SiteHeader from "./components/SiteHeader";
+import deals from "../data/deals.json";
 
 const crossPromos = [
   {
@@ -77,65 +46,37 @@ const popularSearches = [
   { label: "Free Things To Do In Florida", href: "/florida-free-things-to-do" }
 ];
 
+function JsonLd({ data }: { data: Record<string, unknown> }) {
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}
+
 export default function Home() {
+  const homepageItemList = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Local Deals Florida featured deal cards",
+    itemListElement: (deals as Array<{ title: string; affiliateReadyUrl: string }>)
+      .slice(0, 12)
+      .map((deal, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: deal.title,
+        url: deal.affiliateReadyUrl
+      }))
+  };
+
   return (
     <main className="min-h-screen overflow-hidden bg-[#f8fbf7] text-[#163235]">
-      <header className="sticky top-0 z-40 border-b border-white/60 bg-white/90 backdrop-blur-xl">
-        <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8" aria-label="Top navigation">
-          <a className="flex items-center gap-3" href="/" aria-label="Local Deals Florida home">
-            <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#087f8c] text-lg font-black text-white shadow-md shadow-[#087f8c]/25">
-              LD
-            </span>
-            <span className="leading-tight">
-              <span className="block text-base font-black">Local Deals Florida</span>
-              <span className="block text-xs font-bold text-[#6f8588]">Part of Florida Deals Hub</span>
-            </span>
-          </a>
-          <div className="hidden items-center gap-1 rounded-full bg-[#eef6f5] p-1 md:flex">
-            {navItems.map((site) => (
-              <a
-                className={`rounded-full px-4 py-2 text-sm font-bold transition hover:bg-white hover:text-[#087f8c] ${
-                  site.active ? "bg-white text-[#087f8c] shadow-sm" : "text-[#52686b]"
-                }`}
-                href={site.href}
-                key={site.label}
-                aria-current={site.active ? "page" : undefined}
-              >
-                {site.label}
-              </a>
-            ))}
-          </div>
-          <a
-            className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-[#163235] px-3 text-sm font-bold text-white shadow-md shadow-[#163235]/15 transition hover:bg-[#07515a] sm:px-4"
-            href="#alerts"
-            aria-label="Get deal alerts"
-            style={{ color: "#ffffff" }}
-          >
-            <Bell size={16} aria-hidden="true" />
-            <span>Alerts</span>
-          </a>
-        </nav>
-        <nav className="deal-scroll flex gap-2 overflow-x-auto border-t border-[#d8e6e3] px-4 py-2 text-xs font-black text-[#52686b] sm:px-6 md:hidden" aria-label="Mobile navigation">
-          {navItems.map((site) => (
-            <a
-              aria-current={site.active ? "page" : undefined}
-              className={`whitespace-nowrap rounded-full border px-3 py-2 ${
-                site.active ? "border-[#087f8c] bg-[#087f8c] text-white" : "border-[#d8e6e3] bg-white"
-              }`}
-              href={site.href}
-              key={site.label}
-            >
-              {site.label}
-            </a>
-          ))}
-        </nav>
-      </header>
+      <JsonLd data={homepageItemList} />
+      <SiteHeader />
 
       <section className="relative overflow-hidden bg-[#f7fbf3] lg:min-h-[calc(100vh-4rem)]">
         <div className="absolute inset-0">
           <img
             alt="Florida outdoor restaurant patio with palm trees and warm evening light"
             className="h-full w-full object-cover"
+            decoding="async"
+            fetchPriority="high"
             src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=85"
           />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(248,251,247,0.97)_0%,rgba(248,251,247,0.88)_45%,rgba(248,251,247,0.35)_100%)]" />
@@ -152,6 +93,9 @@ export default function Home() {
             </h1>
             <p className="mt-5 max-w-2xl text-lg font-semibold leading-8 text-[#385154] sm:mt-6 sm:text-xl">
               Find restaurant specials, things to do, weekend events, attractions, and hidden local deals near you.
+            </p>
+            <p className="mt-4 text-sm font-black uppercase tracking-[0.14em] text-[#087f8c]">
+              Updated: May 2026 · New deals added regularly · Check back for weekend updates
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row">
               <a
@@ -197,6 +141,7 @@ export default function Home() {
                 <img
                   alt="Alligator resting near water at a Florida wildlife attraction"
                   className="h-full min-h-[142px] w-full object-cover transition duration-300 group-hover:scale-[1.03] sm:min-h-[154px] lg:h-56 lg:min-h-0"
+                  decoding="async"
                   src="https://images.unsplash.com/photo-1614065613125-17553fbc59f6?auto=format&fit=crop&w=900&q=85"
                 />
               </div>
@@ -228,7 +173,7 @@ export default function Home() {
             <p className="text-sm font-black uppercase tracking-[0.18em] text-[#ffb000]">Deal alerts</p>
             <h2 className="mt-3 text-3xl font-black sm:text-4xl">Get Local Florida Deals Delivered</h2>
             <p className="mt-3 max-w-xl text-base leading-7 text-white/76">
-              Join free alerts for restaurant specials, events, attractions, and local deals near you.
+              Join free alerts for restaurant specials, events, attractions, and local deals near you. Free alerts. No spam. Deals change often.
             </p>
           </div>
           <NewsletterForm />
@@ -267,7 +212,7 @@ export default function Home() {
 
       <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:px-8">
         <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8">
-          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Popular Local Deal Searches</p>
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Popular Local Deals</p>
           <h2 className="mt-2 text-3xl font-black text-[#163235]">Find deals by city, category, or plan</h2>
           <div className="mt-5 flex flex-wrap gap-3">
             {popularSearches.map((search) => (
@@ -293,6 +238,8 @@ export default function Home() {
                 className="card-lift rounded-[24px] border border-[#d8e6e3] bg-white p-6 shadow-lg shadow-[#087f8c]/8"
                 href={promo.href}
                 key={promo.title}
+                rel="noopener noreferrer"
+                target="_blank"
               >
                 <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#dff6f8] text-[#087f8c]">
                   <Icon size={22} aria-hidden="true" />
@@ -309,82 +256,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-[#d8e6e3] bg-[#eef6f5]">
-        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-          <div className="max-w-2xl">
-            <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Explore More Florida Deals</p>
-            <h2 className="mt-3 text-3xl font-black text-[#163235] sm:text-4xl">
-              One trusted network for Florida travel, stays, cruises, and local savings.
-            </h2>
-          </div>
-          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {sisterSites.map((site) => {
-              const Icon = site.icon;
-
-              return (
-                <a
-                  className="card-lift rounded-[24px] border border-[#d8e6e3] bg-white p-6 shadow-lg shadow-[#087f8c]/8"
-                  href={site.href}
-                  key={site.title}
-                >
-                  <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#dff6f8] text-[#087f8c]">
-                    <Icon size={22} aria-hidden="true" />
-                  </div>
-                  <h3 className="mt-5 text-lg font-black text-[#163235]">{site.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-[#52686b]">{site.description}</p>
-                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-black text-[#087f8c]">
-                    Explore
-                    <ArrowRight size={16} aria-hidden="true" />
-                  </span>
-                </a>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <footer className="border-t border-[#d8e6e3] bg-white">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1fr_1.4fr] lg:px-8">
-          <div>
-            <p className="text-xl font-black">Local Deals Florida</p>
-            <p className="mt-3 max-w-md leading-7 text-[#52686b]">
-              Local, useful, everyday Florida deals for restaurants, events, attractions, hidden gems, and things to do near you.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3">
-            <div>
-              <h3 className="font-black">Network</h3>
-              <div className="mt-3 grid gap-2 text-sm font-semibold text-[#52686b]">
-                <a href="https://flightdealsflorida.org">Flight Deals</a>
-                <a href="https://hoteldealsflorida.org">Hotel Deals</a>
-                <a href="https://cruisedealsflorida.org">Cruise Deals</a>
-                <a href="https://localdealsflorida.org">Local Deals</a>
-                <a href="https://floridadealshub.com">Florida Deals Hub</a>
-              </div>
-            </div>
-            <div>
-              <h3 className="font-black">Company</h3>
-              <div className="mt-3 grid gap-2 text-sm font-semibold text-[#52686b]">
-                <Link href="/about">About</Link>
-                <Link href="/contact">Contact</Link>
-                <Link href="/privacy">Privacy</Link>
-                <Link href="/terms">Terms</Link>
-                <a href="/sitemap.xml">Sitemap</a>
-              </div>
-            </div>
-            <div>
-              <h3 className="font-black">Markets</h3>
-              <div className="mt-3 grid gap-2 text-sm font-semibold text-[#52686b]">
-                <a href="#deals">Orlando</a>
-                <a href="#deals">Miami</a>
-                <a href="#deals">Tampa</a>
-                <a href="#deals">Jacksonville</a>
-                <a href="#deals">Fort Lauderdale</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SisterSitesSection />
+      <SiteFooter />
     </main>
   );
 }

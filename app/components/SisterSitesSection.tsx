@@ -1,3 +1,5 @@
+"use client";
+
 import { ArrowRight, Building2, Hotel, Plane, Sailboat } from "lucide-react";
 
 const sisterSites = [
@@ -28,6 +30,16 @@ const sisterSites = [
 ];
 
 export default function SisterSitesSection() {
+  function trackNavigation(label: string, href: string) {
+    window.gtag?.("event", "navigation_click", {
+      site: "localdealsflorida.org",
+      source: "local",
+      label,
+      href,
+      page_path: window.location.pathname
+    });
+  }
+
   return (
     <section className="border-y border-[#d8e6e3] bg-[#eef6f5]">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
@@ -46,6 +58,9 @@ export default function SisterSitesSection() {
                 className="card-lift rounded-[24px] border border-[#d8e6e3] bg-white p-6 shadow-lg shadow-[#087f8c]/8"
                 href={site.href}
                 key={site.title}
+                onClick={() => trackNavigation(site.title, site.href)}
+                rel="noopener noreferrer"
+                target="_blank"
               >
                 <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#dff6f8] text-[#087f8c]">
                   <Icon size={22} aria-hidden="true" />
