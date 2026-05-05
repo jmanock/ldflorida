@@ -19,7 +19,7 @@ export default function ContactPage() {
         },
         {
           heading: "Deal submissions",
-          body: "Include the deal title, market, category, savings, valid dates, booking link, and a short description for review."
+          body: "Include the deal title, market, category, savings, valid dates, source link, and a short description for review."
         }
       ]}
     />

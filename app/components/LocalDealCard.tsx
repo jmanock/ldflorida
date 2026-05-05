@@ -1,6 +1,7 @@
 "use client";
 
-import { MapPin, Ticket } from "lucide-react";
+import { BedDouble, MapPin, Ticket } from "lucide-react";
+import { getExpediaDestinationForCity, getExpediaHotelLink } from "../../lib/affiliateLinks";
 
 export type LocalDeal = {
   id: string;
@@ -73,6 +74,30 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
   }
 
   const hasTrustData = deal.placeName || deal.neighborhood || deal.eventDate || deal.rating;
+  const expediaDestination = getExpediaDestinationForCity(deal.city);
+  const expediaUrl = expediaDestination ? getExpediaHotelLink(expediaDestination) : null;
+  const hotelCta =
+    deal.category.includes("Event") || deal.cta.toLowerCase().includes("event")
+      ? "Visiting for the event? Book a hotel nearby"
+      : deal.category.includes("Attraction")
+        ? "Find hotels near this attraction"
+        : deal.category.includes("Food") || deal.category.includes("Nightlife") || deal.badge === "Date Night"
+          ? "Make it a night out - find nearby hotels"
+          : "Compare nearby hotels";
+
+  function trackHotelClick() {
+    if (!expediaDestination || !expediaUrl) return;
+
+    window.gtag?.("event", "hotel_booking_click", {
+      site: "localdealsflorida.org",
+      source: "local",
+      provider: "expedia",
+      city: expediaDestination,
+      category: deal.category,
+      page_path: window.location.pathname,
+      outbound_url: expediaUrl
+    });
+  }
 
   return (
     <article className="card-lift overflow-hidden rounded-[26px] border border-[#d8e6e3] bg-white shadow-lg shadow-[#087f8c]/8">
@@ -119,6 +144,18 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
           </a>
         </div>
         <p className="mt-3 text-[11px] font-bold leading-5 text-[#6f8588]">Details may change. Check current details with the source before you go.</p>
+        {expediaUrl ? (
+          <a
+            className="mt-3 inline-flex items-center gap-2 text-xs font-black text-[#087f8c] transition hover:text-[#07515a]"
+            href={expediaUrl}
+            onClick={trackHotelClick}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <BedDouble size={14} aria-hidden="true" />
+            {hotelCta}
+          </a>
+        ) : null}
       </div>
     </article>
   );

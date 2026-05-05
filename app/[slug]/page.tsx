@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getLandingPage, landingPagePath, landingPages, type LandingPageConfig } from "../../data/landing-pages";
-import { getBookingCityForPage, getBookingUrlForCity } from "../../lib/booking-links";
+import { expediaDestinationLabels, getExpediaDestinationForPage } from "../../lib/affiliateLinks";
 import { getEnrichedDeals } from "../../lib/local-data";
 import FloridaGetawayBlock from "../components/FloridaGetawayBlock";
 import LocalDealCard, { type LocalDeal } from "../components/LocalDealCard";
@@ -121,8 +121,8 @@ export default async function LandingPage({ params }: PageProps) {
     .map((relatedSlug) => getLandingPage(relatedSlug))
     .filter((relatedPage): relatedPage is LandingPageConfig => Boolean(relatedPage));
   const faqs = buildFaqs(page);
-  const bookingCity = getBookingCityForPage(page.slug);
-  const bookingUrl = bookingCity ? getBookingUrlForCity(bookingCity) : null;
+  const expediaDestination = getExpediaDestinationForPage(page.slug);
+  const expediaCityLabel = expediaDestination ? expediaDestinationLabels[expediaDestination] : null;
   const breadcrumbs = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -194,9 +194,9 @@ export default async function LandingPage({ params }: PageProps) {
             <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">{page.eyebrow}</p>
             <h1 className="mt-4 text-4xl font-black leading-tight text-[#163235] sm:text-6xl">{page.h1}</h1>
             <p className="mt-5 max-w-2xl text-lg font-semibold leading-8 text-[#385154]">{page.intro}</p>
-            {bookingCity ? (
+            {expediaCityLabel ? (
               <p className="mt-3 max-w-2xl text-base font-semibold leading-7 text-[#52686b]">
-                Planning around {bookingCity}? Compare current local finds with nearby hotels and weekend stay options when it makes sense.
+                Planning around {expediaCityLabel}? Compare current local finds with nearby hotels, staycation ideas, and weekend lodging when it makes sense.
               </p>
             ) : null}
             <p className="mt-4 text-sm font-black uppercase tracking-[0.14em] text-[#087f8c]">
@@ -246,7 +246,7 @@ export default async function LandingPage({ params }: PageProps) {
         </div>
       </section>
 
-      {bookingCity && bookingUrl ? <FloridaGetawayBlock bookingUrl={bookingUrl} category={page.h1} city={bookingCity} /> : null}
+      {expediaDestination ? <FloridaGetawayBlock category={page.h1} destination={expediaDestination} /> : null}
 
       <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
         <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8">

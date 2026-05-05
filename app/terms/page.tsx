@@ -19,7 +19,7 @@ export default function TermsPage() {
         },
         {
           heading: "External links",
-          body: "Booking and sister-site links may send users to third-party websites with their own terms, privacy policies, prices, and availability."
+          body: "Hotel, deal, and sister-site links may send users to third-party websites with their own terms, privacy policies, prices, and availability."
         },
         {
           heading: "Editorial use",

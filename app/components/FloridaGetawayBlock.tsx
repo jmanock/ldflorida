@@ -1,11 +1,14 @@
 "use client";
 
 import { BedDouble, Hotel, Plane, Sailboat } from "lucide-react";
-import type { BookingCity } from "../../lib/booking-links";
+import {
+  expediaDestinationLabels,
+  getExpediaHotelLink,
+  type ExpediaDestinationKey
+} from "../../lib/affiliateLinks";
 
 type FloridaGetawayBlockProps = {
-  bookingUrl: string;
-  city: BookingCity;
+  destination: ExpediaDestinationKey;
   category: string;
 };
 
@@ -30,16 +33,30 @@ const networkCards = [
   }
 ];
 
-export default function FloridaGetawayBlock({ bookingUrl, city, category }: FloridaGetawayBlockProps) {
+const popularHotelDestinations: ExpediaDestinationKey[] = [
+  "orlando",
+  "miami",
+  "tampa",
+  "fortLauderdale",
+  "stPetersburg",
+  "daytona",
+  "stAugustine",
+  "jacksonville"
+];
+
+export default function FloridaGetawayBlock({ destination, category }: FloridaGetawayBlockProps) {
+  const expediaUrl = getExpediaHotelLink(destination);
+  const cityLabel = expediaDestinationLabels[destination];
+
   function trackHotelClick() {
     window.gtag?.("event", "hotel_booking_click", {
       site: "localdealsflorida.org",
       source: "local",
-      provider: "booking",
-      city,
+      provider: "expedia",
+      city: destination,
       category,
       page_path: window.location.pathname,
-      outbound_url: bookingUrl
+      outbound_url: expediaUrl
     });
   }
 
@@ -47,16 +64,16 @@ export default function FloridaGetawayBlock({ bookingUrl, city, category }: Flor
     <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
       <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8">
         <div className="max-w-2xl">
-          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Make It a Florida Getaway</p>
-          <h2 className="mt-2 text-2xl font-black text-[#163235]">Turn local plans into a weekend stay</h2>
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Make It a Weekend Trip</p>
+          <h2 className="mt-2 text-2xl font-black text-[#163235]">Complete your Florida trip</h2>
           <p className="mt-3 text-sm font-semibold leading-6 text-[#52686b]">
-            Hotel rates may change, and availability varies by date. Check current details before booking.
+            Turn this into a Florida getaway. Compare nearby hotels before booking. Hotel rates may change, and availability varies by date.
           </p>
         </div>
         <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           <a
             className="card-lift rounded-[22px] border border-[#d8e6e3] bg-[#f8fbf7] p-5 shadow-lg shadow-[#087f8c]/8"
-            href={bookingUrl}
+            href={expediaUrl}
             onClick={trackHotelClick}
             rel="noopener noreferrer"
             target="_blank"
@@ -65,7 +82,9 @@ export default function FloridaGetawayBlock({ bookingUrl, city, category }: Flor
               <BedDouble size={22} aria-hidden="true" />
             </div>
             <h3 className="mt-4 font-black text-[#163235]">Find hotels nearby</h3>
-            <p className="mt-2 text-sm font-semibold leading-6 text-[#52686b]">Check hotel rates around {city} for weekend plans, date nights, and local events.</p>
+            <p className="mt-2 text-sm font-semibold leading-6 text-[#52686b]">
+              Check current rates around {cityLabel} for weekend plans, date nights, and local events.
+            </p>
             <span className="mt-4 inline-flex text-sm font-black text-[#087f8c]">Find Nearby Hotels</span>
           </a>
 
@@ -83,6 +102,38 @@ export default function FloridaGetawayBlock({ bookingUrl, city, category }: Flor
               </a>
             );
           })}
+        </div>
+        <div className="mt-7 border-t border-[#e7eeee] pt-6">
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Popular Nearby Hotels</p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            {popularHotelDestinations.map((hotelDestination) => {
+              const hotelUrl = getExpediaHotelLink(hotelDestination);
+              const label = expediaDestinationLabels[hotelDestination];
+
+              return (
+                <a
+                  className="rounded-full bg-[#eef6f5] px-4 py-2 text-sm font-black text-[#385154] transition hover:bg-[#dff6f8] hover:text-[#087f8c]"
+                  href={hotelUrl}
+                  key={hotelDestination}
+                  onClick={() => {
+                    window.gtag?.("event", "hotel_booking_click", {
+                      site: "localdealsflorida.org",
+                      source: "local",
+                      provider: "expedia",
+                      city: hotelDestination,
+                      category: "popular hotels",
+                      page_path: window.location.pathname,
+                      outbound_url: hotelUrl
+                    });
+                  }}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  {label} Hotels
+                </a>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

@@ -39,26 +39,29 @@ Deal URLs are centralized in `data/deals.json` as `affiliateReadyUrl`. Replace t
 
 Keep all external deal links pointed at real public pages and continue using `target="_blank"` with `rel="noopener noreferrer"`.
 
-## Booking And Awin Readiness
+## Expedia Affiliate Links
 
-Booking.com hotel links live in `lib/booking-links.ts`. Every Booking URL passes through:
+Expedia hotel links live in `lib/affiliateLinks.ts`. Every Expedia URL passes through:
 
 ```ts
-export function getBookingLink(url: string) {
-  return url;
+export function getExpediaHotelLink(destination: string) {
+  // ...
 }
 ```
 
-Until Awin approval is complete, `getBookingLink` returns the normal Booking URL. After approval, replace the helper internals with the Awin deep-link format so city CTA blocks keep working without page-level edits.
+The current base affiliate URL is `https://expedia.com/affiliate/2Wbjdi2`. When Expedia Creator Hub provides city-specific deep links, replace the matching values inside `getExpediaHotelLink` so page components and card CTAs keep working without layout edits.
 
 To add a new city hotel CTA:
 
-- Add the city and Booking search URL to `cityBookingLinks`.
-- Map the page slug to that city in `slugCityMap`.
-- The SEO page will render the “Make It a Florida Getaway” block automatically when a city mapping exists.
+- Add a destination key to `ExpediaDestinationKey`.
+- Add the label to `expediaDestinationLabels`.
+- Add the city mapping to `cityDestinationMap`.
+- Add page slugs to `slugDestinationMap` when SEO pages should render the “Make It a Weekend Trip” block.
+
+Current destination keys: `orlando`, `miami`, `tampa`, `fortLauderdale`, `jacksonville`, `stPetersburg`, `daytona`, and `stAugustine`.
 
 ## Analytics
 
 Outbound deal clicks fire `deal_click` with site, source, city, category, and outbound URL metadata. Event-related cards also fire `event_click`.
 
-Booking.com hotel clicks fire `hotel_booking_click` with `site`, `source`, `provider`, `city`, `category`, `page_path`, and `outbound_url` metadata. Network links stay in the same tab; Booking links open in a new tab with `rel="noopener noreferrer"`.
+Expedia hotel clicks fire `hotel_booking_click` with `site`, `source`, `provider`, `city`, `category`, `page_path`, and `outbound_url` metadata. Network links stay in the same tab; Expedia links open in a new tab with `rel="noopener noreferrer"`.

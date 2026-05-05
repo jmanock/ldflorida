@@ -1,9 +1,10 @@
 "use client";
 
-import { ArrowRight, MapPin, RefreshCw, Search, SlidersHorizontal, Ticket } from "lucide-react";
+import { ArrowRight, BedDouble, MapPin, RefreshCw, Search, SlidersHorizontal, Ticket } from "lucide-react";
 import { useMemo, useState } from "react";
 import deals from "../../data/deals.json";
 import trustRecords from "../../data/local-trust.json";
+import { getExpediaDestinationForCity, getExpediaHotelLink } from "../../lib/affiliateLinks";
 
 type Deal = {
   id: string;
@@ -126,6 +127,30 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
   }
 
   const hasTrustData = deal.placeName || deal.neighborhood || deal.eventDate || deal.rating;
+  const expediaDestination = getExpediaDestinationForCity(deal.city);
+  const expediaUrl = expediaDestination ? getExpediaHotelLink(expediaDestination) : null;
+  const hotelCta =
+    deal.category.includes("Event") || deal.cta.toLowerCase().includes("event")
+      ? "Visiting for the event? Book a hotel nearby"
+      : deal.category.includes("Attraction")
+        ? "Find hotels near this attraction"
+        : deal.category.includes("Food") || deal.category.includes("Nightlife") || deal.badge === "Date Night"
+          ? "Make it a night out - find nearby hotels"
+          : "Compare nearby hotels";
+
+  function trackHotelClick() {
+    if (!expediaDestination || !expediaUrl) return;
+
+    window.gtag?.("event", "hotel_booking_click", {
+      site: "localdealsflorida.org",
+      source: "local",
+      provider: "expedia",
+      city: expediaDestination,
+      category: deal.category,
+      page_path: window.location.pathname,
+      outbound_url: expediaUrl
+    });
+  }
 
   return (
     <article
@@ -178,6 +203,18 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
           </a>
         </div>
         <p className="mt-3 text-[11px] font-bold leading-5 text-[#6f8588]">Details may change. Check current details with the source before you go.</p>
+        {expediaUrl ? (
+          <a
+            className="mt-3 inline-flex items-center gap-2 text-xs font-black text-[#087f8c] transition hover:text-[#07515a]"
+            href={expediaUrl}
+            onClick={trackHotelClick}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <BedDouble size={14} aria-hidden="true" />
+            {hotelCta}
+          </a>
+        ) : null}
       </div>
     </article>
   );
