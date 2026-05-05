@@ -238,8 +238,6 @@ export default function Home() {
                 className="card-lift rounded-[24px] border border-[#d8e6e3] bg-white p-6 shadow-lg shadow-[#087f8c]/8"
                 href={promo.href}
                 key={promo.title}
-                rel="noopener noreferrer"
-                target="_blank"
               >
                 <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#dff6f8] text-[#087f8c]">
                   <Icon size={22} aria-hidden="true" />

@@ -39,6 +39,26 @@ Deal URLs are centralized in `data/deals.json` as `affiliateReadyUrl`. Replace t
 
 Keep all external deal links pointed at real public pages and continue using `target="_blank"` with `rel="noopener noreferrer"`.
 
+## Booking And Awin Readiness
+
+Booking.com hotel links live in `lib/booking-links.ts`. Every Booking URL passes through:
+
+```ts
+export function getBookingLink(url: string) {
+  return url;
+}
+```
+
+Until Awin approval is complete, `getBookingLink` returns the normal Booking URL. After approval, replace the helper internals with the Awin deep-link format so city CTA blocks keep working without page-level edits.
+
+To add a new city hotel CTA:
+
+- Add the city and Booking search URL to `cityBookingLinks`.
+- Map the page slug to that city in `slugCityMap`.
+- The SEO page will render the “Make It a Florida Getaway” block automatically when a city mapping exists.
+
 ## Analytics
 
 Outbound deal clicks fire `deal_click` with site, source, city, category, and outbound URL metadata. Event-related cards also fire `event_click`.
+
+Booking.com hotel clicks fire `hotel_booking_click` with `site`, `source`, `provider`, `city`, `category`, `page_path`, and `outbound_url` metadata. Network links stay in the same tab; Booking links open in a new tab with `rel="noopener noreferrer"`.

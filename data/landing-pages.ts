@@ -21,7 +21,7 @@ export const landingPages: LandingPageConfig[] = [
     h1: "Orlando Local Deals",
     eyebrow: "Central Florida local finds",
     intro:
-      "Browse local Orlando deals for attractions, events, family activities, and weekend plans. These curated local finds point to official offer pages and current details across Central Florida.",
+      "Browse local Orlando deals for attractions, events, family activities, weekend plans, and nearby hotels when a local day turns into a stay. These curated local finds point to official offer pages and current details across Central Florida.",
     image: "https://images.unsplash.com/photo-1597466599360-3b9775841aec?auto=format&fit=crop&w=1600&q=82",
     imageAlt: "Orlando theme park castle and blue sky",
     dealIds: [
@@ -148,7 +148,7 @@ export const landingPages: LandingPageConfig[] = [
     h1: "St. Augustine Local Deals",
     eyebrow: "Historic district local finds",
     intro:
-      "Find St. Augustine local deals for attraction coupons, free things to do, arts events, historic tours, family activities, and useful local ideas.",
+      "Find St. Augustine local deals for attraction coupons, free things to do, arts events, historic tours, family activities, and useful local ideas near places to stay.",
     image: "https://images.unsplash.com/photo-1604164448130-d1df213c64a3?auto=format&fit=crop&w=1600&q=82",
     imageAlt: "Historic St. Augustine street with old buildings",
     dealIds: ["st-augustine-attraction-coupons", "st-augustine-free-things", "st-augustine-art-association-calendar"],
@@ -275,7 +275,7 @@ export const landingPages: LandingPageConfig[] = [
     h1: "Florida Date Night Deals",
     eyebrow: "Restaurants, events, and local nights out",
     intro:
-      "Use these curated date night finds to compare restaurants, theater, nightlife, waterfront events, and local experiences around Florida.",
+      "Use these curated date night finds to compare restaurants, theater, nightlife, waterfront events, local experiences, and staycation ideas around Florida.",
     image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1600&q=82",
     imageAlt: "Outdoor restaurant table set for date night",
     dealIds: ["st-pete-lala-date-night", "st-pete-luna-happy-hour", "miami-sandrell-rivers-theater-offers", "las-olas-events", "broward-center-events"],
@@ -336,7 +336,7 @@ export const landingPages: LandingPageConfig[] = [
     h1: "Miami Weekend Deals",
     eyebrow: "Weekend in Miami",
     intro:
-      "Use this Miami weekend deals page to compare events, attraction offers, arts, day passes, restaurants, beaches, and current local things to do.",
+      "Use this Miami weekend deals page to compare events, attraction offers, arts, day passes, restaurants, beaches, nearby hotels, and current local things to do.",
     image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1600&q=82",
     imageAlt: "Rooftop bar and nightlife setting with city lights",
     dealIds: ["miami-sandrell-rivers-theater-offers", "miami-day-pass-deals", "miami-attraction-deals", "miami-arts-culture-deals", "miami-official-special-offers"],
@@ -355,7 +355,7 @@ export const landingPages: LandingPageConfig[] = [
     h1: "Tampa Events Deals",
     eyebrow: "Events around Tampa Bay",
     intro:
-      "Browse Tampa events and local deal pages for downtown programming, food truck events, attraction offers, museums, and weekend plans.",
+      "Browse Tampa events and local deal pages for downtown programming, food truck events, attraction offers, museums, weekend plans, and nearby hotel options.",
     image: "https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?auto=format&fit=crop&w=1600&q=82",
     imageAlt: "Food truck at an outdoor Tampa event",
     dealIds: ["tampa-downtown-community-events", "st-pete-pier-events", "busch-gardens-tampa-offers", "tampa-bay-citypass", "tampa-fmopa-under-50"],

@@ -36,19 +36,19 @@ export default function SiteFooter() {
           <div>
             <h3 className="font-black">Network</h3>
             <div className="mt-3 grid gap-2 text-sm font-semibold text-[#52686b]">
-              <a href="https://flightdealsflorida.org" onClick={() => trackNavigation("Flight Deals", "https://flightdealsflorida.org")} rel="noopener noreferrer" target="_blank">
+              <a href="https://flightdealsflorida.org" onClick={() => trackNavigation("Flight Deals", "https://flightdealsflorida.org")}>
                 Flight Deals
               </a>
-              <a href="https://hoteldealsflorida.org" onClick={() => trackNavigation("Hotel Deals", "https://hoteldealsflorida.org")} rel="noopener noreferrer" target="_blank">
+              <a href="https://hoteldealsflorida.org" onClick={() => trackNavigation("Hotel Deals", "https://hoteldealsflorida.org")}>
                 Hotel Deals
               </a>
-              <a href="https://cruisedealsflorida.org" onClick={() => trackNavigation("Cruise Deals", "https://cruisedealsflorida.org")} rel="noopener noreferrer" target="_blank">
+              <a href="https://cruisedealsflorida.org" onClick={() => trackNavigation("Cruise Deals", "https://cruisedealsflorida.org")}>
                 Cruise Deals
               </a>
               <a href="https://localdealsflorida.org" onClick={() => trackNavigation("Local Deals", "https://localdealsflorida.org")}>
                 Local Deals
               </a>
-              <a href="https://floridadealshub.com" onClick={() => trackNavigation("Florida Deals Hub", "https://floridadealshub.com")} rel="noopener noreferrer" target="_blank">
+              <a href="https://floridadealshub.com" onClick={() => trackNavigation("Florida Deals Hub", "https://floridadealshub.com")}>
                 Florida Deals Hub
               </a>
             </div>
@@ -74,6 +74,9 @@ export default function SiteFooter() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="border-t border-[#d8e6e3] px-4 py-4 text-center text-xs font-semibold leading-5 text-[#6f8588] sm:px-6 lg:px-8">
+        Florida Deals Hub may earn a commission when you book through some links. This helps keep our deal alerts free.
       </div>
     </footer>
   );

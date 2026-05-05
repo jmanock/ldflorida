@@ -59,8 +59,6 @@ export default function SisterSitesSection() {
                 href={site.href}
                 key={site.title}
                 onClick={() => trackNavigation(site.title, site.href)}
-                rel="noopener noreferrer"
-                target="_blank"
               >
                 <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#dff6f8] text-[#087f8c]">
                   <Icon size={22} aria-hidden="true" />

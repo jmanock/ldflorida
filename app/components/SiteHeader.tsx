@@ -39,24 +39,22 @@ export default function SiteHeader() {
               className={`rounded-full px-4 py-2 text-sm font-bold transition hover:bg-white hover:text-[#087f8c] ${
                 site.active ? "bg-white text-[#087f8c] shadow-sm" : "text-[#52686b]"
               }`}
-                href={site.href}
-                key={site.label}
-                aria-current={site.active ? "page" : undefined}
-                onClick={() => trackNavigation(site.label, site.href)}
-                rel={site.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                target={site.href.startsWith("http") ? "_blank" : undefined}
-              >
+              href={site.href}
+              key={site.label}
+              aria-current={site.active ? "page" : undefined}
+              onClick={() => trackNavigation(site.label, site.href)}
+            >
               {site.label}
             </a>
           ))}
         </div>
         <a
-            className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-[#163235] px-3 text-sm font-bold text-white shadow-md shadow-[#163235]/15 transition hover:bg-[#07515a] sm:px-4"
-            href="#alerts"
-            aria-label="Get deal alerts"
-            onClick={() => trackNavigation("Get Alerts", "#alerts")}
-            style={{ color: "#ffffff" }}
-          >
+          className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-[#163235] px-3 text-sm font-bold text-white shadow-md shadow-[#163235]/15 transition hover:bg-[#07515a] sm:px-4"
+          href="#alerts"
+          aria-label="Get deal alerts"
+          onClick={() => trackNavigation("Get Alerts", "#alerts")}
+          style={{ color: "#ffffff" }}
+        >
           <Bell size={16} aria-hidden="true" />
           <span>Alerts</span>
         </a>
@@ -71,8 +69,6 @@ export default function SiteHeader() {
             href={site.href}
             key={site.label}
             onClick={() => trackNavigation(site.label, site.href)}
-            rel={site.href.startsWith("http") ? "noopener noreferrer" : undefined}
-            target={site.href.startsWith("http") ? "_blank" : undefined}
           >
             {site.label}
           </a>
