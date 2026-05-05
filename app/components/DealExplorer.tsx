@@ -1,10 +1,10 @@
 "use client";
 
-import { ArrowRight, BedDouble, MapPin, RefreshCw, Search, SlidersHorizontal, Ticket } from "lucide-react";
+import { ArrowRight, MapPin, RefreshCw, Search, SlidersHorizontal, Ticket } from "lucide-react";
 import { useMemo, useState } from "react";
 import deals from "../../data/deals.json";
 import trustRecords from "../../data/local-trust.json";
-import { getExpediaDestinationForCity, getExpediaHotelLink } from "../../lib/affiliateLinks";
+import { getDealCta, getDealSourceName, getOfferLabel, getWhyThisDeal } from "../../lib/deal-display";
 
 type Deal = {
   id: string;
@@ -67,6 +67,7 @@ const featuredIds = [
   "tampa-bay-citypass",
   "cummer-museum-free-admission"
 ];
+const featuredLabels = ["Top Pick", "Family Favorite", "Weekend Pick", "Best Value"];
 
 function badgeTone(badge: string) {
   if (badge === "Hot Deal") return "bg-[#fff0d1] text-[#8a5200]";
@@ -91,6 +92,11 @@ function dealMatchesFilter(deal: Deal, activeFilter: string) {
 }
 
 function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }) {
+  const sourceName = getDealSourceName(deal);
+  const offerLabel = getOfferLabel(deal);
+  const ctaLabel = getDealCta(deal);
+  const whyThisDeal = getWhyThisDeal(deal);
+
   function trackDealClick() {
     const payload = {
       event: "deal_click",
@@ -99,6 +105,8 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
       page: window.location.pathname,
       city: deal.city,
       category: deal.category,
+      deal_title: deal.title,
+      source_name: sourceName,
       outbound_url: deal.affiliateReadyUrl,
       page_path: window.location.pathname
     };
@@ -110,6 +118,8 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
       source: "local",
       city: deal.city,
       category: deal.category,
+      deal_title: deal.title,
+      source_name: sourceName,
       outbound_url: deal.affiliateReadyUrl,
       page_path: window.location.pathname
     });
@@ -120,6 +130,8 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
         source: "local",
         city: deal.city,
         category: deal.category,
+        deal_title: deal.title,
+        source_name: sourceName,
         outbound_url: deal.affiliateReadyUrl,
         page_path: window.location.pathname
       });
@@ -127,30 +139,6 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
   }
 
   const hasTrustData = deal.placeName || deal.neighborhood || deal.eventDate || deal.rating;
-  const expediaDestination = getExpediaDestinationForCity(deal.city);
-  const expediaUrl = expediaDestination ? getExpediaHotelLink(expediaDestination) : null;
-  const hotelCta =
-    deal.category.includes("Event") || deal.cta.toLowerCase().includes("event")
-      ? "Visiting for the event? Book a hotel nearby"
-      : deal.category.includes("Attraction")
-        ? "Find hotels near this attraction"
-        : deal.category.includes("Food") || deal.category.includes("Nightlife") || deal.badge === "Date Night"
-          ? "Make it a night out - find nearby hotels"
-          : "Compare nearby hotels";
-
-  function trackHotelClick() {
-    if (!expediaDestination || !expediaUrl) return;
-
-    window.gtag?.("event", "hotel_booking_click", {
-      site: "localdealsflorida.org",
-      source: "local",
-      provider: "expedia",
-      city: expediaDestination,
-      category: deal.category,
-      page_path: window.location.pathname,
-      outbound_url: expediaUrl
-    });
-  }
 
   return (
     <article
@@ -172,6 +160,7 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
         </div>
         <h3 className="mt-3 text-xl font-black leading-tight text-[#163235]">{deal.title}</h3>
         <p className="mt-3 text-sm leading-6 text-[#52686b]">{deal.description}</p>
+        <p className="mt-3 rounded-2xl bg-[#fff8e8] px-3 py-2 text-sm font-black text-[#8a5200]">Why this deal: {whyThisDeal}</p>
         {hasTrustData ? (
           <div className="mt-4 rounded-2xl bg-[#f8fbf7] p-3 text-xs font-bold leading-5 text-[#52686b]">
             {deal.placeName ? <p className="text-[#163235]">{deal.placeName}</p> : null}
@@ -185,13 +174,16 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
             {deal.lastVerified ? <p>Last checked {deal.lastVerified}</p> : null}
           </div>
         ) : null}
-        <div className="mt-5 flex items-center justify-between gap-3 border-t border-[#e7eeee] pt-4">
-          <div>
-            <p className="text-lg font-black text-[#163235]">{deal.price}</p>
-            <p className="text-xs font-bold text-[#6f8588]">{deal.dates}</p>
+        <div className="mt-5 grid gap-4 border-t border-[#e7eeee] pt-4">
+          <div className="grid gap-2">
+            <p className="text-[11px] font-black uppercase tracking-[0.14em] text-[#087f8c]">Offer</p>
+            <p className="text-lg font-black leading-6 text-[#163235]">{offerLabel}</p>
+            <p className="text-xs font-bold text-[#6f8588]">Valid: {deal.dates}</p>
+            <p className="text-xs font-bold text-[#6f8588]">Source: {sourceName}</p>
+            <p className="text-xs font-bold text-[#6f8588]">Last checked: {deal.lastVerified ?? "May 2026"}</p>
           </div>
           <a
-            className="inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-full bg-[#ffb000] px-4 text-sm font-black text-[#163235] transition hover:bg-[#ffc84d]"
+            className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[#ffb000] px-4 text-sm font-black text-[#163235] transition hover:bg-[#ffc84d]"
             href={deal.affiliateReadyUrl}
             aria-label={`${featured ? "View featured local deal" : "View local deal"}: ${deal.title} in ${deal.city}`}
             onClick={trackDealClick}
@@ -199,22 +191,10 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
             target="_blank"
           >
             <Ticket size={16} aria-hidden="true" />
-            {hasTrustData ? "Check Current Details" : deal.cta}
+            {ctaLabel}
           </a>
         </div>
-        <p className="mt-3 text-[11px] font-bold leading-5 text-[#6f8588]">Details may change. Check current details with the source before you go.</p>
-        {expediaUrl ? (
-          <a
-            className="mt-3 inline-flex items-center gap-2 text-xs font-black text-[#087f8c] transition hover:text-[#07515a]"
-            href={expediaUrl}
-            onClick={trackHotelClick}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <BedDouble size={14} aria-hidden="true" />
-            {hotelCta}
-          </a>
-        ) : null}
+        <p className="mt-3 text-[11px] font-bold leading-5 text-[#6f8588]">Details may change. Confirm current offer with the official source.</p>
       </div>
     </article>
   );
@@ -321,7 +301,7 @@ export default function DealExplorer() {
         <div className="flex items-end justify-between gap-4">
           <div>
             <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Featured</p>
-            <h2 className="mt-2 text-3xl font-black text-[#163235]">Top local deals to check today</h2>
+            <h2 className="mt-2 text-3xl font-black text-[#163235]">Top Local Deals Right Now</h2>
           </div>
           <a className="hidden items-center gap-2 text-sm font-black text-[#087f8c] sm:inline-flex" href="#feed">
             Main feed
@@ -329,8 +309,13 @@ export default function DealExplorer() {
           </a>
         </div>
         <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {featuredDeals.map((deal) => (
-            <DealCard deal={deal} featured key={deal.id} />
+          {featuredDeals.map((deal, index) => (
+            <div className="relative" key={deal.id}>
+              <span className="absolute left-4 top-4 z-10 rounded-full bg-[#163235] px-3 py-1 text-xs font-black text-white shadow-lg shadow-[#163235]/15">
+                {featuredLabels[index] ?? "Top Pick"}
+              </span>
+              <DealCard deal={deal} featured />
+            </div>
           ))}
         </div>
       </div>

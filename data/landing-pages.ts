@@ -46,7 +46,7 @@ export const landingPages: LandingPageConfig[] = [
     h1: "Miami Local Deals",
     eyebrow: "Miami and beaches",
     intro:
-      "Find current Miami local searches for attractions, arts, culture, day passes, and weekend-friendly things to do. Deal details may change, so use each source page to confirm availability.",
+      "Find current Miami local searches for attractions, arts, culture, day passes, and weekend-friendly things to do. Deal details may change, so confirm availability with the official source.",
     image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=1600&q=82",
     imageAlt: "Miami beach and skyline on a sunny day",
     dealIds: [

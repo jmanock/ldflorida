@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getLandingPage, landingPagePath, landingPages, type LandingPageConfig } from "../../data/landing-pages";
-import { expediaDestinationLabels, getExpediaDestinationForPage } from "../../lib/affiliateLinks";
 import { getEnrichedDeals } from "../../lib/local-data";
 import FloridaGetawayBlock from "../components/FloridaGetawayBlock";
 import LocalDealCard, { type LocalDeal } from "../components/LocalDealCard";
@@ -22,6 +21,7 @@ const evergreenSearches = [
   { label: "Free Things To Do In Florida", href: "/florida-free-things-to-do" },
   { label: "Florida Date Night Deals", href: "/florida-date-night-deals" }
 ];
+const topDealLabels = ["Top Pick", "Family Favorite", "Weekend Pick"];
 
 type PageProps = {
   params: Promise<{
@@ -108,6 +108,10 @@ function buildFaqs(page: LandingPageConfig) {
   ];
 }
 
+function buildSeoOverview(page: LandingPageConfig) {
+  return `${page.intro} Local Deals Florida keeps this page focused on practical, current local searches rather than broad travel inspiration. Use it to compare real source pages for restaurants, events, attractions, free activities, family ideas, date nights, and weekend plans when they fit this topic. Each card is meant to help you understand the value quickly: what the offer is, where it comes from, when it may be useful, and which official source should be checked before you make plans.`;
+}
+
 export default async function LandingPage({ params }: PageProps) {
   const { slug } = await params;
   const page = getLandingPage(slug);
@@ -117,12 +121,11 @@ export default async function LandingPage({ params }: PageProps) {
   }
 
   const pageDeals = getDealsForPage(page.dealIds);
+  const topDeals = pageDeals.slice(0, 3);
   const relatedPages = page.relatedSlugs
     .map((relatedSlug) => getLandingPage(relatedSlug))
     .filter((relatedPage): relatedPage is LandingPageConfig => Boolean(relatedPage));
   const faqs = buildFaqs(page);
-  const expediaDestination = getExpediaDestinationForPage(page.slug);
-  const expediaCityLabel = expediaDestination ? expediaDestinationLabels[expediaDestination] : null;
   const breadcrumbs = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -194,11 +197,6 @@ export default async function LandingPage({ params }: PageProps) {
             <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">{page.eyebrow}</p>
             <h1 className="mt-4 text-4xl font-black leading-tight text-[#163235] sm:text-6xl">{page.h1}</h1>
             <p className="mt-5 max-w-2xl text-lg font-semibold leading-8 text-[#385154]">{page.intro}</p>
-            {expediaCityLabel ? (
-              <p className="mt-3 max-w-2xl text-base font-semibold leading-7 text-[#52686b]">
-                Planning around {expediaCityLabel}? Compare current local finds with nearby hotels, staycation ideas, and weekend lodging when it makes sense.
-              </p>
-            ) : null}
             <p className="mt-4 text-sm font-black uppercase tracking-[0.14em] text-[#087f8c]">
               Updated: May 2026 · Last checked {lastUpdated} · New deals added regularly
             </p>
@@ -218,6 +216,39 @@ export default async function LandingPage({ params }: PageProps) {
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 pt-12 sm:px-6 lg:px-8">
+        <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8">
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Local planning guide</p>
+          <div className="mt-3 max-w-4xl space-y-4 text-base font-semibold leading-8 text-[#52686b]">
+            <p>{buildSeoOverview(page)}</p>
+            <p>
+              Prices, event dates, menus, ticket options, and availability can change. For the cleanest planning experience, start with the offer label,
+              review the source and last-checked details, then open the official page for current terms before visiting or buying.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="max-w-3xl">
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Top Local Deals Right Now</p>
+          <h2 className="mt-2 text-3xl font-black text-[#163235]">Start with these current local finds</h2>
+          <p className="mt-3 leading-7 text-[#52686b]">
+            These picks are selected for clear value, useful source pages, and everyday Florida plans. Details may change, so confirm the current offer before you go.
+          </p>
+        </div>
+        <div className="mt-7 grid gap-5 md:grid-cols-3">
+          {topDeals.map((deal, index) => (
+            <div className="relative" key={deal.id}>
+              <span className="absolute left-4 top-4 z-10 rounded-full bg-[#163235] px-3 py-1 text-xs font-black text-white shadow-lg shadow-[#163235]/15">
+                {topDealLabels[index] ?? "Top Pick"}
+              </span>
+              <LocalDealCard deal={deal} />
+            </div>
+          ))}
         </div>
       </section>
 
@@ -246,7 +277,7 @@ export default async function LandingPage({ params }: PageProps) {
         </div>
       </section>
 
-      {expediaDestination ? <FloridaGetawayBlock category={page.h1} destination={expediaDestination} /> : null}
+      <FloridaGetawayBlock />
 
       <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
         <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8">

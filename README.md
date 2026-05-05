@@ -64,4 +64,4 @@ Current destination keys: `orlando`, `miami`, `tampa`, `fortLauderdale`, `jackso
 
 Outbound deal clicks fire `deal_click` with site, source, city, category, and outbound URL metadata. Event-related cards also fire `event_click`.
 
-Expedia hotel clicks fire `hotel_booking_click` with `site`, `source`, `provider`, `city`, `category`, `page_path`, and `outbound_url` metadata. Network links stay in the same tab; Expedia links open in a new tab with `rel="noopener noreferrer"`.
+The current UI keeps hotel monetization as a page-level Florida Hotel Deals cross-link, tracked as `navigation_click`. Individual local deal cards do not show hotel CTAs. If Expedia links are reintroduced later, use `hotel_booking_click` with `site`, `source`, `provider`, `city`, `category`, `page_path`, and `outbound_url` metadata.

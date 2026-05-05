@@ -1,7 +1,7 @@
 "use client";
 
-import { BedDouble, MapPin, Ticket } from "lucide-react";
-import { getExpediaDestinationForCity, getExpediaHotelLink } from "../../lib/affiliateLinks";
+import { MapPin, Ticket } from "lucide-react";
+import { getDealCta, getDealSourceName, getOfferLabel, getWhyThisDeal } from "../../lib/deal-display";
 
 export type LocalDeal = {
   id: string;
@@ -37,6 +37,11 @@ function badgeTone(badge: string) {
 }
 
 export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
+  const sourceName = getDealSourceName(deal);
+  const offerLabel = getOfferLabel(deal);
+  const ctaLabel = getDealCta(deal);
+  const whyThisDeal = getWhyThisDeal(deal);
+
   function trackDealClick() {
     const payload = {
       event: "deal_click",
@@ -45,6 +50,8 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
       page: typeof window === "undefined" ? "" : window.location.pathname,
       city: deal.city,
       category: deal.category,
+      deal_title: deal.title,
+      source_name: sourceName,
       outbound_url: deal.affiliateReadyUrl,
       page_path: typeof window === "undefined" ? "" : window.location.pathname
     };
@@ -57,6 +64,8 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
       source: "local",
       city: deal.city,
       category: deal.category,
+      deal_title: deal.title,
+      source_name: sourceName,
       outbound_url: deal.affiliateReadyUrl,
       page_path: window.location.pathname
     });
@@ -67,6 +76,8 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
         source: "local",
         city: deal.city,
         category: deal.category,
+        deal_title: deal.title,
+        source_name: sourceName,
         outbound_url: deal.affiliateReadyUrl,
         page_path: window.location.pathname
       });
@@ -74,30 +85,6 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
   }
 
   const hasTrustData = deal.placeName || deal.neighborhood || deal.eventDate || deal.rating;
-  const expediaDestination = getExpediaDestinationForCity(deal.city);
-  const expediaUrl = expediaDestination ? getExpediaHotelLink(expediaDestination) : null;
-  const hotelCta =
-    deal.category.includes("Event") || deal.cta.toLowerCase().includes("event")
-      ? "Visiting for the event? Book a hotel nearby"
-      : deal.category.includes("Attraction")
-        ? "Find hotels near this attraction"
-        : deal.category.includes("Food") || deal.category.includes("Nightlife") || deal.badge === "Date Night"
-          ? "Make it a night out - find nearby hotels"
-          : "Compare nearby hotels";
-
-  function trackHotelClick() {
-    if (!expediaDestination || !expediaUrl) return;
-
-    window.gtag?.("event", "hotel_booking_click", {
-      site: "localdealsflorida.org",
-      source: "local",
-      provider: "expedia",
-      city: expediaDestination,
-      category: deal.category,
-      page_path: window.location.pathname,
-      outbound_url: expediaUrl
-    });
-  }
 
   return (
     <article className="card-lift overflow-hidden rounded-[26px] border border-[#d8e6e3] bg-white shadow-lg shadow-[#087f8c]/8">
@@ -114,6 +101,7 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
         </div>
         <h3 className="mt-3 text-xl font-black leading-tight text-[#163235]">{deal.title}</h3>
         <p className="mt-3 text-sm leading-6 text-[#52686b]">{deal.description}</p>
+        <p className="mt-3 rounded-2xl bg-[#fff8e8] px-3 py-2 text-sm font-black text-[#8a5200]">Why this deal: {whyThisDeal}</p>
         {hasTrustData ? (
           <div className="mt-4 rounded-2xl bg-[#f8fbf7] p-3 text-xs font-bold leading-5 text-[#52686b]">
             {deal.placeName ? <p className="text-[#163235]">{deal.placeName}</p> : null}
@@ -127,35 +115,26 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
             {deal.lastVerified ? <p>Last checked {deal.lastVerified}</p> : null}
           </div>
         ) : null}
-        <div className="mt-5 flex items-center justify-between gap-3 border-t border-[#e7eeee] pt-4">
-          <div>
-            <p className="text-lg font-black text-[#163235]">{deal.price}</p>
-            <p className="text-xs font-bold text-[#6f8588]">{deal.dates}</p>
+        <div className="mt-5 grid gap-4 border-t border-[#e7eeee] pt-4">
+          <div className="grid gap-2">
+            <p className="text-[11px] font-black uppercase tracking-[0.14em] text-[#087f8c]">Offer</p>
+            <p className="text-lg font-black leading-6 text-[#163235]">{offerLabel}</p>
+            <p className="text-xs font-bold text-[#6f8588]">Valid: {deal.dates}</p>
+            <p className="text-xs font-bold text-[#6f8588]">Source: {sourceName}</p>
+            <p className="text-xs font-bold text-[#6f8588]">Last checked: {deal.lastVerified ?? "May 2026"}</p>
           </div>
           <a
-            className="inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-full bg-[#ffb000] px-4 text-sm font-black text-[#163235] transition hover:bg-[#ffc84d]"
+            className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[#ffb000] px-4 text-sm font-black text-[#163235] transition hover:bg-[#ffc84d]"
             href={deal.affiliateReadyUrl}
             onClick={trackDealClick}
             rel="noopener noreferrer"
             target="_blank"
           >
             <Ticket size={16} aria-hidden="true" />
-            {hasTrustData ? "Check Current Details" : deal.cta}
+            {ctaLabel}
           </a>
         </div>
-        <p className="mt-3 text-[11px] font-bold leading-5 text-[#6f8588]">Details may change. Check current details with the source before you go.</p>
-        {expediaUrl ? (
-          <a
-            className="mt-3 inline-flex items-center gap-2 text-xs font-black text-[#087f8c] transition hover:text-[#07515a]"
-            href={expediaUrl}
-            onClick={trackHotelClick}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <BedDouble size={14} aria-hidden="true" />
-            {hotelCta}
-          </a>
-        ) : null}
+        <p className="mt-3 text-[11px] font-bold leading-5 text-[#6f8588]">Details may change. Confirm current offer with the official source.</p>
       </div>
     </article>
   );
