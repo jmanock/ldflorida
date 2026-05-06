@@ -46,6 +46,7 @@ export function getDealCta(deal: DealDisplayInput) {
   const category = deal.category.toLowerCase();
   const badge = deal.badge.toLowerCase();
 
+  if (deal.title.includes("Gatorland")) return "Get Attraction Offer";
   if (category.includes("free") || badge.includes("free")) return "View Free Activity";
   if (category.includes("event") || category.includes("weekend")) return "See Event Details";
   if (category.includes("food") || category.includes("restaurant")) return "View Dining Deal";
@@ -60,6 +61,7 @@ export function getWhyThisDeal(deal: DealDisplayInput) {
   const category = deal.category.toLowerCase();
   const badge = deal.badge.toLowerCase();
 
+  if (deal.title.includes("Gatorland")) return "Good option for a low-cost Orlando attraction day.";
   if (deal.title.includes("Visit Orlando") || deal.title.includes("Visit Jacksonville")) return "Official tourism offer hub";
   if (category.includes("free") || badge.includes("free")) return "Low-cost thing to do in Florida";
   if (category.includes("family") || badge.includes("family")) return "Family-friendly local pick";
