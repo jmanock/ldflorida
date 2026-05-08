@@ -65,3 +65,23 @@ Current destination keys: `orlando`, `miami`, `tampa`, `fortLauderdale`, `jackso
 Outbound deal clicks fire `deal_click` with site, source, city, category, and outbound URL metadata. Event-related cards also fire `event_click`.
 
 The current UI keeps hotel monetization as a page-level Florida Hotel Deals cross-link, tracked as `navigation_click`. Individual local deal cards do not show hotel CTAs. If Expedia links are reintroduced later, use `hotel_booking_click` with `site`, `source`, `provider`, `city`, `category`, `page_path`, and `outbound_url` metadata.
+
+## SEO Structure
+
+The sitemap is generated in `app/sitemap.ts` from the canonical domain `https://localdealsflorida.org`. Static company pages and all entries from `data/landing-pages.ts` are included as HTTPS, non-www URLs. New SEO pages should be added to `landingPages` so sitemap inclusion, static generation, and internal linking stay aligned.
+
+Canonical URLs are self-referencing. Dynamic SEO pages set canonical, Open Graph URL, and Twitter metadata in `app/[slug]/page.tsx`; static support pages use `createPageMetadata` from `lib/seo.ts`.
+
+Structured data is intentionally conservative:
+
+- Global `Organization` and `WebSite` schema live in `app/layout.tsx`.
+- SEO pages include `BreadcrumbList`, `FAQPage`, and `ItemList`.
+- Event, LocalBusiness, Product, or Offer schema should only be added when the source data is specific and accurate.
+
+SEO landing pages should follow the same structure: shared header, breadcrumb, unique hero metadata, page-level freshness note, local planning copy, top local finds, deal grid, related searches, newsletter, sister sites, and shared footer.
+
+## Adding Pages Or Cards Safely
+
+When adding a new page, include a unique title, meta description, canonical path, Open Graph image, Twitter image, 3-5 FAQs, related pages, and 3-6 real deal IDs. Avoid broad duplicate copy across pages.
+
+When adding a new deal card, use a real source URL, descriptive image alt text, a safe offer label, a source name if available, and a clear category. Do not invent prices or savings. External deal links should open in a new tab with `rel="noopener noreferrer"`; internal Florida Deals Hub network links should stay in the same tab.

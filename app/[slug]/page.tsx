@@ -11,7 +11,7 @@ import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
 
 const baseUrl = "https://localdealsflorida.org";
-const lastUpdated = "May 2, 2026";
+const freshnessNote = "Updated: May 2026 · Local offers may change · Confirm details with the official source";
 const evergreenSearches = [
   { label: "Orlando Local Deals", href: "/orlando-local-deals" },
   { label: "Miami Weekend Deals", href: "/miami-weekend-deals" },
@@ -109,7 +109,43 @@ function buildFaqs(page: LandingPageConfig) {
 }
 
 function buildSeoOverview(page: LandingPageConfig) {
-  return `${page.intro} Local Deals Florida keeps this page focused on practical, current local searches rather than broad travel inspiration. Use it to compare real source pages for restaurants, events, attractions, free activities, family ideas, date nights, and weekend plans when they fit this topic. Each card is meant to help you understand the value quickly: what the offer is, where it comes from, when it may be useful, and which official source should be checked before you make plans.`;
+  const h1 = page.h1.toLowerCase();
+  const cityContext = [
+    "orlando",
+    "miami",
+    "tampa",
+    "jacksonville",
+    "fort lauderdale",
+    "st. petersburg",
+    "daytona beach",
+    "st. augustine"
+  ].find((city) => h1.includes(city));
+
+  if (cityContext) {
+    return `${page.intro} This city page is built for people comparing real local options before making plans: attractions, restaurants, family activities, events, nightlife, weekend ideas, free or low-cost stops, and local experiences when they fit the market. Local Deals Florida keeps the focus on source-led listings instead of vague coupon language, so each card should make it clear what the offer is, who publishes it, and why it may be useful. Use the related searches to move between nearby categories such as Florida attraction deals, restaurant deals, family deals, free things to do, and weekend plans.`;
+  }
+
+  if (h1.includes("restaurant") || h1.includes("food")) {
+    return `${page.intro} This dining page is useful for comparing restaurant specials, happy hours, brunch ideas, markets, date-night options, and food-and-drink finds across Florida cities. Restaurant offers can vary by day, location, season, and menu availability, so each card emphasizes the source, offer label, and current details rather than unsupported promises. Use this page as a starting point for local dining research, then open the restaurant, venue, tourism board, or event source to confirm the latest terms before visiting. Related searches connect dining plans with date night ideas, weekend deals, and city-specific local pages.`;
+  }
+
+  if (h1.includes("attraction")) {
+    return `${page.intro} This attraction page helps users compare theme parks, museums, historic sites, tours, wildlife stops, family attractions, and ticket-related offer pages around Florida. Attraction pricing and admission terms can change by date, age group, residency, event schedule, and partner source, so the cards focus on safe offer labels and official source clarity. Use this page to find ideas for a family day, a low-cost outing, or a weekend activity, then confirm ticket options and restrictions with the attraction or tourism source before buying.`;
+  }
+
+  if (h1.includes("event") || h1.includes("weekend")) {
+    return `${page.intro} This page is designed for weekend planning, local events, markets, shows, festivals, waterfront activities, and city calendars across Florida. Event details can change quickly because of weather, ticket availability, venue updates, holidays, and seasonal programming. Local Deals Florida highlights source-led event pages so users can understand the opportunity quickly and then verify dates, times, registration requirements, and costs with the official calendar or venue. Related searches help connect events with restaurants, date nights, free things to do, and city-specific local deal pages.`;
+  }
+
+  if (h1.includes("free")) {
+    return `${page.intro} This page focuses on free and low-cost Florida ideas such as parks, museums with free admission windows, public events, markets, beaches, art walks, and family-friendly activities. Free listings can still have registration requirements, limited hours, parking costs, or date-specific rules, so each card points users toward the source that maintains the current details. Use this page to plan a budget-friendly day out, compare nearby markets and events, and discover local activity ideas that do not depend on unsupported discount claims.`;
+  }
+
+  if (h1.includes("date night")) {
+    return `${page.intro} This page is built for date-night planning across Florida, including restaurants, live events, arts, nightlife, waterfront ideas, karaoke, theater, and local experiences. Date-night offers and event availability can change by day and reservation window, so each card is meant to show the source, offer type, and why it may be useful before sending users to the official page. Related searches connect these ideas with restaurant deals, weekend plans, hotel inspiration, and city-specific local pages.`;
+  }
+
+  return `${page.intro} Local Deals Florida keeps this page focused on practical, current local searches rather than broad travel inspiration. Use it to compare real source pages for restaurants, events, attractions, free activities, family ideas, date nights, and weekend plans when they fit this topic. Each card is meant to help you understand the value quickly: what the offer is, where it comes from, when it may be useful, and which official source should be checked before you make plans. Related searches help users move naturally between nearby cities, categories, and the broader Florida Deals Hub network.`;
 }
 
 export default async function LandingPage({ params }: PageProps) {
@@ -198,7 +234,7 @@ export default async function LandingPage({ params }: PageProps) {
             <h1 className="mt-4 text-4xl font-black leading-tight text-[#163235] sm:text-6xl">{page.h1}</h1>
             <p className="mt-5 max-w-2xl text-lg font-semibold leading-8 text-[#385154]">{page.intro}</p>
             <p className="mt-4 text-sm font-black uppercase tracking-[0.14em] text-[#087f8c]">
-              Updated: May 2026 · Last checked {lastUpdated} · New deals added regularly
+              {freshnessNote}
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <a
@@ -226,7 +262,7 @@ export default async function LandingPage({ params }: PageProps) {
             <p>{buildSeoOverview(page)}</p>
             <p>
               Prices, event dates, menus, ticket options, and availability can change. For the cleanest planning experience, start with the offer label,
-              review the source and last-checked details, then open the official page for current terms before visiting or buying.
+              review the source and page-level freshness note, then open the official page for current terms before visiting or buying.
             </p>
           </div>
         </div>

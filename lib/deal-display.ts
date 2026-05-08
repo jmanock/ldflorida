@@ -14,7 +14,8 @@ export function getOfferLabel(deal: DealDisplayInput) {
 }
 
 export function getDealSourceName(deal: DealDisplayInput) {
-  if (deal.sourceName) return deal.sourceName.replace(/^Official /, "");
+  if (deal.title.includes("Gatorland")) return "Gatorland";
+  if (deal.sourceName) return deal.sourceName.replace(/^Official /, "").replace(/ offer page$/i, "").replace(/ page$/i, "");
   if (deal.placeName) return deal.placeName;
 
   const url = deal.affiliateReadyUrl;

@@ -9,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [...staticPages, ...seoPages].map((path) => ({
     url: `${baseUrl}${path}`,
-    lastModified: new Date("2026-05-03"),
+    lastModified: new Date("2026-05-08"),
     changeFrequency: path === "" ? "daily" : "monthly",
     priority: path === "" ? 1 : 0.6
   }));

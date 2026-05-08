@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { createPageMetadata } from "../../lib/seo";
 import InfoPage from "../components/InfoPage";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Privacy Policy | Local Deals Florida",
-  description: "Privacy information for Local Deals Florida."
-};
+  description: "Read the Local Deals Florida privacy policy for email alerts, analytics, contact requests, and Florida Deals Hub site usage.",
+  path: "/privacy"
+});
 
 export default function PrivacyPage() {
   return (

@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { createPageMetadata } from "../../lib/seo";
 import InfoPage from "../components/InfoPage";
 
-export const metadata: Metadata = {
-  title: "Terms | Local Deals Florida",
-  description: "Terms of use for Local Deals Florida."
-};
+export const metadata: Metadata = createPageMetadata({
+  title: "Terms of Use | Local Deals Florida",
+  description: "Review Local Deals Florida terms for deal accuracy, third-party source links, hotel links, affiliate disclosure, and editorial usage.",
+  path: "/terms"
+});
 
 export default function TermsPage() {
   return (

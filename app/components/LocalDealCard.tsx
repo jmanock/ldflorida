@@ -52,6 +52,7 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
       category: deal.category,
       deal_title: deal.title,
       source_name: sourceName,
+      cta_text: ctaLabel,
       outbound_url: deal.affiliateReadyUrl,
       page_path: typeof window === "undefined" ? "" : window.location.pathname
     };
@@ -66,6 +67,7 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
       category: deal.category,
       deal_title: deal.title,
       source_name: sourceName,
+      cta_text: ctaLabel,
       outbound_url: deal.affiliateReadyUrl,
       page_path: window.location.pathname
     });
@@ -78,6 +80,7 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
         category: deal.category,
         deal_title: deal.title,
         source_name: sourceName,
+        cta_text: ctaLabel,
         outbound_url: deal.affiliateReadyUrl,
         page_path: window.location.pathname
       });
@@ -112,7 +115,6 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
                 {deal.rating.toFixed(1)} rating{deal.reviewCount ? ` (${deal.reviewCount.toLocaleString()} reviews)` : ""}
               </p>
             ) : null}
-            {deal.lastVerified ? <p>Last checked {deal.lastVerified}</p> : null}
           </div>
         ) : null}
         <div className="mt-5 grid gap-4 border-t border-[#e7eeee] pt-4">
@@ -121,7 +123,6 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
             <p className="text-lg font-black leading-6 text-[#163235]">{offerLabel}</p>
             <p className="text-xs font-bold text-[#6f8588]">Valid: {deal.dates}</p>
             <p className="text-xs font-bold text-[#6f8588]">Source: {sourceName}</p>
-            <p className="text-xs font-bold text-[#6f8588]">Last checked: {deal.lastVerified ?? "May 2026"}</p>
           </div>
           <a
             className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[#ffb000] px-4 text-sm font-black text-[#163235] transition hover:bg-[#ffc84d]"

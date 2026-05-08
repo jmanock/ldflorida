@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { createPageMetadata } from "../../lib/seo";
 import InfoPage from "../components/InfoPage";
 
-export const metadata: Metadata = {
-  title: "About | Local Deals Florida",
-  description: "Learn about Local Deals Florida and the Florida Deals Hub network."
-};
+export const metadata: Metadata = createPageMetadata({
+  title: "About Local Deals Florida | Florida Deals Hub",
+  description: "Learn how Local Deals Florida curates restaurants, events, attractions, family activities, and local savings as part of Florida Deals Hub.",
+  path: "/about"
+});
 
 export default function AboutPage() {
   return (
