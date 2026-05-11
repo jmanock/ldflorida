@@ -11,7 +11,7 @@ import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
 
 const baseUrl = "https://localdealsflorida.org";
-const freshnessNote = "Updated: May 2026 · Local offers may change · Confirm details with the official source";
+const freshnessNote = "Updated: May 2026 • Local offers and events may change • Confirm details with the official source";
 const evergreenSearches = [
   { label: "Orlando Local Deals", href: "/orlando-local-deals" },
   { label: "Miami Weekend Deals", href: "/miami-weekend-deals" },
@@ -83,14 +83,40 @@ function JsonLd({ data }: { data: Record<string, unknown> }) {
 
 function buildFaqs(page: LandingPageConfig) {
   const topic = page.h1.toLowerCase();
+  const cleanTopic = topic.replace(/^best\s+/, "");
+
+  if (page.pageType === "guide") {
+    return [
+      {
+        question: `What should I know before planning ${cleanTopic}?`,
+        answer: "Start with the guide notes, then confirm current hours, prices, parking, weather, and event details with the official source before you go."
+      },
+      {
+        question: `Are ${cleanTopic} good for families?`,
+        answer: "Many Florida activities work well for families, but age ranges, stroller rules, ticket windows, parking, and weather can change the fit for a specific day."
+      },
+      {
+        question: "How often do local events and offers change?",
+        answer: "Local events, attraction offers, restaurant specials, and free activity details can change by season, date, provider, weather, and availability."
+      },
+      {
+        question: "Where do these Florida activity ideas come from?",
+        answer: "We prioritize official tourism boards, city calendars, attraction pages, museum pages, restaurant pages, venue calendars, and public event resources."
+      },
+      {
+        question: "Can I use this guide with Florida travel planning?",
+        answer: "Yes. Local Deals Florida is part of Florida Deals Hub, with related flight, hotel, cruise, and local deal resources for broader trip planning."
+      }
+    ];
+  }
 
   return [
     {
-      question: `What are the best ${topic} right now?`,
+      question: `What are the best ${cleanTopic} right now?`,
       answer: `Start with the curated local finds on this page, then check each official source for current details, dates, and availability.`
     },
     {
-      question: `Are ${topic} updated regularly?`,
+      question: `Are ${cleanTopic} updated regularly?`,
       answer: "Yes. Local Deals Florida is built for repeat checks, with current local searches and source links reviewed regularly."
     },
     {
@@ -118,8 +144,15 @@ function buildSeoOverview(page: LandingPageConfig) {
     "fort lauderdale",
     "st. petersburg",
     "daytona beach",
-    "st. augustine"
+    "st. augustine",
+    "clearwater",
+    "key west",
+    "naples"
   ].find((city) => h1.includes(city));
+
+  if (page.pageType === "guide") {
+    return `${page.intro} This guide is built as a practical Florida planning resource first, with deal cards used as supporting source links rather than the whole story. Use it to compare neighborhoods, seasons, free or low-cost ideas, official tourism resources, and activity types that match your trip or weekend plans. Local details can change quickly because of weather, event schedules, seasonal hours, holiday crowds, parking rules, ticket windows, and venue updates. Start with the planning notes, use the featured cards for official source pages, and then confirm dates, prices, access rules, and reservation requirements before you go.`;
+  }
 
   if (cityContext) {
     return `${page.intro} This city page is built for people comparing real local options before making plans: attractions, restaurants, family activities, events, nightlife, weekend ideas, free or low-cost stops, and local experiences when they fit the market. Local Deals Florida keeps the focus on source-led listings instead of vague coupon language, so each card should make it clear what the offer is, who publishes it, and why it may be useful. Use the related searches to move between nearby categories such as Florida attraction deals, restaurant deals, family deals, free things to do, and weekend plans.`;
@@ -158,6 +191,7 @@ export default async function LandingPage({ params }: PageProps) {
 
   const pageDeals = getDealsForPage(page.dealIds);
   const topDeals = pageDeals.slice(0, 3);
+  const guideSections = page.guideSections ?? [];
   const relatedPages = page.relatedSlugs
     .map((relatedSlug) => getLandingPage(relatedSlug))
     .filter((relatedPage): relatedPage is LandingPageConfig => Boolean(relatedPage));
@@ -265,6 +299,28 @@ export default async function LandingPage({ params }: PageProps) {
               review the source and page-level freshness note, then open the official page for current terms before visiting or buying.
             </p>
           </div>
+          {guideSections.length > 0 ? (
+            <div className="mt-8 grid gap-5 lg:grid-cols-2">
+              {guideSections.map((section) => (
+                <div className="rounded-[22px] border border-[#d8e6e3] bg-[#f8fbf7] p-5" key={section.heading}>
+                  <h2 className="text-xl font-black text-[#163235]">{section.heading}</h2>
+                  <p className="mt-3 text-sm font-semibold leading-7 text-[#52686b]">{section.body}</p>
+                </div>
+              ))}
+            </div>
+          ) : null}
+          {page.planningTips ? (
+            <div className="mt-6 rounded-[22px] bg-[#163235] p-5 text-white">
+              <h2 className="text-xl font-black">Quick planning tips</h2>
+              <div className="mt-4 grid gap-3 md:grid-cols-3">
+                {page.planningTips.map((tip) => (
+                  <p className="rounded-2xl bg-white/10 p-4 text-sm font-bold leading-6 text-white/82" key={tip}>
+                    {tip}
+                  </p>
+                ))}
+              </div>
+            </div>
+          ) : null}
         </div>
       </section>
 
@@ -360,9 +416,9 @@ export default async function LandingPage({ params }: PageProps) {
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.85fr_1fr] lg:items-center">
           <div>
             <p className="text-sm font-black uppercase tracking-[0.18em] text-[#ffb000]">Deal alerts</p>
-            <h2 className="mt-3 text-3xl font-black sm:text-4xl">Get Local Florida Deals Delivered</h2>
+            <h2 className="mt-3 text-3xl font-black sm:text-4xl">Get Florida Local Deals Delivered</h2>
             <p className="mt-3 max-w-xl text-base leading-7 text-white/76">
-              Join free alerts for restaurant specials, events, attractions, and local deals near you.
+              Join free alerts for restaurant specials, events, attractions, and local deals near you. Free alerts. No spam. Local offers and events can change quickly.
             </p>
           </div>
           <NewsletterForm />

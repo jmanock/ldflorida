@@ -32,18 +32,23 @@ const crossPromos = [
 ];
 
 const stats = [
-  ["25+", "local deals"],
-  ["5", "major markets"],
+  ["40+", "local finds"],
+  ["10", "Florida markets"],
   ["Free", "deal alerts"]
 ];
 
 const popularSearches = [
   { label: "Orlando Local Deals", href: "/orlando-local-deals" },
+  { label: "Clearwater Local Deals", href: "/clearwater-local-deals" },
+  { label: "Key West Local Deals", href: "/key-west-local-deals" },
   { label: "Miami Weekend Deals", href: "/miami-weekend-deals" },
   { label: "Florida Restaurant Deals", href: "/florida-restaurant-deals" },
   { label: "Florida Attraction Deals", href: "/florida-attraction-deals" },
+  { label: "Florida Theme Park Deals", href: "/florida-theme-park-deals" },
   { label: "Florida Family Deals", href: "/florida-family-deals" },
-  { label: "Free Things To Do In Florida", href: "/florida-free-things-to-do" }
+  { label: "Free Things To Do In Florida", href: "/florida-free-things-to-do" },
+  { label: "Best Free Things To Do In Florida", href: "/best-free-things-to-do-in-florida" },
+  { label: "Best Florida Weekend Activities", href: "/best-florida-weekend-activities" }
 ];
 
 function JsonLd({ data }: { data: Record<string, unknown> }) {
@@ -171,9 +176,9 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.85fr_1fr] lg:items-center">
           <div>
             <p className="text-sm font-black uppercase tracking-[0.18em] text-[#ffb000]">Deal alerts</p>
-            <h2 className="mt-3 text-3xl font-black sm:text-4xl">Get Local Florida Deals Delivered</h2>
+            <h2 className="mt-3 text-3xl font-black sm:text-4xl">Get Florida Local Deals Delivered</h2>
             <p className="mt-3 max-w-xl text-base leading-7 text-white/76">
-              Join free alerts for restaurant specials, events, attractions, and local deals near you. Free alerts. No spam. Deals change often.
+              Join free alerts for restaurant specials, events, attractions, and local deals near you. Free alerts. No spam. Local offers and events can change quickly.
             </p>
           </div>
           <NewsletterForm />

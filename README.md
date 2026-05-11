@@ -62,7 +62,7 @@ Current destination keys: `orlando`, `miami`, `tampa`, `fortLauderdale`, `jackso
 
 ## Analytics
 
-Outbound deal clicks fire `deal_click` with site, source, city, category, and outbound URL metadata. Event-related cards also fire `event_click`.
+Outbound deal clicks fire `deal_click` with `site`, `source`, `city`, `category`, `deal_title`, `source_name`, `cta_text`, `outbound_url`, and `page_path` metadata. Event-related cards also fire `event_click`.
 
 The current UI keeps hotel monetization as a page-level Florida Hotel Deals cross-link, tracked as `navigation_click`. Individual local deal cards do not show hotel CTAs. If Expedia links are reintroduced later, use `hotel_booking_click` with `site`, `source`, `provider`, `city`, `category`, `page_path`, and `outbound_url` metadata.
 
@@ -80,8 +80,16 @@ Structured data is intentionally conservative:
 
 SEO landing pages should follow the same structure: shared header, breadcrumb, unique hero metadata, page-level freshness note, local planning copy, top local finds, deal grid, related searches, newsletter, sister sites, and shared footer.
 
+### Local Category Page Strategy
+
+Category pages such as `florida-restaurant-deals`, `florida-theme-park-deals`, `florida-outdoor-activities`, and `florida-rainy-day-activities` should explain who the page helps, which activity types are included, how offers or event details can change, and which city pages are related. Keep category copy useful and local, not keyword-stuffed.
+
+### Informational Guide Strategy
+
+Authority guides use the same dynamic route, but set `pageType: "guide"` and include `guideSections` plus `planningTips`. These pages should be less commercial and more helpful: practical planning advice, seasonal context, city comparisons, free or low-cost alternatives, and internal links to relevant city/category pages. Use deal cards as supporting source links rather than the entire page.
+
 ## Adding Pages Or Cards Safely
 
-When adding a new page, include a unique title, meta description, canonical path, Open Graph image, Twitter image, 3-5 FAQs, related pages, and 3-6 real deal IDs. Avoid broad duplicate copy across pages.
+When adding a new page, include a unique title, meta description, canonical path, Open Graph image, Twitter image, 3-5 FAQs, related pages, useful intro copy, and 3-6 real deal IDs. Avoid broad duplicate copy across pages. For guide pages, add `guideSections` and `planningTips` so the page has real informational depth.
 
 When adding a new deal card, use a real source URL, descriptive image alt text, a safe offer label, a source name if available, and a clear category. Do not invent prices or savings. External deal links should open in a new tab with `rel="noopener noreferrer"`; internal Florida Deals Hub network links should stay in the same tab.

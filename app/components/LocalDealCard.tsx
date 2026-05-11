@@ -1,7 +1,7 @@
 "use client";
 
 import { MapPin, Ticket } from "lucide-react";
-import { getDealCta, getDealSourceName, getOfferLabel, getWhyThisDeal } from "../../lib/deal-display";
+import { getBestFor, getDealCta, getDealSourceName, getOfferLabel, getWhyThisDeal } from "../../lib/deal-display";
 
 export type LocalDeal = {
   id: string;
@@ -41,6 +41,7 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
   const offerLabel = getOfferLabel(deal);
   const ctaLabel = getDealCta(deal);
   const whyThisDeal = getWhyThisDeal(deal);
+  const bestFor = getBestFor(deal);
 
   function trackDealClick() {
     const payload = {
@@ -90,12 +91,12 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
   const hasTrustData = deal.placeName || deal.neighborhood || deal.eventDate || deal.rating;
 
   return (
-    <article className="card-lift overflow-hidden rounded-[26px] border border-[#d8e6e3] bg-white shadow-lg shadow-[#087f8c]/8">
+    <article className="card-lift flex h-full flex-col overflow-hidden rounded-[26px] border border-[#d8e6e3] bg-white shadow-lg shadow-[#087f8c]/8">
       <div className="relative h-48 overflow-hidden bg-[#dff6f8]">
         <img alt={deal.image_alt} className="h-full w-full object-cover" decoding="async" loading="lazy" src={deal.image} />
         <span className={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-black ${badgeTone(deal.badge)}`}>{deal.badge}</span>
       </div>
-      <div className="p-5">
+      <div className="flex flex-1 flex-col p-5">
         <div className="flex flex-wrap items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-[#087f8c]">
           <MapPin size={14} aria-hidden="true" />
           <span>{deal.city}</span>
@@ -104,7 +105,13 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
         </div>
         <h3 className="mt-3 text-xl font-black leading-tight text-[#163235]">{deal.title}</h3>
         <p className="mt-3 text-sm leading-6 text-[#52686b]">{deal.description}</p>
-        <p className="mt-3 rounded-2xl bg-[#fff8e8] px-3 py-2 text-sm font-black text-[#8a5200]">Why this deal: {whyThisDeal}</p>
+        <p className="mt-3 rounded-2xl bg-[#eef6f5] px-3 py-2 text-xs font-black uppercase tracking-[0.12em] text-[#087f8c]">
+          Best for: {bestFor}
+        </p>
+        <div className="mt-3 rounded-2xl bg-[#fff8e8] px-3 py-3 text-sm font-bold leading-6 text-[#8a5200]">
+          <p className="text-[11px] font-black uppercase tracking-[0.14em]">Why this activity?</p>
+          <p>{whyThisDeal}</p>
+        </div>
         {hasTrustData ? (
           <div className="mt-4 rounded-2xl bg-[#f8fbf7] p-3 text-xs font-bold leading-5 text-[#52686b]">
             {deal.placeName ? <p className="text-[#163235]">{deal.placeName}</p> : null}
@@ -117,7 +124,7 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
             ) : null}
           </div>
         ) : null}
-        <div className="mt-5 grid gap-4 border-t border-[#e7eeee] pt-4">
+        <div className="mt-auto grid gap-4 border-t border-[#e7eeee] pt-5">
           <div className="grid gap-2">
             <p className="text-[11px] font-black uppercase tracking-[0.14em] text-[#087f8c]">Offer</p>
             <p className="text-lg font-black leading-6 text-[#163235]">{offerLabel}</p>

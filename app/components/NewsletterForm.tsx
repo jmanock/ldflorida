@@ -6,7 +6,7 @@ import { useState } from "react";
 export default function NewsletterForm() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-  const [message, setMessage] = useState("Free alerts. No spam. Deals change often.");
+  const [message, setMessage] = useState("Free alerts. No spam. Local offers and events can change quickly.");
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -41,7 +41,7 @@ export default function NewsletterForm() {
       }
 
       setStatus("success");
-      setMessage(result.message ?? "You’re in! Local deals are on the way.");
+      setMessage(result.message ?? "You’re in! Florida local deals are on the way.");
       setEmail("");
       window.gtag?.("event", "newsletter_signup_success", {
         site: "localdealsflorida.org",

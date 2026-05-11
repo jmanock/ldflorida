@@ -4,7 +4,7 @@ import { ArrowRight, MapPin, RefreshCw, Search, SlidersHorizontal, Ticket } from
 import { useMemo, useState } from "react";
 import deals from "../../data/deals.json";
 import trustRecords from "../../data/local-trust.json";
-import { getDealCta, getDealSourceName, getOfferLabel, getWhyThisDeal } from "../../lib/deal-display";
+import { getBestFor, getDealCta, getDealSourceName, getOfferLabel, getWhyThisDeal } from "../../lib/deal-display";
 
 type Deal = {
   id: string;
@@ -50,9 +50,15 @@ const filterOptions = [
   "Tampa",
   "Jacksonville",
   "Fort Lauderdale",
+  "Clearwater",
+  "Key West",
+  "Naples",
   "Food & Drinks",
   "Events",
   "Attractions",
+  "Theme Parks",
+  "Beach Activities",
+  "Outdoor Activities",
   "Family Activities",
   "Things To Do",
   "Local Experiences",
@@ -84,6 +90,9 @@ function dealMatchesFilter(deal: Deal, activeFilter: string) {
   if (deal.category === activeFilter) return true;
   if (deal.badge === activeFilter) return true;
   if (activeFilter === "Food & Drinks") return ["Food & Drinks", "Restaurants", "Nightlife"].includes(deal.category);
+  if (activeFilter === "Theme Parks") return deal.category === "Theme Parks" || deal.title.toLowerCase().includes("theme park");
+  if (activeFilter === "Beach Activities") return deal.category === "Beach Activities" || deal.description.toLowerCase().includes("beach");
+  if (activeFilter === "Outdoor Activities") return deal.category === "Outdoor Activities" || deal.description.toLowerCase().includes("outdoor");
   if (activeFilter === "Family Activities") return deal.category === "Family Activities" || deal.badge === "Family";
   if (activeFilter === "Weekend") return deal.category === "Weekend Deals" || deal.badge === "Weekend" || deal.dates.toLowerCase().includes("weekend");
   if (activeFilter === "Free / Low-Cost") return deal.category === "Free / Low-Cost Events" || deal.badge === "Free";
@@ -96,6 +105,7 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
   const offerLabel = getOfferLabel(deal);
   const ctaLabel = getDealCta(deal);
   const whyThisDeal = getWhyThisDeal(deal);
+  const bestFor = getBestFor(deal);
 
   function trackDealClick() {
     const payload = {
@@ -145,7 +155,7 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
 
   return (
     <article
-      className="card-lift scroll-mt-28 overflow-hidden rounded-[26px] border border-[#d8e6e3] bg-white shadow-lg shadow-[#087f8c]/8"
+      className="card-lift flex h-full scroll-mt-28 flex-col overflow-hidden rounded-[26px] border border-[#d8e6e3] bg-white shadow-lg shadow-[#087f8c]/8"
       id={featured ? `featured-${deal.id}` : deal.id}
     >
       <div className={`relative overflow-hidden bg-[#dff6f8] ${featured ? "h-56" : "h-48"}`}>
@@ -154,7 +164,7 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
           {deal.badge}
         </span>
       </div>
-      <div className="p-5">
+      <div className="flex flex-1 flex-col p-5">
         <div className="flex flex-wrap items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-[#087f8c]">
           <MapPin size={14} aria-hidden="true" />
           <span>{deal.city}</span>
@@ -163,7 +173,13 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
         </div>
         <h3 className="mt-3 text-xl font-black leading-tight text-[#163235]">{deal.title}</h3>
         <p className="mt-3 text-sm leading-6 text-[#52686b]">{deal.description}</p>
-        <p className="mt-3 rounded-2xl bg-[#fff8e8] px-3 py-2 text-sm font-black text-[#8a5200]">Why this deal: {whyThisDeal}</p>
+        <p className="mt-3 rounded-2xl bg-[#eef6f5] px-3 py-2 text-xs font-black uppercase tracking-[0.12em] text-[#087f8c]">
+          Best for: {bestFor}
+        </p>
+        <div className="mt-3 rounded-2xl bg-[#fff8e8] px-3 py-3 text-sm font-bold leading-6 text-[#8a5200]">
+          <p className="text-[11px] font-black uppercase tracking-[0.14em]">Why this activity?</p>
+          <p>{whyThisDeal}</p>
+        </div>
         {hasTrustData ? (
           <div className="mt-4 rounded-2xl bg-[#f8fbf7] p-3 text-xs font-bold leading-5 text-[#52686b]">
             {deal.placeName ? <p className="text-[#163235]">{deal.placeName}</p> : null}
@@ -176,7 +192,7 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
             ) : null}
           </div>
         ) : null}
-        <div className="mt-5 grid gap-4 border-t border-[#e7eeee] pt-4">
+        <div className="mt-auto grid gap-4 border-t border-[#e7eeee] pt-5">
           <div className="grid gap-2">
             <p className="text-[11px] font-black uppercase tracking-[0.14em] text-[#087f8c]">Offer</p>
             <p className="text-lg font-black leading-6 text-[#163235]">{offerLabel}</p>
