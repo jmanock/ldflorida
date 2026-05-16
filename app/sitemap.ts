@@ -4,12 +4,12 @@ import { landingPages } from "../data/landing-pages";
 const baseUrl = "https://localdealsflorida.org";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPages = ["", "/about", "/contact", "/privacy", "/terms"];
+  const staticPages = ["", "/about", "/contact", "/editorial-policy", "/how-we-find-local-deals", "/privacy", "/terms"];
   const seoPages = landingPages.map((page) => `/${page.slug}`);
 
   return [...staticPages, ...seoPages].map((path) => ({
     url: `${baseUrl}${path}`,
-    lastModified: new Date("2026-05-11"),
+    lastModified: new Date("2026-05-16"),
     changeFrequency: path === "" ? "daily" : "monthly",
     priority: path === "" ? 1 : 0.6
   }));

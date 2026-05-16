@@ -4,7 +4,8 @@ import { ArrowRight, MapPin, RefreshCw, Search, SlidersHorizontal, Ticket } from
 import { useMemo, useState } from "react";
 import deals from "../../data/deals.json";
 import trustRecords from "../../data/local-trust.json";
-import { getBestFor, getDealCta, getDealSourceName, getOfferLabel, getWhyThisDeal } from "../../lib/deal-display";
+import { getBestForTags, getDealCta, getDealSourceName, getOfferLabel, getWhyThisDeal } from "../../lib/deal-display";
+import FallbackImage from "./FallbackImage";
 
 type Deal = {
   id: string;
@@ -105,12 +106,13 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
   const offerLabel = getOfferLabel(deal);
   const ctaLabel = getDealCta(deal);
   const whyThisDeal = getWhyThisDeal(deal);
-  const bestFor = getBestFor(deal);
+  const bestForTags = getBestForTags(deal);
 
   function trackDealClick() {
     const payload = {
       event: "deal_click",
       site: "localdealsflorida.org",
+      source_site: "localdealsflorida.org",
       source: "local",
       page: window.location.pathname,
       city: deal.city,
@@ -123,9 +125,12 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
     };
 
     window.dispatchEvent(new CustomEvent("deal_click", { detail: payload }));
+    window.dispatchEvent(new CustomEvent("local_card_click", { detail: { ...payload, event: "local_card_click" } }));
     window.dataLayer?.push(payload);
+    window.dataLayer?.push({ ...payload, event: "local_card_click" });
     window.gtag?.("event", "deal_click", {
       site: "localdealsflorida.org",
+      source_site: "localdealsflorida.org",
       source: "local",
       city: deal.city,
       category: deal.category,
@@ -133,6 +138,15 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
       source_name: sourceName,
       cta_text: ctaLabel,
       outbound_url: deal.affiliateReadyUrl,
+      page_path: window.location.pathname
+    });
+    window.gtag?.("event", "local_card_click", {
+      source_site: "localdealsflorida.org",
+      city: deal.city,
+      category: deal.category,
+      deal_title: deal.title,
+      source_name: sourceName,
+      cta_text: ctaLabel,
       page_path: window.location.pathname
     });
 
@@ -159,7 +173,7 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
       id={featured ? `featured-${deal.id}` : deal.id}
     >
       <div className={`relative overflow-hidden bg-[#dff6f8] ${featured ? "h-56" : "h-48"}`}>
-        <img alt={deal.image_alt} className="h-full w-full object-cover" decoding="async" loading="lazy" src={deal.image} />
+        <FallbackImage alt={deal.image_alt} className="h-full w-full object-cover" src={deal.image} />
         <span className={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-black ${badgeTone(deal.badge)}`}>
           {deal.badge}
         </span>
@@ -173,9 +187,13 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
         </div>
         <h3 className="mt-3 text-xl font-black leading-tight text-[#163235]">{deal.title}</h3>
         <p className="mt-3 text-sm leading-6 text-[#52686b]">{deal.description}</p>
-        <p className="mt-3 rounded-2xl bg-[#eef6f5] px-3 py-2 text-xs font-black uppercase tracking-[0.12em] text-[#087f8c]">
-          Best for: {bestFor}
-        </p>
+        <div className="mt-3 flex flex-wrap gap-2" aria-label="Best for">
+          {bestForTags.map((tag) => (
+            <span className="rounded-full bg-[#eef6f5] px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] text-[#087f8c]" key={tag}>
+              {tag}
+            </span>
+          ))}
+        </div>
         <div className="mt-3 rounded-2xl bg-[#fff8e8] px-3 py-3 text-sm font-bold leading-6 text-[#8a5200]">
           <p className="text-[11px] font-black uppercase tracking-[0.14em]">Why this activity?</p>
           <p>{whyThisDeal}</p>

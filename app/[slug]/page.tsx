@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getLandingPage, landingPagePath, landingPages, type LandingPageConfig } from "../../data/landing-pages";
 import { getEnrichedDeals } from "../../lib/local-data";
 import FloridaGetawayBlock from "../components/FloridaGetawayBlock";
+import FallbackImage from "../components/FallbackImage";
 import LocalDealCard, { type LocalDeal } from "../components/LocalDealCard";
 import NewsletterForm from "../components/NewsletterForm";
 import SisterSitesSection from "../components/SisterSitesSection";
@@ -22,6 +23,41 @@ const evergreenSearches = [
   { label: "Florida Date Night Deals", href: "/florida-date-night-deals" }
 ];
 const topDealLabels = ["Top Pick", "Family Favorite", "Weekend Pick"];
+const cityClusters = {
+  orlando: {
+    title: "Orlando Local Cluster",
+    links: [
+      { label: "Orlando Local Deals", href: "/orlando-local-deals" },
+      { label: "Orlando Things To Do Deals", href: "/orlando-things-to-do-deals" },
+      { label: "Florida Theme Park Deals", href: "/florida-theme-park-deals" },
+      { label: "Orlando Hotel Deals", href: "https://hoteldealsflorida.org" },
+      { label: "Orlando Flight Deals", href: "https://flightdealsflorida.org" },
+      { label: "Florida Deals Hub", href: "https://floridadealshub.com" }
+    ]
+  },
+  miami: {
+    title: "Miami Local Cluster",
+    links: [
+      { label: "Miami Local Deals", href: "/miami-local-deals" },
+      { label: "Miami Weekend Deals", href: "/miami-weekend-deals" },
+      { label: "Florida Restaurant Deals", href: "/florida-restaurant-deals" },
+      { label: "Miami Hotel Deals", href: "https://hoteldealsflorida.org" },
+      { label: "Miami Flight Deals", href: "https://flightdealsflorida.org" },
+      { label: "Florida Deals Hub", href: "https://floridadealshub.com" }
+    ]
+  },
+  tampa: {
+    title: "Tampa Local Cluster",
+    links: [
+      { label: "Tampa Local Deals", href: "/tampa-local-deals" },
+      { label: "Tampa Events Deals", href: "/tampa-events-deals" },
+      { label: "Florida Family Deals", href: "/florida-family-deals" },
+      { label: "Tampa Hotel Deals", href: "https://hoteldealsflorida.org" },
+      { label: "Tampa Flight Deals", href: "https://flightdealsflorida.org" },
+      { label: "Florida Deals Hub", href: "https://floridadealshub.com" }
+    ]
+  }
+};
 
 type PageProps = {
   params: Promise<{
@@ -81,11 +117,18 @@ function JsonLd({ data }: { data: Record<string, unknown> }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
+function getCityCluster(slug: string) {
+  if (slug.includes("orlando")) return cityClusters.orlando;
+  if (slug.includes("miami")) return cityClusters.miami;
+  if (slug.includes("tampa")) return cityClusters.tampa;
+  return null;
+}
+
 function buildFaqs(page: LandingPageConfig) {
   const topic = page.h1.toLowerCase();
   const cleanTopic = topic.replace(/^best\s+/, "");
 
-  if (page.pageType === "guide") {
+  if (page.pageType === "guide" || page.pageType === "comparison") {
     return [
       {
         question: `What should I know before planning ${cleanTopic}?`,
@@ -192,9 +235,15 @@ export default async function LandingPage({ params }: PageProps) {
   const pageDeals = getDealsForPage(page.dealIds);
   const topDeals = pageDeals.slice(0, 3);
   const guideSections = page.guideSections ?? [];
+  const cityCluster = getCityCluster(page.slug);
   const relatedPages = page.relatedSlugs
     .map((relatedSlug) => getLandingPage(relatedSlug))
     .filter((relatedPage): relatedPage is LandingPageConfig => Boolean(relatedPage));
+  const relatedSearchLinks = [
+    { label: "Local Deals Florida", href: "/" },
+    ...evergreenSearches,
+    ...relatedPages.map((relatedPage) => ({ label: relatedPage.h1, href: landingPagePath(relatedPage.slug) }))
+  ].filter((link, index, links) => links.findIndex((candidate) => candidate.href === link.href) === index).slice(0, 10);
   const faqs = buildFaqs(page);
   const breadcrumbs = {
     "@context": "https://schema.org",
@@ -237,17 +286,34 @@ export default async function LandingPage({ params }: PageProps) {
       url: deal.affiliateReadyUrl
     }))
   };
+  const articleSchema =
+    page.pageType === "guide" || page.pageType === "comparison"
+      ? {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: page.title,
+          description: page.description,
+          image: page.image,
+          mainEntityOfPage: `${baseUrl}/${page.slug}`,
+          publisher: {
+            "@type": "Organization",
+            name: "Florida Deals Hub",
+            url: "https://floridadealshub.com"
+          }
+        }
+      : null;
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#f8fbf7] text-[#163235]">
       <JsonLd data={breadcrumbs} />
       <JsonLd data={faqSchema} />
       <JsonLd data={itemListSchema} />
+      {articleSchema ? <JsonLd data={articleSchema} /> : null}
       <SiteHeader />
 
       <section className="relative overflow-hidden bg-[#f7fbf3]">
         <div className="absolute inset-0">
-          <img alt={page.imageAlt} className="h-full w-full object-cover" decoding="async" fetchPriority="high" src={page.image} />
+          <FallbackImage alt={page.imageAlt} className="h-full w-full object-cover" fetchPriority="high" loading="eager" src={page.image} />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(248,251,247,0.97)_0%,rgba(248,251,247,0.9)_48%,rgba(248,251,247,0.42)_100%)]" />
           <div className="absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(0deg,#f8fbf7_0%,rgba(248,251,247,0)_100%)]" />
         </div>
@@ -321,6 +387,30 @@ export default async function LandingPage({ params }: PageProps) {
               </div>
             </div>
           ) : null}
+          {page.comparisonRows ? (
+            <div className="mt-6 overflow-hidden rounded-[22px] border border-[#d8e6e3]">
+              <div className="grid bg-[#163235] px-5 py-4 text-sm font-black uppercase tracking-[0.14em] text-white md:grid-cols-3">
+                <p>Option</p>
+                <p className="hidden md:block">Best For</p>
+                <p className="hidden md:block">Watch For</p>
+              </div>
+              <div className="divide-y divide-[#d8e6e3] bg-white">
+                {page.comparisonRows.map((row) => (
+                  <div className="grid gap-3 px-5 py-4 text-sm font-semibold leading-6 text-[#52686b] md:grid-cols-3" key={row.option}>
+                    <p className="font-black text-[#163235]">{row.option}</p>
+                    <p>
+                      <span className="font-black text-[#087f8c] md:hidden">Best for: </span>
+                      {row.bestFor}
+                    </p>
+                    <p>
+                      <span className="font-black text-[#087f8c] md:hidden">Watch for: </span>
+                      {row.watchFor}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : null}
         </div>
       </section>
 
@@ -369,6 +459,28 @@ export default async function LandingPage({ params }: PageProps) {
         </div>
       </section>
 
+      {cityCluster ? (
+        <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+          <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8">
+            <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Destination cluster</p>
+            <h2 className="mt-2 text-2xl font-black text-[#163235]">{cityCluster.title}</h2>
+            <div className="mt-5 flex flex-wrap gap-3">
+              {cityCluster.links.map((link) =>
+                link.href.startsWith("/") ? (
+                  <Link className="rounded-full bg-[#eef6f5] px-4 py-2 text-sm font-black text-[#385154] hover:bg-[#dff6f8]" href={link.href} key={link.href}>
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a className="rounded-full bg-[#eef6f5] px-4 py-2 text-sm font-black text-[#385154] hover:bg-[#dff6f8]" href={link.href} key={link.label}>
+                    {link.label}
+                  </a>
+                )
+              )}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       <FloridaGetawayBlock />
 
       <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
@@ -390,22 +502,14 @@ export default async function LandingPage({ params }: PageProps) {
         <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8">
           <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Related Local Searches</p>
           <h2 className="mt-2 text-2xl font-black text-[#163235]">Featured local searches to check next</h2>
-          <div className="mt-5 flex flex-wrap gap-3">
-            <Link className="rounded-full bg-[#eef6f5] px-4 py-2 text-sm font-black text-[#385154] hover:bg-[#dff6f8]" href="/">
-              Local Deals Florida
-            </Link>
-            {evergreenSearches.map((search) => (
-              <Link className="rounded-full bg-[#eef6f5] px-4 py-2 text-sm font-black text-[#385154] hover:bg-[#dff6f8]" href={search.href} key={search.href}>
-                {search.label}
-              </Link>
-            ))}
-            {relatedPages.map((relatedPage) => (
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {relatedSearchLinks.map((link) => (
               <Link
-                className="rounded-full bg-[#eef6f5] px-4 py-2 text-sm font-black text-[#385154] hover:bg-[#dff6f8]"
-                href={landingPagePath(relatedPage.slug)}
-                key={relatedPage.slug}
+                className="rounded-2xl bg-[#eef6f5] px-4 py-3 text-sm font-black text-[#385154] hover:bg-[#dff6f8] hover:text-[#087f8c]"
+                href={link.href}
+                key={link.href}
               >
-                {relatedPage.h1}
+                {link.label}
               </Link>
             ))}
           </div>

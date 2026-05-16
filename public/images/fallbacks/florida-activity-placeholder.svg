@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-label="Florida activity placeholder">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#dff6f8"/>
+      <stop offset="0.58" stop-color="#f8fbf7"/>
+      <stop offset="1" stop-color="#fff0d1"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" x2="1">
+      <stop offset="0" stop-color="#087f8c"/>
+      <stop offset="1" stop-color="#55c3cf"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#sky)"/>
+  <circle cx="970" cy="160" r="86" fill="#ffb000" opacity="0.92"/>
+  <path d="M0 545c120-38 205-42 330-9 105 28 202 22 322-19 130-45 255-35 405 20 61 27 103 38 143 38v225H0z" fill="url(#water)" opacity="0.92"/>
+  <path d="M0 616c176-24 300-21 431 10 194 44 332 38 518-20 96-30 177-38 251-31v225H0z" fill="#f9d98a"/>
+  <path d="M270 535c44-94 115-165 226-211 12 88-4 169-47 244-45-52-105-63-179-33z" fill="#087f8c"/>
+  <path d="M493 323c-69 29-128 92-176 188 63-14 119-2 171 35 24-73 27-147 5-223z" fill="#07515a" opacity="0.38"/>
+  <path d="M503 590c-8-97 9-184 51-262" stroke="#163235" stroke-width="22" stroke-linecap="round"/>
+  <rect x="74" y="78" width="314" height="72" rx="36" fill="#ffffff" opacity="0.86"/>
+  <text x="112" y="124" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="800" fill="#163235">Local Deals Florida</text>
+  <rect x="74" y="166" width="220" height="44" rx="22" fill="#087f8c"/>
+  <text x="106" y="196" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="800" fill="#ffffff">Florida local find</text>
+</svg>

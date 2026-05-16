@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Compass, Hotel, MapPin, PiggyBank, Plane, Sailboat, Sparkles, TrendingUp } from "lucide-react";
 import DealExplorer from "./components/DealExplorer";
+import FallbackImage from "./components/FallbackImage";
+import FloridaGetawayBlock from "./components/FloridaGetawayBlock";
 import NewsletterForm from "./components/NewsletterForm";
 import SisterSitesSection from "./components/SisterSitesSection";
 import SiteFooter from "./components/SiteFooter";
@@ -51,6 +53,134 @@ const popularSearches = [
   { label: "Best Florida Weekend Activities", href: "/best-florida-weekend-activities" }
 ];
 
+const weeklySearches = [
+  { title: "Orlando Local Deals", href: "/orlando-local-deals", type: "City guide", bestFor: "Families", text: "Attractions, family activities, and Central Florida ideas." },
+  { title: "Miami Weekend Deals", href: "/miami-weekend-deals", type: "Weekend ideas", bestFor: "Date Night", text: "Events, restaurants, nightlife, and beach-adjacent plans." },
+  { title: "Florida Attraction Deals", href: "/florida-attraction-deals", type: "Activity category", bestFor: "Tourists", text: "Theme parks, museums, tours, and local attractions." },
+  { title: "Florida Restaurant Deals", href: "/florida-restaurant-deals", type: "Food & drink", bestFor: "Food & Drink", text: "Dining specials, food events, brunch, and local finds." },
+  { title: "Florida Free Things To Do", href: "/florida-free-things-to-do", type: "Budget guide", bestFor: "Free / Low-Cost", text: "Beaches, parks, free events, and budget-friendly ideas." },
+  { title: "Florida Date Night Deals", href: "/florida-date-night-deals", type: "Local experiences", bestFor: "Date Night", text: "Restaurants, shows, nightlife, and local experiences." }
+];
+
+const cityClusters = [
+  {
+    title: "Orlando",
+    links: [
+      { label: "Orlando Local Deals", href: "/orlando-local-deals" },
+      { label: "Orlando Things To Do", href: "/orlando-things-to-do" },
+      { label: "Orlando Things To Do Deals", href: "/orlando-things-to-do-deals" },
+      { label: "Florida Theme Park Deals", href: "/florida-theme-park-deals" },
+      { label: "Orlando Hotel Deals", href: "https://hoteldealsflorida.org" },
+      { label: "Orlando Flight Deals", href: "https://flightdealsflorida.org" },
+      { label: "Florida Deals Hub", href: "https://floridadealshub.com" }
+    ]
+  },
+  {
+    title: "Miami",
+    links: [
+      { label: "Miami Local Deals", href: "/miami-local-deals" },
+      { label: "Miami Things To Do", href: "/miami-things-to-do" },
+      { label: "Miami Weekend Deals", href: "/miami-weekend-deals" },
+      { label: "Florida Restaurant Deals", href: "/florida-restaurant-deals" },
+      { label: "Miami Hotel Deals", href: "https://hoteldealsflorida.org" },
+      { label: "Miami Flight Deals", href: "https://flightdealsflorida.org" },
+      { label: "Florida Deals Hub", href: "https://floridadealshub.com" }
+    ]
+  },
+  {
+    title: "Tampa",
+    links: [
+      { label: "Tampa Local Deals", href: "/tampa-local-deals" },
+      { label: "Tampa Things To Do", href: "/tampa-things-to-do" },
+      { label: "Tampa Events Deals", href: "/tampa-events-deals" },
+      { label: "Florida Family Deals", href: "/florida-family-deals" },
+      { label: "Tampa Hotel Deals", href: "https://hoteldealsflorida.org" },
+      { label: "Tampa Flight Deals", href: "https://flightdealsflorida.org" },
+      { label: "Florida Deals Hub", href: "https://floridadealshub.com" }
+    ]
+  },
+  {
+    title: "Fort Lauderdale",
+    links: [
+      { label: "Fort Lauderdale Local Deals", href: "/fort-lauderdale-local-deals" },
+      { label: "Fort Lauderdale Restaurant Deals", href: "/fort-lauderdale-restaurant-deals" },
+      { label: "Miami vs Fort Lauderdale Weekend", href: "/miami-vs-fort-lauderdale-weekend" },
+      { label: "Florida Date Night Deals", href: "/florida-date-night-deals" },
+      { label: "Fort Lauderdale Hotel Deals", href: "https://hoteldealsflorida.org" },
+      { label: "Fort Lauderdale Flight Deals", href: "https://flightdealsflorida.org" }
+    ]
+  },
+  {
+    title: "Jacksonville",
+    links: [
+      { label: "Jacksonville Local Deals", href: "/jacksonville-local-deals" },
+      { label: "Jacksonville Things To Do", href: "/jacksonville-things-to-do" },
+      { label: "Jacksonville Family Deals", href: "/jacksonville-family-deals" },
+      { label: "Florida Free Things To Do", href: "/florida-free-things-to-do" },
+      { label: "Jacksonville Hotel Deals", href: "https://hoteldealsflorida.org" },
+      { label: "Jacksonville Flight Deals", href: "https://flightdealsflorida.org" }
+    ]
+  },
+  {
+    title: "Gulf and Historic Coasts",
+    links: [
+      { label: "Clearwater Things To Do", href: "/clearwater-things-to-do" },
+      { label: "St. Augustine Things To Do", href: "/st-augustine-things-to-do" },
+      { label: "Daytona Beach Things To Do", href: "/daytona-beach-things-to-do" },
+      { label: "Key West Things To Do", href: "/key-west-things-to-do" },
+      { label: "Florida Beach Activities", href: "/florida-beach-activities" },
+      { label: "Best Beaches In Florida", href: "/best-beaches-in-florida-guide" }
+    ]
+  }
+];
+
+const activityTypes = [
+  { title: "Attractions", href: "/florida-attraction-deals", bestFor: "Tourists", text: "Theme parks, museums, tours, wildlife stops, and local attraction pages." },
+  { title: "Restaurants", href: "/florida-restaurant-deals", bestFor: "Food & Drink", text: "Dining specials, brunch ideas, food events, markets, and date-night restaurants." },
+  { title: "Events", href: "/florida-event-deals", bestFor: "Weekend Activity", text: "Shows, markets, festivals, venue calendars, and city events worth checking." },
+  { title: "Family Activities", href: "/florida-family-deals", bestFor: "Families", text: "Kid-friendly attractions, museums, aquariums, public events, and easy day plans." },
+  { title: "Free Things To Do", href: "/florida-free-things-to-do", bestFor: "Free / Low-Cost", text: "Beaches, parks, public spaces, free admission windows, and budget-friendly ideas." },
+  { title: "Date Night Ideas", href: "/florida-date-night-deals", bestFor: "Date Night", text: "Restaurants, nightlife, theater, waterfront walks, and local experience ideas." },
+  { title: "Outdoor Activities", href: "/florida-outdoor-activities", bestFor: "Outdoor Activity", text: "Parks, beaches, walking districts, trails, and weather-friendly outdoor plans." },
+  { title: "Rainy Day Activities", href: "/florida-rainy-day-activities", bestFor: "Rainy Day", text: "Museums, aquariums, theaters, galleries, restaurants, and indoor backups." }
+];
+
+const planningGuides = [
+  { title: "Best Things To Do In Florida", href: "/best-things-to-do-in-florida", label: "Planning Guide", text: "Start with a statewide overview of attractions, beaches, dining, events, and local experiences." },
+  { title: "Best Family Activities In Florida", href: "/best-family-activities-in-florida", label: "Family Guide", text: "Compare family-friendly attractions, free ideas, museums, aquariums, and easy weekend plans." },
+  { title: "Best Weekend Activities Florida", href: "/best-weekend-activities-florida", label: "Weekend Guide", text: "Build a practical Florida weekend with beaches, restaurants, events, and local activity clusters." },
+  { title: "Best Date Night Ideas Florida", href: "/best-date-night-ideas-florida", label: "Date Night", text: "Find restaurant districts, shows, nightlife, waterfront ideas, and local experiences for two." },
+  { title: "Summer Things To Do In Florida", href: "/summer-things-to-do-in-florida", label: "Seasonal", text: "Balance beaches, heat, storms, indoor backups, family plans, and evening events." },
+  { title: "Holiday Events Florida", href: "/holiday-events-florida", label: "Seasonal", text: "Use city calendars, lights, markets, concerts, parades, and family-friendly holiday ideas." }
+];
+
+const editorPicks = [
+  { label: "Best for families", title: "Orlando attraction deals", href: "/orlando-local-deals" },
+  { label: "Best budget idea", title: "Free things to do in Florida", href: "/florida-free-things-to-do" },
+  { label: "Best date night search", title: "Florida date night deals", href: "/florida-date-night-deals" },
+  { label: "Best weekend idea", title: "Miami weekend deals", href: "/miami-weekend-deals" },
+  { label: "Best rainy day option", title: "Museums and indoor attractions", href: "/florida-rainy-day-activities" }
+];
+
+const homeFaqs = [
+  {
+    question: "Are these Florida local deals current?",
+    answer: "Pages are updated regularly, but local offers, event schedules, prices, and availability can change. Always confirm details with the official source before visiting."
+  },
+  {
+    question: "Where do the local deal links go?",
+    answer: "Cards point to real source pages such as tourism boards, city calendars, attractions, venues, restaurants, museums, and official event pages."
+  },
+  {
+    question: "Can I compare cities and activity types?",
+    answer: "Yes. Use the city clusters, category pages, comparison guides, and related searches to compare attractions, restaurants, events, beaches, and free activities."
+  },
+  {
+    question: "Is Local Deals Florida part of a larger network?",
+    answer: "Yes. It is part of Florida Deals Hub, alongside Florida Flight Deals, Florida Hotel Deals, and Florida Cruise Deals."
+  }
+];
+
 function JsonLd({ data }: { data: Record<string, unknown> }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
@@ -69,19 +199,32 @@ export default function Home() {
         url: deal.affiliateReadyUrl
       }))
   };
+  const homepageFaqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: homeFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer
+      }
+    }))
+  };
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#f8fbf7] text-[#163235]">
       <JsonLd data={homepageItemList} />
+      <JsonLd data={homepageFaqSchema} />
       <SiteHeader />
 
       <section className="relative overflow-hidden bg-[#f7fbf3] lg:min-h-[calc(100vh-4rem)]">
         <div className="absolute inset-0">
-          <img
+          <FallbackImage
             alt="Florida outdoor restaurant patio with palm trees and warm evening light"
             className="h-full w-full object-cover"
-            decoding="async"
             fetchPriority="high"
+            loading="eager"
             src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=85"
           />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(248,251,247,0.97)_0%,rgba(248,251,247,0.88)_45%,rgba(248,251,247,0.35)_100%)]" />
@@ -143,10 +286,10 @@ export default function Home() {
               target="_blank"
             >
               <div className="overflow-hidden rounded-[20px] lg:rounded-[22px]">
-                <img
+                <FallbackImage
                   alt="Alligator resting near water at a Florida wildlife attraction"
                   className="h-full min-h-[142px] w-full object-cover transition duration-300 group-hover:scale-[1.03] sm:min-h-[154px] lg:h-56 lg:min-h-0"
-                  decoding="async"
+                  loading="eager"
                   src="https://images.unsplash.com/photo-1614065613125-17553fbc59f6?auto=format&fit=crop&w=900&q=85"
                 />
               </div>
@@ -171,6 +314,123 @@ export default function Home() {
       </section>
 
       <DealExplorer />
+
+      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+        <div className="max-w-3xl">
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Popular this week</p>
+          <h2 className="mt-2 text-3xl font-black text-[#163235]">Popular Florida Local Searches This Week</h2>
+          <p className="mt-3 leading-7 text-[#52686b]">Popular searches from Florida locals and travelers.</p>
+        </div>
+        <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {weeklySearches.map((search) => (
+            <Link className="rounded-[22px] border border-[#d8e6e3] bg-white p-5 shadow-lg shadow-[#087f8c]/8 transition hover:-translate-y-0.5 hover:shadow-xl" href={search.href} key={search.href}>
+              <div className="flex flex-wrap gap-2">
+                <span className="rounded-full bg-[#eef6f5] px-3 py-1 text-[11px] font-black uppercase tracking-[0.12em] text-[#087f8c]">{search.type}</span>
+                <span className="rounded-full bg-[#fff8e8] px-3 py-1 text-[11px] font-black uppercase tracking-[0.12em] text-[#8a5200]">Best for {search.bestFor}</span>
+              </div>
+              <h3 className="mt-4 text-lg font-black text-[#163235]">{search.title}</h3>
+              <p className="mt-2 text-sm font-semibold leading-6 text-[#52686b]">{search.text}</p>
+              <span className="mt-4 inline-flex items-center gap-2 text-sm font-black text-[#087f8c]">
+                Explore search <ArrowRight size={16} aria-hidden="true" />
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:px-8">
+        <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8">
+            <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Why trust this site?</p>
+            <h2 className="mt-2 text-3xl font-black text-[#163235]">A local discovery layer for Florida Deals Hub</h2>
+            <p className="mt-4 text-sm font-semibold leading-7 text-[#52686b]">
+              Local Deals Florida is part of the Florida Deals Hub network. We organize local deals, attractions, restaurants, events, and activities by city
+              and category so visitors can compare options faster.
+            </p>
+            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              {["Updated regularly", "Deals may change", "Event schedules may change", "Confirm current details with the official source"].map((item) => (
+                <p className="rounded-2xl bg-[#eef6f5] p-4 text-sm font-black text-[#385154]" key={item}>
+                  {item}
+                </p>
+              ))}
+            </div>
+          </div>
+          <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8">
+            <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Editor’s Picks</p>
+            <div className="mt-4 grid gap-3">
+              {editorPicks.map((pick) => (
+                <Link className="rounded-2xl border border-[#d8e6e3] p-4 transition hover:border-[#087f8c] hover:bg-[#f8fbf7]" href={pick.href} key={pick.title}>
+                  <p className="text-xs font-black uppercase tracking-[0.14em] text-[#087f8c]">{pick.label}</p>
+                  <h3 className="mt-1 text-lg font-black text-[#163235]">{pick.title}</h3>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:px-8">
+        <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8">
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Featured Florida Cities</p>
+          <h2 className="mt-2 text-3xl font-black text-[#163235]">Plan by city and activity type</h2>
+          <p className="mt-3 max-w-3xl text-sm font-semibold leading-6 text-[#52686b]">
+            Build a local plan around the city first, then move into attractions, restaurants, events, family activities, flights, hotels, or broader Florida Deals Hub planning.
+          </p>
+          <div className="mt-6 grid gap-5 lg:grid-cols-3">
+            {cityClusters.map((cluster) => (
+              <div className="rounded-[22px] bg-[#f8fbf7] p-5" key={cluster.title}>
+                <h3 className="text-xl font-black text-[#163235]">{cluster.title}</h3>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {cluster.links.map((link) =>
+                    link.href.startsWith("/") ? (
+                      <Link className="rounded-full bg-white px-3 py-2 text-xs font-black text-[#385154] hover:text-[#087f8c]" href={link.href} key={link.href}>
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <a className="rounded-full bg-white px-3 py-2 text-xs font-black text-[#385154] hover:text-[#087f8c]" href={link.href} key={link.label}>
+                        {link.label}
+                      </a>
+                    )
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:px-8">
+        <div className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8">
+            <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Explore Florida Activity Types</p>
+            <h2 className="mt-2 text-3xl font-black text-[#163235]">Things to do categories</h2>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {activityTypes.map((item) => (
+                <Link className="rounded-[20px] border border-[#d8e6e3] bg-[#f8fbf7] p-4 transition hover:border-[#087f8c] hover:bg-white" href={item.href} key={item.href}>
+                  <span className="rounded-full bg-white px-3 py-1 text-[11px] font-black uppercase tracking-[0.12em] text-[#087f8c]">{item.bestFor}</span>
+                  <h3 className="mt-3 text-lg font-black text-[#163235]">{item.title}</h3>
+                  <p className="mt-2 text-sm font-semibold leading-6 text-[#52686b]">{item.text}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8">
+            <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Local Planning Guides</p>
+            <h2 className="mt-2 text-3xl font-black text-[#163235]">Seasonal and editorial activity ideas</h2>
+            <div className="mt-6 grid gap-3">
+              {planningGuides.map((guide) => (
+                <Link className="rounded-[20px] border border-[#d8e6e3] p-4 transition hover:border-[#087f8c] hover:bg-[#f8fbf7]" href={guide.href} key={guide.href}>
+                  <p className="text-xs font-black uppercase tracking-[0.14em] text-[#087f8c]">{guide.label}</p>
+                  <h3 className="mt-1 text-lg font-black text-[#163235]">{guide.title}</h3>
+                  <p className="mt-2 text-sm font-semibold leading-6 text-[#52686b]">{guide.text}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <FloridaGetawayBlock />
 
       <section id="alerts" className="bg-[#163235] px-4 py-12 text-white sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.85fr_1fr] lg:items-center">
@@ -256,6 +516,21 @@ export default function Home() {
               </a>
             );
           })}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:px-8">
+        <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8">
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Local Deals FAQs</p>
+          <h2 className="mt-2 text-3xl font-black text-[#163235]">How to use Local Deals Florida</h2>
+          <div className="mt-6 grid gap-5 md:grid-cols-2">
+            {homeFaqs.map((faq) => (
+              <div key={faq.question}>
+                <h3 className="font-black text-[#163235]">{faq.question}</h3>
+                <p className="mt-2 text-sm font-semibold leading-6 text-[#52686b]">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

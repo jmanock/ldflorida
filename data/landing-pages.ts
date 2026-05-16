@@ -10,12 +10,17 @@ export type LandingPageConfig = {
   dealIds: string[];
   relatedSlugs: string[];
   localContext?: string[];
-  pageType?: "local" | "category" | "guide";
+  pageType?: "local" | "category" | "guide" | "comparison";
   guideSections?: {
     heading: string;
     body: string;
   }[];
   planningTips?: string[];
+  comparisonRows?: {
+    option: string;
+    bestFor: string;
+    watchFor: string;
+  }[];
 };
 
 export const landingPages: LandingPageConfig[] = [
@@ -155,7 +160,7 @@ export const landingPages: LandingPageConfig[] = [
     eyebrow: "Historic district local finds",
     intro:
       "Find St. Augustine local deals for attraction coupons, free things to do, arts events, historic tours, family activities, and useful local ideas near places to stay.",
-    image: "https://images.unsplash.com/photo-1604164448130-d1df213c64a3?auto=format&fit=crop&w=1600&q=82",
+    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=82",
     imageAlt: "Historic St. Augustine street with old buildings",
     dealIds: ["st-augustine-attraction-coupons", "st-augustine-free-things", "st-augustine-art-association-calendar"],
     relatedSlugs: ["florida-free-things-to-do", "florida-attraction-deals", "florida-things-to-do-deals", "daytona-beach-local-deals"]
@@ -202,7 +207,7 @@ export const landingPages: LandingPageConfig[] = [
     eyebrow: "Attractions and admission offers",
     intro:
       "Find current Florida attraction pages for theme parks, museums, historic sites, tours, family activities, and official offer pages.",
-    image: "https://images.unsplash.com/photo-1570466343961-8a8a4e1b4ca4?auto=format&fit=crop&w=1600&q=82",
+    image: "https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?auto=format&fit=crop&w=1600&q=82",
     imageAlt: "Theme park roller coaster against the sky",
     dealIds: ["orlando-gatorland-visit-orlando-special", "orlando-seaworld-limited-time-offers", "tampa-bay-citypass", "miami-attraction-deals", "st-augustine-attraction-coupons"],
     relatedSlugs: ["orlando-local-deals", "florida-family-deals", "florida-things-to-do-deals", "florida-local-deals-under-50"],
@@ -263,7 +268,7 @@ export const landingPages: LandingPageConfig[] = [
     eyebrow: "Free and low-cost local finds",
     intro:
       "Browse official free and low-cost Florida activity pages for museums, beaches, parks, markets, art events, and local calendars.",
-    image: "https://images.unsplash.com/photo-1605804522243-7b235996771c?auto=format&fit=crop&w=1600&q=82",
+    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=82",
     imageAlt: "Florida waterfront bridge and historic district view",
     dealIds: ["orlando-free-things-to-do", "cummer-museum-free-admission", "st-augustine-free-things", "st-pete-pier-events", "jaxparks-free-events"],
     relatedSlugs: ["florida-family-deals", "florida-event-deals", "jacksonville-local-deals", "st-augustine-local-deals"],
@@ -329,7 +334,7 @@ export const landingPages: LandingPageConfig[] = [
     eyebrow: "Attractions and local ideas",
     intro:
       "Find Orlando things-to-do pages for theme parks, attractions, free activities, budget-friendly ideas, and current local offers in Central Florida.",
-    image: "https://images.unsplash.com/photo-1570466343961-8a8a4e1b4ca4?auto=format&fit=crop&w=1600&q=82",
+    image: "https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?auto=format&fit=crop&w=1600&q=82",
     imageAlt: "Orlando theme park ride with blue sky",
     dealIds: ["orlando-gatorland-visit-orlando-special", "orlando-seaworld-limited-time-offers", "orlando-official-offers", "orlando-budget-things-to-do", "orlando-free-things-to-do"],
     relatedSlugs: ["orlando-local-deals", "florida-attraction-deals", "florida-family-deals", "florida-local-deals-under-50"]
@@ -480,7 +485,7 @@ export const landingPages: LandingPageConfig[] = [
     eyebrow: "Theme parks and ticket planning",
     intro:
       "Compare official Florida theme park offer pages for Orlando parks, Tampa Bay attractions, ticket bundles, annual pass options, and family-focused activity planning.",
-    image: "https://images.unsplash.com/photo-1570466343961-8a8a4e1b4ca4?auto=format&fit=crop&w=1600&q=82",
+    image: "https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?auto=format&fit=crop&w=1600&q=82",
     imageAlt: "Theme park roller coaster and blue Florida sky",
     dealIds: ["disney-world-special-offers", "universal-orlando-offers", "orlando-seaworld-limited-time-offers", "busch-gardens-tampa-offers", "tampa-bay-citypass"],
     relatedSlugs: ["orlando-local-deals", "orlando-things-to-do-deals", "florida-attraction-deals", "best-florida-theme-parks-guide"],
@@ -556,7 +561,7 @@ export const landingPages: LandingPageConfig[] = [
     eyebrow: "Free Florida activity guide",
     intro:
       "Florida has more free things to do than most travelers realize: beaches, public parks, historic streets, art walks, farmers markets, free museum windows, waterfront districts, and city-run event calendars.",
-    image: "https://images.unsplash.com/photo-1605804522243-7b235996771c?auto=format&fit=crop&w=1600&q=82",
+    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=82",
     imageAlt: "Florida waterfront bridge and historic district view",
     dealIds: ["orlando-free-things-to-do", "st-augustine-free-things", "cummer-museum-free-admission", "clearwater-pier-60-sunset-events", "jaxparks-free-events"],
     relatedSlugs: ["florida-free-things-to-do", "florida-family-deals", "florida-beach-activities", "florida-outdoor-activities"],
@@ -688,7 +693,7 @@ export const landingPages: LandingPageConfig[] = [
     eyebrow: "Attraction savings guide",
     intro:
       "Saving on Florida attractions starts with checking official offer pages, city passes, resident promotions, free alternatives, off-peak timing, and bundled tickets before buying.",
-    image: "https://images.unsplash.com/photo-1570466343961-8a8a4e1b4ca4?auto=format&fit=crop&w=1600&q=82",
+    image: "https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?auto=format&fit=crop&w=1600&q=82",
     imageAlt: "Theme park roller coaster against a bright sky",
     dealIds: ["orlando-gatorland-visit-orlando-special", "tampa-bay-citypass", "st-augustine-attraction-coupons", "miami-attraction-deals", "fort-lauderdale-resident-attraction-offers"],
     relatedSlugs: ["florida-attraction-deals", "florida-theme-park-deals", "florida-local-deals-under-50", "orlando-things-to-do-deals"],
@@ -876,6 +881,757 @@ export const landingPages: LandingPageConfig[] = [
       }
     ],
     planningTips: ["Confirm festival dates with the organizer.", "Check parking and road closures.", "Book popular weekends early."]
+  },
+  {
+    slug: "orlando-vs-tampa-things-to-do",
+    title: "Orlando vs Tampa Things To Do | Attractions, Events & Local Ideas",
+    description:
+      "Compare Orlando and Tampa things to do including theme parks, attractions, events, family activities, restaurants, and weekend local ideas.",
+    h1: "Orlando vs Tampa Things To Do",
+    eyebrow: "Florida city comparison",
+    intro:
+      "Orlando and Tampa both work for Florida activity planning, but they serve different days. Orlando is stronger for theme parks, attraction-heavy trips, and family vacation planning. Tampa is better for waterfront events, downtown programming, museums, food, and mixing local activities with Gulf Coast time.",
+    image: "https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Florida attraction ride with blue sky",
+    dealIds: ["orlando-gatorland-visit-orlando-special", "disney-world-special-offers", "tampa-downtown-community-events", "busch-gardens-tampa-offers", "tampa-bay-citypass"],
+    relatedSlugs: ["orlando-local-deals", "tampa-local-deals", "florida-theme-park-deals", "florida-weekend-deals"],
+    pageType: "comparison",
+    guideSections: [
+      {
+        heading: "Choose Orlando for attraction density",
+        body:
+          "Orlando is the easier choice when the main goal is parks, rides, family attractions, ticketed experiences, and full-day entertainment. It also has strong free and budget-friendly ideas, but most visitors start with the attraction ecosystem."
+      },
+      {
+        heading: "Choose Tampa for local events and waterfront variety",
+        body:
+          "Tampa works well when you want museums, downtown events, food trucks, waterfront districts, and a shorter path to Gulf Coast activities. It is often easier to mix one paid attraction with a free or low-cost local event."
+      }
+    ],
+    planningTips: ["Pick Orlando for theme parks.", "Pick Tampa for waterfront events.", "Check drive times before combining both cities."],
+    comparisonRows: [
+      { option: "Orlando", bestFor: "Theme parks, family attractions, ticketed experiences", watchFor: "Higher ticket costs, timed reservations, vacation traffic" },
+      { option: "Tampa", bestFor: "Events, museums, waterfront plans, food and drink", watchFor: "Event schedules, parking, weather, bridge traffic" }
+    ]
+  },
+  {
+    slug: "miami-vs-fort-lauderdale-weekend-deals",
+    title: "Miami vs Fort Lauderdale Weekend Deals | Events, Dining & Beaches",
+    description:
+      "Compare Miami and Fort Lauderdale weekend deals including restaurants, nightlife, beaches, events, arts, attractions, and local things to do.",
+    h1: "Miami vs Fort Lauderdale Weekend Deals",
+    eyebrow: "South Florida weekend comparison",
+    intro:
+      "Miami and Fort Lauderdale are close enough to compare, but they create different weekend plans. Miami is stronger for nightlife, culture, hotel day passes, arts, and big-city dining. Fort Lauderdale is easier for beach-area restaurants, Las Olas events, boating, shows, and lower-friction weekend plans.",
+    image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Miami beach and skyline on a sunny day",
+    dealIds: ["miami-official-special-offers", "miami-sandrell-rivers-theater-offers", "fort-lauderdale-lauderdeals", "las-olas-events", "broward-center-events"],
+    relatedSlugs: ["miami-local-deals", "miami-weekend-deals", "fort-lauderdale-local-deals", "fort-lauderdale-restaurant-deals"],
+    pageType: "comparison",
+    guideSections: [
+      {
+        heading: "Miami is stronger for high-energy weekends",
+        body:
+          "Miami is useful when the plan includes arts, nightlife, beaches, hotel experiences, cultural neighborhoods, and a wider dining scene. It rewards planning ahead for tickets, parking, reservations, and traffic."
+      },
+      {
+        heading: "Fort Lauderdale is easier for relaxed beach-area plans",
+        body:
+          "Fort Lauderdale works well for Las Olas, live shows, beach dining, boating, and weekend events that are easier to navigate. It can be a better fit when you want a polished night out without the intensity of Miami."
+      }
+    ],
+    planningTips: ["Use Miami for nightlife and culture.", "Use Fort Lauderdale for beach dining and shows.", "Confirm event timing before crossing counties."],
+    comparisonRows: [
+      { option: "Miami", bestFor: "Nightlife, arts, hotel day passes, big-city dining", watchFor: "Traffic, reservations, event pricing" },
+      { option: "Fort Lauderdale", bestFor: "Beach restaurants, Las Olas, boating, theater", watchFor: "Seasonal crowds, parking, show availability" }
+    ]
+  },
+  {
+    slug: "theme-parks-vs-local-attractions-florida",
+    title: "Theme Parks vs Local Attractions In Florida | Costs, Planning & Ideas",
+    description:
+      "Compare Florida theme parks and local attractions including ticket planning, family value, museums, tours, wildlife stops, and local activity ideas.",
+    h1: "Theme Parks vs Local Attractions In Florida",
+    eyebrow: "Attraction comparison",
+    intro:
+      "Florida theme parks can be unforgettable full-day experiences, while local attractions can be more flexible, less expensive, and easier to fit around restaurants, beaches, and events. The best choice depends on budget, time, age range, weather, and whether the day needs to feel big or easy.",
+    image: "https://images.unsplash.com/photo-1597466599360-3b9775841aec?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Orlando theme park castle and blue sky",
+    dealIds: ["disney-world-special-offers", "universal-orlando-offers", "orlando-gatorland-visit-orlando-special", "st-augustine-attraction-coupons", "miami-attraction-deals"],
+    relatedSlugs: ["florida-theme-park-deals", "florida-attraction-deals", "how-to-save-money-on-florida-attractions", "florida-family-deals"],
+    pageType: "comparison",
+    guideSections: [
+      {
+        heading: "Theme parks are best for full-day anchor plans",
+        body:
+          "Theme parks work when the goal is a major trip moment, many hours of entertainment, rides, shows, and immersive environments. They require more planning around tickets, reservations, dining, heat, transportation, and crowd levels."
+      },
+      {
+        heading: "Local attractions are best for flexible Florida days",
+        body:
+          "Museums, wildlife attractions, aquariums, historic sites, tours, and city passes can offer a strong day with less commitment. They are useful for families, date nights, rainy days, and mixed-budget trips."
+      }
+    ],
+    planningTips: ["Use parks as trip anchors.", "Use local attractions for flexible days.", "Mix one paid stop with a free nearby idea."],
+    comparisonRows: [
+      { option: "Theme parks", bestFor: "Full-day family trips and major vacation moments", watchFor: "Higher costs, reservations, crowds, heat" },
+      { option: "Local attractions", bestFor: "Flexible days, museums, wildlife, history, rainy days", watchFor: "Hours, smaller capacity, date-specific tours" }
+    ]
+  },
+  {
+    slug: "free-vs-paid-things-to-do-florida",
+    title: "Free vs Paid Things To Do In Florida | Activities, Attractions & Local Ideas",
+    description:
+      "Compare free and paid things to do in Florida including beaches, parks, attractions, events, and family-friendly local activities.",
+    h1: "Free vs Paid Things To Do In Florida",
+    eyebrow: "Budget comparison",
+    intro:
+      "Free Florida activities can fill a day with beaches, parks, markets, art walks, public events, and historic districts. Paid activities add structure, access, guided experiences, attractions, museums, and convenience. The best Florida day often combines both.",
+    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Florida waterfront bridge and public space",
+    dealIds: ["orlando-free-things-to-do", "st-augustine-free-things", "clearwater-pier-60-sunset-events", "tampa-bay-citypass", "clearwater-marine-aquarium-visit"],
+    relatedSlugs: ["florida-free-things-to-do", "best-free-things-to-do-in-florida", "florida-local-deals-under-50", "florida-family-deals"],
+    pageType: "comparison",
+    guideSections: [
+      {
+        heading: "Free activities are best for flexible plans",
+        body:
+          "Free beaches, parks, public markets, and city events are useful because they let you adjust the day around weather, traffic, and energy level. They may still have parking costs, registration, limited hours, or access rules."
+      },
+      {
+        heading: "Paid activities add certainty and structure",
+        body:
+          "Paid attractions, museums, tours, and ticketed events can be worth it when you need a reliable centerpiece. They are especially useful for visitors, families, rainy days, and special occasions."
+      }
+    ],
+    planningTips: ["Check free parking rules.", "Use paid tickets for anchor activities.", "Keep one free backup plan nearby."],
+    comparisonRows: [
+      { option: "Free activities", bestFor: "Beaches, parks, markets, city events, budget days", watchFor: "Parking, weather, limited hours, registration" },
+      { option: "Paid activities", bestFor: "Attractions, tours, museums, structured plans", watchFor: "Ticket terms, refund rules, capacity, timed entry" }
+    ]
+  },
+  {
+    slug: "beach-day-vs-theme-park-day-florida",
+    title: "Beach Day vs Theme Park Day In Florida | Costs, Weather & Planning",
+    description:
+      "Compare a Florida beach day and theme park day including cost, planning, weather, family fit, free activities, and local attractions.",
+    h1: "Beach Day vs Theme Park Day In Florida",
+    eyebrow: "Florida day planning comparison",
+    intro:
+      "A Florida beach day and a theme park day can both be memorable, but they ask different things from your budget, schedule, group, and energy level. Beach days are flexible and often low-cost. Theme park days are more structured and usually more expensive, but they deliver a bigger planned experience.",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Florida beach with turquoise water and open sand",
+    dealIds: ["visit-florida-beach-guide", "clearwater-beach-things-to-do", "disney-world-special-offers", "universal-orlando-offers", "orlando-seaworld-limited-time-offers"],
+    relatedSlugs: ["florida-beach-activities", "florida-theme-park-deals", "best-beaches-in-florida-guide", "best-florida-theme-parks-guide"],
+    pageType: "comparison",
+    guideSections: [
+      {
+        heading: "Beach days are flexible but weather-sensitive",
+        body:
+          "A beach day can be low-cost and easy to personalize with food, sunset walks, public parks, and waterfront dining. The tradeoff is weather, parking, tides, facilities, and beach access rules."
+      },
+      {
+        heading: "Theme park days are structured but easier to anchor",
+        body:
+          "Theme parks give the day a clear plan, especially for families and visitors. They usually require more spending and advance planning, but they reduce the uncertainty of choosing multiple smaller activities."
+      }
+    ],
+    planningTips: ["Choose beaches for flexibility.", "Choose parks for a full-day anchor.", "Keep weather backups ready."],
+    comparisonRows: [
+      { option: "Beach day", bestFor: "Low-cost flexibility, sunsets, outdoor time, casual plans", watchFor: "Weather, parking, tides, facilities" },
+      { option: "Theme park day", bestFor: "Full-day entertainment, visitors, family milestones", watchFor: "Ticket cost, crowds, heat, reservations" }
+    ]
+  },
+  {
+    slug: "restaurant-deals-vs-event-deals-florida",
+    title: "Restaurant Deals vs Event Deals In Florida | Dining, Shows & Weekend Plans",
+    description:
+      "Compare Florida restaurant deals and event deals including dining specials, food finds, shows, festivals, markets, and weekend activities.",
+    h1: "Restaurant Deals vs Event Deals In Florida",
+    eyebrow: "Dining and event comparison",
+    intro:
+      "Restaurant deals and event deals solve different planning problems. Dining deals help shape a meal, date night, brunch, happy hour, or casual meet-up. Event deals help create the reason to go out: festivals, shows, markets, concerts, museum programs, and weekend calendars.",
+    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Restaurant dining room with warm lighting",
+    dealIds: ["st-pete-luna-happy-hour", "jacksonville-riverside-arts-market", "miami-sandrell-rivers-theater-offers", "broward-center-events", "las-olas-events"],
+    relatedSlugs: ["florida-restaurant-deals", "florida-event-deals", "florida-date-night-deals", "florida-weekend-deals"],
+    pageType: "comparison",
+    guideSections: [
+      {
+        heading: "Restaurant deals are best for flexible plans",
+        body:
+          "Food and drink offers are useful when you already know the neighborhood or want a simple night out. They can change by day, happy hour window, reservation rules, and menu availability."
+      },
+      {
+        heading: "Event deals are best for building the whole outing",
+        body:
+          "Events give the day structure and can make a weekend feel special. The tradeoff is that schedules, ticket availability, venue policies, and weather can change more quickly."
+      }
+    ],
+    planningTips: ["Use dining deals for flexible nights.", "Use event deals as the anchor.", "Confirm hours and ticket availability."],
+    comparisonRows: [
+      { option: "Restaurant deals", bestFor: "Date nights, brunch, happy hour, casual plans", watchFor: "Hours, menu changes, reservations, location rules" },
+      { option: "Event deals", bestFor: "Weekend anchors, shows, festivals, markets", watchFor: "Ticket availability, schedules, weather, venue policies" }
+    ]
+  },
+  {
+    slug: "best-things-to-do-in-florida",
+    title: "Best Things To Do In Florida | Attractions, Events & Local Ideas",
+    description:
+      "Explore the best things to do in Florida including attractions, beaches, restaurants, events, family activities, free ideas, and city guides.",
+    h1: "Best Things To Do In Florida",
+    eyebrow: "Florida activity guide",
+    intro:
+      "Florida is built for activity-driven travel and local discovery: theme parks, beaches, springs, museums, waterfront districts, restaurants, festivals, markets, date nights, family days, and free public spaces.",
+    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "People relaxing near a sunny Florida waterfront park",
+    dealIds: ["orlando-official-offers", "miami-official-special-offers", "visit-florida-beach-guide", "visit-florida-outdoor-adventure", "daytona-beach-events"],
+    relatedSlugs: ["florida-things-to-do-deals", "florida-attraction-deals", "florida-free-things-to-do", "best-weekend-activities-florida"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Start with the kind of day you want",
+        body:
+          "A strong Florida plan starts with intent: a full attraction day, a beach day, a free outdoor day, a food-focused outing, a date night, or a family-friendly weekend. Local Deals Florida groups these ideas by city and category so users can move from broad inspiration to source-backed planning."
+      },
+      {
+        heading: "Use city guides for local context",
+        body:
+          "Orlando is strong for attractions, Miami for nightlife and culture, Tampa for events and waterfront activity, Jacksonville for family and riverfront ideas, St. Augustine for historic districts, Clearwater for beach planning, Daytona for events, and Key West for island experiences."
+      },
+      {
+        heading: "Confirm official details before visiting",
+        body:
+          "Florida activities can change because of weather, seasonal hours, parking, ticket inventory, holidays, events, and local rules. Use each guide as a planning shortcut, then confirm current details with the official source."
+      }
+    ],
+    planningTips: ["Pick a city first.", "Mix paid and free ideas.", "Keep a weather-friendly backup."]
+  },
+  {
+    slug: "best-weekend-activities-florida",
+    title: "Best Weekend Activities In Florida | Events, Beaches & Local Ideas",
+    description:
+      "Find Florida weekend activities including local events, beaches, attractions, restaurants, family ideas, markets, and free things to do.",
+    h1: "Best Weekend Activities In Florida",
+    eyebrow: "Weekend planning guide",
+    intro:
+      "Florida weekends work best when they combine one anchor activity with flexible nearby ideas: a local event, beach morning, market, attraction visit, museum stop, restaurant plan, or waterfront walk.",
+    image: "https://images.unsplash.com/photo-1520454974749-611b7248ffdb?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Boats on blue water near a sunny Florida marina",
+    dealIds: ["daytona-beach-events", "las-olas-events", "st-pete-pier-events", "naples-events-calendar", "jacksonville-riverside-arts-market"],
+    relatedSlugs: ["florida-weekend-deals", "miami-weekend-deals", "tampa-events-deals", "best-florida-weekend-activities"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Use current calendars for the anchor",
+        body:
+          "Weekend plans are strongest when they start with current event calendars, venue schedules, tourism board listings, or city programming. That gives the outing a real reason to exist instead of feeling like a generic list."
+      },
+      {
+        heading: "Add flexible local ideas nearby",
+        body:
+          "Pair a ticketed event with a free waterfront walk, a market with lunch, or a museum with a nearby restaurant district. This keeps the weekend useful even if traffic, weather, or availability changes."
+      },
+      {
+        heading: "Plan around seasons and crowds",
+        body:
+          "Holiday weekends, spring break, summer storms, and winter visitor season can change parking, pricing, event availability, and hotel demand. Confirm details before heading out."
+      }
+    ],
+    planningTips: ["Check calendars midweek.", "Confirm event times.", "Add a nearby free option."]
+  },
+  {
+    slug: "best-rainy-day-activities-florida",
+    title: "Best Rainy Day Activities In Florida | Indoor Ideas & Attractions",
+    description:
+      "Find the best rainy day activities in Florida including museums, aquariums, indoor attractions, restaurants, theaters, shopping, and family ideas.",
+    h1: "Best Rainy Day Activities In Florida",
+    eyebrow: "Indoor activity guide",
+    intro:
+      "Rain can change Florida plans quickly, especially in summer. A good rainy-day plan includes indoor attractions, museums, aquariums, theaters, galleries, restaurants, shopping districts, and flexible family activities.",
+    image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Photography prints displayed in a museum gallery",
+    dealIds: ["orlando-rainy-day-things-to-do", "clearwater-marine-aquarium-visit", "cummer-museum-free-admission", "tampa-fmopa-under-50", "miami-arts-culture-deals"],
+    relatedSlugs: ["florida-rainy-day-activities", "florida-rainy-day-guide", "florida-family-deals", "florida-date-night-deals"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Build a backup before storms arrive",
+        body:
+          "The best rainy day backup is close, flexible, and easy to book. Museums, aquariums, indoor attractions, restaurants, theaters, and galleries can save a beach day, family outing, or date night."
+      },
+      {
+        heading: "Check timed entry and hours",
+        body:
+          "Indoor attractions may become busier during storms. Check ticket inventory, parking, hours, stroller rules, food options, and refund policies before leaving."
+      },
+      {
+        heading: "Use indoor days for local discovery",
+        body:
+          "Rainy weather can be a good reason to explore a museum, food hall, aquarium, live show, or restaurant district that might not have been the original plan."
+      }
+    ],
+    planningTips: ["Save one indoor option per city.", "Check timed entry.", "Avoid long drives in storms."]
+  },
+  {
+    slug: "best-florida-attractions",
+    title: "Best Florida Attractions | Theme Parks, Museums & Local Activities",
+    description:
+      "Explore Florida attractions including theme parks, museums, aquariums, historic sites, wildlife stops, city passes, and local activity ideas.",
+    h1: "Best Florida Attractions",
+    eyebrow: "Attractions guide",
+    intro:
+      "Florida attractions range from major theme parks to museums, aquariums, historic districts, wildlife stops, gardens, tours, and city passes. The best attraction depends on budget, group, weather, and how much structure the day needs.",
+    image: "https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Florida attraction ride with blue sky",
+    dealIds: ["disney-world-special-offers", "universal-orlando-offers", "orlando-gatorland-visit-orlando-special", "tampa-bay-citypass", "st-augustine-attraction-coupons"],
+    relatedSlugs: ["florida-attraction-deals", "florida-theme-park-deals", "theme-parks-vs-local-attractions-florida", "how-to-save-money-on-florida-attractions"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Match attraction type to the day",
+        body:
+          "Theme parks work as full-day anchors, museums and aquariums work well for weather-friendly plans, historic districts are strong for walkable discovery, and local tours can add structure without taking over the entire trip."
+      },
+      {
+        heading: "Compare official source pages",
+        body:
+          "Attraction pricing, residency offers, ticket windows, hours, and package terms may change. Local Deals Florida prioritizes official source pages so users can verify details before buying."
+      },
+      {
+        heading: "Mix big attractions with local stops",
+        body:
+          "A useful Florida day often includes one paid attraction plus a free or low-cost nearby idea such as a park, waterfront walk, public market, or restaurant district."
+      }
+    ],
+    planningTips: ["Check ticket windows.", "Look for official offers.", "Keep a free nearby option."]
+  },
+  {
+    slug: "florida-local-events-guide",
+    title: "Florida Local Events Guide | Festivals, Markets & Weekend Ideas",
+    description:
+      "Find Florida local events including festivals, markets, concerts, museum events, family activities, city calendars, and weekend things to do.",
+    h1: "Florida Local Events Guide",
+    eyebrow: "Events and weekend guide",
+    intro:
+      "Florida local events are one of the best ways to discover a city: markets, festivals, waterfront concerts, museum programs, food events, art walks, holiday events, and city-run calendars.",
+    image: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Outdoor concert and festival crowd at sunset",
+    dealIds: ["daytona-beach-events", "naples-events-calendar", "st-pete-pier-events", "las-olas-events", "jaxparks-free-events"],
+    relatedSlugs: ["florida-event-deals", "best-florida-festivals-guide", "florida-weekend-deals", "tampa-events-deals"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Start with official calendars",
+        body:
+          "City calendars, tourism boards, venues, museums, and organizers maintain the details that matter most: date, time, cost, location, parking, registration, weather plans, and event changes."
+      },
+      {
+        heading: "Build a full local day around events",
+        body:
+          "A market can pair with lunch, a concert can pair with a waterfront walk, and a museum event can pair with a nearby restaurant. Related city and category links help users build practical plans."
+      },
+      {
+        heading: "Check details close to the event",
+        body:
+          "Event details may change because of weather, ticket demand, venue updates, holidays, or road closures. Confirm directly with the source before driving or buying tickets."
+      }
+    ],
+    planningTips: ["Confirm event time.", "Check parking.", "Look for nearby dining or free ideas."]
+  },
+  {
+    slug: "orlando-things-to-do",
+    title: "Things To Do In Orlando | Attractions, Family Activities & Local Deals",
+    description:
+      "Explore things to do in Orlando including attractions, family activities, restaurants, theme park areas, weekend ideas, and local deals.",
+    h1: "Things To Do In Orlando",
+    eyebrow: "Orlando city guide",
+    intro:
+      "Orlando is Florida's biggest attraction hub, but the city also works for family activities, free ideas, restaurant districts, rainy-day plans, events, shopping, and budget-friendly local discoveries.",
+    image: "https://images.unsplash.com/photo-1597466599360-3b9775841aec?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Orlando theme park castle and blue sky",
+    dealIds: ["orlando-gatorland-visit-orlando-special", "orlando-seaworld-limited-time-offers", "orlando-budget-things-to-do", "orlando-free-things-to-do", "orlando-rainy-day-things-to-do"],
+    relatedSlugs: ["orlando-local-deals", "orlando-things-to-do-deals", "florida-theme-park-deals", "best-florida-attractions"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Family activities and attractions",
+        body: "Theme parks, wildlife attractions, indoor entertainment, and ticketed experiences make Orlando easy for families and visitors who want a full activity day."
+      },
+      {
+        heading: "Free, food, and weekend ideas",
+        body: "Balance park time with free things to do, budget guides, restaurants, entertainment districts, and event calendars so the trip does not become only ticketed attractions."
+      }
+    ],
+    planningTips: ["Plan theme park days early.", "Keep a rainy-day backup.", "Use free ideas between paid attractions."]
+  },
+  {
+    slug: "miami-things-to-do",
+    title: "Things To Do In Miami | Restaurants, Beaches, Events & Local Deals",
+    description:
+      "Explore things to do in Miami including restaurants, beaches, arts, nightlife, attractions, weekend ideas, date nights, and local deals.",
+    h1: "Things To Do In Miami",
+    eyebrow: "Miami city guide",
+    intro:
+      "Miami is built for beaches, dining, nightlife, arts, hotel day passes, cultural neighborhoods, outdoor activities, and weekend events. Local planning works best when you pair one anchor activity with nearby food or beach time.",
+    image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Miami beach and skyline on a sunny day",
+    dealIds: ["miami-official-special-offers", "miami-sandrell-rivers-theater-offers", "miami-day-pass-deals", "miami-attraction-deals", "miami-arts-culture-deals"],
+    relatedSlugs: ["miami-local-deals", "miami-weekend-deals", "florida-restaurant-deals", "best-date-night-ideas-florida"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Dining, nightlife, and date nights",
+        body: "Miami is a strong city for restaurants, hotel experiences, arts, nightlife, and cultural neighborhoods. Confirm reservations and event times before building a night around one stop."
+      },
+      {
+        heading: "Beaches, attractions, and weekend plans",
+        body: "Beach time, museums, attraction pages, and day-pass ideas can turn a weekend into a flexible mix of paid and low-cost activities."
+      }
+    ],
+    planningTips: ["Check parking and traffic.", "Reserve dining when needed.", "Pair arts with nearby food."]
+  },
+  {
+    slug: "tampa-things-to-do",
+    title: "Things To Do In Tampa | Events, Attractions & Family Activities",
+    description:
+      "Explore things to do in Tampa including events, waterfront activities, attractions, food, museums, family ideas, and local deals.",
+    h1: "Things To Do In Tampa",
+    eyebrow: "Tampa city guide",
+    intro:
+      "Tampa blends downtown events, waterfront districts, museums, food trucks, family attractions, theme park options, and nearby Gulf Coast activity. It is useful for both locals and weekend visitors.",
+    image: "https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Food truck serving food at an outdoor Tampa-style event",
+    dealIds: ["tampa-downtown-community-events", "tampa-fmopa-under-50", "busch-gardens-tampa-offers", "tampa-bay-citypass", "st-pete-pier-events"],
+    relatedSlugs: ["tampa-local-deals", "tampa-events-deals", "florida-family-deals", "florida-weekend-deals"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Events and waterfront plans",
+        body: "Use downtown calendars and waterfront events to anchor a Tampa day, then add museums, food, attractions, or family-friendly activities nearby."
+      },
+      {
+        heading: "Family and attraction ideas",
+        body: "Tampa works for museum visits, CityPASS-style planning, Busch Gardens, and free or low-cost outdoor ideas across the broader bay area."
+      }
+    ],
+    planningTips: ["Check event calendars.", "Plan for bridge traffic.", "Pair food with waterfront activity."]
+  },
+  {
+    slug: "jacksonville-things-to-do",
+    title: "Things To Do In Jacksonville | Family Activities, Events & Local Deals",
+    description:
+      "Explore things to do in Jacksonville including family activities, museums, markets, riverfront ideas, free events, parks, and local deals.",
+    h1: "Things To Do In Jacksonville",
+    eyebrow: "Jacksonville city guide",
+    intro:
+      "Jacksonville is useful for family activities, riverfront ideas, museums, public markets, parks, free events, and Northeast Florida local discovery.",
+    image: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Jacksonville museum and cultural district building",
+    dealIds: ["jacksonville-official-deals", "cummer-museum-free-admission", "jacksonville-riverside-arts-market", "jacksonville-free-affordable-family-activities", "jaxparks-free-events"],
+    relatedSlugs: ["jacksonville-local-deals", "jacksonville-family-deals", "florida-family-deals", "florida-free-things-to-do"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Family and free activity planning",
+        body: "Jacksonville has strong free and low-cost options, including museum windows, markets, parks, riverfront walks, and city event calendars."
+      },
+      {
+        heading: "Weekend markets and events",
+        body: "Markets, city events, and local calendars can give Jacksonville weekends a useful anchor without relying on big-ticket attractions."
+      }
+    ],
+    planningTips: ["Check market hours.", "Use free museum windows.", "Look for riverfront events."]
+  },
+  {
+    slug: "st-augustine-things-to-do",
+    title: "Things To Do In St. Augustine | Historic Tours, Events & Local Deals",
+    description:
+      "Explore things to do in St. Augustine including historic district ideas, attraction coupons, art events, tours, free activities, and local deals.",
+    h1: "Things To Do In St. Augustine",
+    eyebrow: "Historic Coast city guide",
+    intro:
+      "St. Augustine is built around historic streets, walkable districts, tours, museums, art events, free sightseeing, nearby beaches, and local restaurants.",
+    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Sunny waterfront public space for a St. Augustine-style day",
+    dealIds: ["st-augustine-attraction-coupons", "st-augustine-free-things", "st-augustine-art-association-calendar", "visit-florida-beach-guide"],
+    relatedSlugs: ["st-augustine-local-deals", "florida-free-things-to-do", "florida-attraction-deals", "best-free-things-to-do-in-florida"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Historic district and tours",
+        body: "Use official attraction coupon pages, historic district ideas, and local tour sources to build a walkable St. Augustine day."
+      },
+      {
+        heading: "Free and cultural ideas",
+        body: "Art walks, galleries, beaches, markets, and free sightseeing can make St. Augustine useful even without a heavy ticket budget."
+      }
+    ],
+    planningTips: ["Check tour times.", "Plan for downtown parking.", "Pair history with free waterfront walks."]
+  },
+  {
+    slug: "key-west-things-to-do",
+    title: "Things To Do In Key West | Island Activities, Events & Local Deals",
+    description:
+      "Explore things to do in Key West including island tours, waterfront walks, festivals, nightlife, local experiences, beaches, and things to do.",
+    h1: "Things To Do In Key West",
+    eyebrow: "Florida Keys city guide",
+    intro:
+      "Key West is made for island experiences: historic seaport walks, nightlife, festivals, water activities, museums, tropical streets, and sunset-focused local plans.",
+    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Tropical Key West pool and palm trees",
+    dealIds: ["key-west-things-to-do", "key-west-fantasy-fest-events", "key-west-historic-seaport", "visit-florida-beach-guide"],
+    relatedSlugs: ["key-west-local-deals", "best-florida-festivals-guide", "florida-beach-activities", "florida-date-night-deals"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Island activities and waterfront ideas",
+        body: "Start with official Key West tourism and seaport pages, then compare festivals, tours, waterfront walks, nightlife, and free local districts."
+      },
+      {
+        heading: "Plan around events and lodging demand",
+        body: "Festival weekends, cruise traffic, and seasonal travel can change availability and prices. Confirm event details and travel logistics early."
+      }
+    ],
+    planningTips: ["Confirm festival dates.", "Plan parking or rideshare.", "Pair waterfront walks with dining."]
+  },
+  {
+    slug: "clearwater-things-to-do",
+    title: "Things To Do In Clearwater | Beaches, Family Activities & Events",
+    description:
+      "Explore things to do in Clearwater including beaches, Pier 60, family attractions, aquarium visits, sunset events, and Gulf Coast local ideas.",
+    h1: "Things To Do In Clearwater",
+    eyebrow: "Clearwater city guide",
+    intro:
+      "Clearwater is strongest for beach days, sunset events, family attractions, aquarium visits, waterfront dining, and Gulf Coast outdoor planning.",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Clearwater-style white sand beach and blue Gulf water",
+    dealIds: ["clearwater-beach-things-to-do", "clearwater-marine-aquarium-visit", "clearwater-pier-60-sunset-events", "st-pete-pier-events"],
+    relatedSlugs: ["clearwater-local-deals", "florida-beach-activities", "florida-family-deals", "best-beaches-in-florida-guide"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Beach and sunset planning",
+        body: "Use city beach resources and Pier 60 event pages to check access, parking, sunsets, beach walks, and weather-sensitive local plans."
+      },
+      {
+        heading: "Family-friendly nearby ideas",
+        body: "Clearwater Marine Aquarium, waterfront events, and free beach activity make Clearwater useful for families and weekend visitors."
+      }
+    ],
+    planningTips: ["Check beach parking.", "Confirm Pier 60 events.", "Keep weather in mind."]
+  },
+  {
+    slug: "daytona-beach-things-to-do",
+    title: "Things To Do In Daytona Beach | Events, Attractions & Beach Ideas",
+    description:
+      "Explore things to do in Daytona Beach including events, beach activities, Speedway tours, family attractions, weekend ideas, and local deals.",
+    h1: "Things To Do In Daytona Beach",
+    eyebrow: "Daytona Beach city guide",
+    intro:
+      "Daytona Beach works for beach days, events, motorsports history, family attractions, live music, festivals, and classic Atlantic Coast weekend planning.",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Sunny Daytona-style beach with waves and open sand",
+    dealIds: ["daytona-speedway-tours", "daytona-beach-events", "daytona-beach-things-to-do", "visit-florida-beach-guide"],
+    relatedSlugs: ["daytona-beach-local-deals", "florida-weekend-deals", "florida-beach-activities", "florida-attraction-deals"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Beach, events, and motorsports",
+        body: "Use official Daytona tourism pages to compare events, beach ideas, Speedway tours, dining areas, and family-friendly local activity."
+      },
+      {
+        heading: "Weekend planning",
+        body: "Event weekends can change traffic, hotel demand, and parking. Confirm calendars and attraction hours before building the day."
+      }
+    ],
+    planningTips: ["Check event calendars.", "Confirm tour availability.", "Plan around beach weather."]
+  },
+  {
+    slug: "miami-vs-fort-lauderdale-weekend",
+    title: "Miami vs Fort Lauderdale Weekend | Beaches, Dining & Local Ideas",
+    description:
+      "Compare Miami and Fort Lauderdale for a weekend including beaches, restaurants, nightlife, events, arts, boating, and local things to do.",
+    h1: "Miami vs Fort Lauderdale Weekend",
+    eyebrow: "South Florida weekend comparison",
+    intro:
+      "Miami and Fort Lauderdale are close enough for a real comparison. Miami leans high-energy, cultural, nightlife-heavy, and dining-focused. Fort Lauderdale is easier for beach dining, Las Olas, boating, live shows, and a polished but lower-friction weekend.",
+    image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Miami beach and skyline on a sunny day",
+    dealIds: ["miami-official-special-offers", "miami-sandrell-rivers-theater-offers", "fort-lauderdale-lauderdeals", "las-olas-events", "broward-center-events"],
+    relatedSlugs: ["miami-vs-fort-lauderdale-weekend-deals", "miami-weekend-deals", "fort-lauderdale-local-deals", "florida-date-night-deals"],
+    pageType: "comparison",
+    guideSections: [
+      {
+        heading: "Choose Miami for nightlife and culture",
+        body: "Miami is useful for arts, beaches, hotel experiences, dining, nightlife, and cultural neighborhoods. Plan ahead for parking, traffic, reservations, and ticket windows."
+      },
+      {
+        heading: "Choose Fort Lauderdale for easier beach weekends",
+        body: "Fort Lauderdale works well for Las Olas, beach-area restaurants, boating, theater, and weekend events that are easier to navigate."
+      }
+    ],
+    planningTips: ["Use Miami for high-energy nights.", "Use Fort Lauderdale for easier beach plans.", "Check traffic before crossing counties."],
+    comparisonRows: [
+      { option: "Miami", bestFor: "Nightlife, arts, hotel day passes, big-city dining", watchFor: "Traffic, reservations, event pricing" },
+      { option: "Fort Lauderdale", bestFor: "Beach restaurants, Las Olas, boating, theater", watchFor: "Seasonal crowds, parking, show availability" }
+    ]
+  },
+  {
+    slug: "summer-things-to-do-in-florida",
+    title: "Summer Things To Do In Florida | Beaches, Indoor Ideas & Events",
+    description:
+      "Find summer things to do in Florida including beaches, indoor attractions, rainy day ideas, family activities, events, and local guides.",
+    h1: "Summer Things To Do In Florida",
+    eyebrow: "Seasonal Florida guide",
+    intro:
+      "Florida summer planning needs heat, storms, school breaks, beach days, indoor backups, water activities, family attractions, and evening events all working together.",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Wide Florida beach with turquoise water",
+    dealIds: ["visit-florida-beach-guide", "orlando-rainy-day-things-to-do", "clearwater-marine-aquarium-visit", "daytona-beach-events", "st-pete-pier-events"],
+    relatedSlugs: ["florida-beach-activities", "florida-rainy-day-activities", "best-family-activities-in-florida", "rainy-day-things-to-do-florida"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Plan around heat and storms",
+        body: "Use mornings for beaches and outdoor activity, afternoons for indoor attractions or rest, and evenings for events, dining, and waterfront walks."
+      },
+      {
+        heading: "Keep family-friendly backups",
+        body: "Aquariums, museums, indoor attractions, restaurants, and shopping districts can save a day when storms or heat make outdoor plans harder."
+      }
+    ],
+    planningTips: ["Start outdoor plans early.", "Keep indoor backups.", "Confirm weather-sensitive events."]
+  },
+  {
+    slug: "winter-activities-florida",
+    title: "Winter Activities In Florida | Events, Beaches & Local Ideas",
+    description:
+      "Find winter activities in Florida including events, beaches, attractions, restaurants, family activities, holiday ideas, and local things to do.",
+    h1: "Winter Activities In Florida",
+    eyebrow: "Seasonal Florida guide",
+    intro:
+      "Florida winter is prime time for outdoor activity, festivals, beach walks, dining, parks, attractions, and holiday events, but visitor season can increase demand for hotels, tickets, and restaurants.",
+    image: "https://images.unsplash.com/photo-1520454974749-611b7248ffdb?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Boats on blue water near a sunny marina",
+    dealIds: ["las-olas-events", "st-pete-pier-events", "daytona-beach-events", "naples-events-calendar", "visit-florida-outdoor-adventure"],
+    relatedSlugs: ["florida-weekend-deals", "florida-outdoor-activities", "holiday-events-florida", "best-florida-festivals-guide"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Use winter for outdoor discovery",
+        body: "Cooler weather makes parks, beaches, outdoor markets, waterfront events, gardens, and walking districts more comfortable than the summer months."
+      },
+      {
+        heading: "Watch visitor-season demand",
+        body: "Winter events and beach towns can be busy. Confirm tickets, parking, lodging, restaurant reservations, and event schedules in advance."
+      }
+    ],
+    planningTips: ["Book popular weekends early.", "Check event calendars.", "Use outdoor ideas while weather is mild."]
+  },
+  {
+    slug: "spring-break-things-to-do-florida",
+    title: "Spring Break Things To Do In Florida | Beaches, Events & Family Ideas",
+    description:
+      "Find spring break things to do in Florida including beaches, attractions, family activities, events, outdoor ideas, and local planning guides.",
+    h1: "Spring Break Things To Do In Florida",
+    eyebrow: "Seasonal Florida guide",
+    intro:
+      "Spring break in Florida can mean beaches, attractions, family trips, events, outdoor activity, restaurants, and weekend stays, but crowds and prices can change quickly.",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Wide Florida beach with blue water",
+    dealIds: ["visit-florida-beach-guide", "orlando-gatorland-visit-orlando-special", "clearwater-beach-things-to-do", "daytona-beach-events", "miami-attraction-deals"],
+    relatedSlugs: ["florida-beach-activities", "florida-family-deals", "florida-attraction-deals", "best-beaches-in-florida-guide"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Balance beach time with structured activities",
+        body: "Spring break works best when beach days are paired with attractions, museums, events, restaurants, or outdoor experiences that can absorb weather and crowd changes."
+      },
+      {
+        heading: "Confirm access before arrival",
+        body: "Parking, hotel demand, ticket availability, and local events can shift during spring break. Use official sources before building a full day around one activity."
+      }
+    ],
+    planningTips: ["Check beach parking.", "Book timed tickets early.", "Keep a non-beach backup."]
+  },
+  {
+    slug: "holiday-events-florida",
+    title: "Holiday Events In Florida | Lights, Markets & Local Things To Do",
+    description:
+      "Find Florida holiday events including lights, markets, concerts, festivals, family activities, local calendars, and seasonal things to do.",
+    h1: "Holiday Events In Florida",
+    eyebrow: "Seasonal Florida guide",
+    intro:
+      "Florida holiday events can include lights, markets, waterfront celebrations, concerts, parades, museum programs, seasonal festivals, and family-friendly city calendars.",
+    image: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Outdoor event crowd at sunset",
+    dealIds: ["st-pete-pier-events", "las-olas-events", "daytona-beach-events", "naples-events-calendar", "jaxparks-free-events"],
+    relatedSlugs: ["florida-event-deals", "best-florida-festivals-guide", "florida-weekend-deals", "winter-activities-florida"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Start with city and venue calendars",
+        body: "Holiday event details can change by weather, crowd rules, registration requirements, and venue updates. Official calendars are the best place to verify."
+      },
+      {
+        heading: "Pair holiday events with nearby dining",
+        body: "Markets, lights, concerts, and waterfront celebrations become easier to plan when paired with nearby restaurant districts or free public spaces."
+      }
+    ],
+    planningTips: ["Confirm event dates.", "Check parking.", "Reserve dining near popular events."]
+  },
+  {
+    slug: "memorial-day-weekend-florida",
+    title: "Memorial Day Weekend In Florida | Beaches, Events & Local Ideas",
+    description:
+      "Plan Memorial Day weekend in Florida with beaches, events, attractions, outdoor activities, family ideas, restaurant plans, and local guides.",
+    h1: "Memorial Day Weekend In Florida",
+    eyebrow: "Seasonal Florida guide",
+    intro:
+      "Memorial Day weekend in Florida often combines beaches, events, family activities, restaurants, parks, attractions, and the start of summer-style planning.",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Florida beach with turquoise water and open sand",
+    dealIds: ["visit-florida-beach-guide", "clearwater-beach-things-to-do", "daytona-beach-events", "st-pete-pier-events", "visit-florida-outdoor-adventure"],
+    relatedSlugs: ["florida-beach-activities", "summer-things-to-do-in-florida", "florida-weekend-deals", "best-weekend-activities-florida"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Plan around beaches and crowds",
+        body: "Beach access, parking, weather, traffic, and hotel demand can all shift during Memorial Day weekend. Check official access and event pages before leaving."
+      },
+      {
+        heading: "Use one anchor and one backup",
+        body: "Pick a beach, event, attraction, or outdoor activity as the main plan, then keep a nearby indoor or low-cost backup in case weather or crowds change."
+      }
+    ],
+    planningTips: ["Arrive early for beaches.", "Check event calendars.", "Keep an indoor backup."]
+  },
+  {
+    slug: "rainy-day-things-to-do-florida",
+    title: "Rainy Day Things To Do In Florida | Indoor Attractions & Local Ideas",
+    description:
+      "Find rainy day things to do in Florida including museums, aquariums, restaurants, indoor attractions, shows, galleries, and family activities.",
+    h1: "Rainy Day Things To Do In Florida",
+    eyebrow: "Weather-friendly Florida guide",
+    intro:
+      "Rainy days in Florida can still be useful with museums, aquariums, indoor attractions, theater, galleries, restaurants, shopping, and flexible family ideas.",
+    image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Photography prints displayed in a museum gallery",
+    dealIds: ["orlando-rainy-day-things-to-do", "clearwater-marine-aquarium-visit", "cummer-museum-free-admission", "tampa-fmopa-under-50", "broward-center-events"],
+    relatedSlugs: ["florida-rainy-day-activities", "best-rainy-day-activities-florida", "florida-family-deals", "florida-date-night-deals"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Choose close, flexible indoor options",
+        body: "Museums, aquariums, theaters, galleries, restaurants, and indoor entertainment work best when they are near your original plan and easy to book."
+      },
+      {
+        heading: "Check hours before driving",
+        body: "Rain can make indoor places busier. Confirm hours, tickets, parking, and capacity before leaving."
+      }
+    ],
+    planningTips: ["Keep one indoor option nearby.", "Check timed tickets.", "Avoid long storm drives."]
   }
 ];
 

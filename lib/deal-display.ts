@@ -93,17 +93,23 @@ export function getWhyThisDeal(deal: DealDisplayInput) {
 }
 
 export function getBestFor(deal: DealDisplayInput) {
+  return getBestForTags(deal).join(", ");
+}
+
+export function getBestForTags(deal: DealDisplayInput) {
   const category = deal.category.toLowerCase();
   const badge = deal.badge.toLowerCase();
 
-  if (category.includes("free") || badge.includes("free")) return "Budget-friendly days out";
-  if (category.includes("family") || badge.includes("family")) return "Weekend family trips";
-  if (category.includes("event") || category.includes("weekend")) return "Weekend planning";
-  if (category.includes("food") || category.includes("restaurant")) return "Dining and nights out";
-  if (category.includes("theme park") || category.includes("attraction")) return "Attraction days";
-  if (category.includes("beach")) return "Beach days";
-  if (category.includes("outdoor")) return "Outdoor exploring";
-  if (category.includes("local experiences")) return "Local experiences";
+  if (category.includes("free") || badge.includes("free")) return ["Free / Low-Cost", "Budget Friendly"];
+  if (category.includes("family") || badge.includes("family")) return ["Best for Families", "Weekend Activity"];
+  if (category.includes("event") || category.includes("weekend")) return ["Weekend Activity", "Local Events"];
+  if (category.includes("food") || category.includes("restaurant")) return ["Food & Drink", "Local Favorite"];
+  if (category.includes("theme park")) return ["Tourist Favorite", "Best for Families", "Full-Day Activity"];
+  if (category.includes("attraction")) return ["Tourist Favorite", "Weekend Activity"];
+  if (category.includes("beach")) return ["Outdoor Activity", "Beach Day", "Budget Friendly"];
+  if (category.includes("outdoor")) return ["Outdoor Activity", "Budget Friendly"];
+  if (category.includes("rainy")) return ["Rainy Day", "Best for Families"];
+  if (category.includes("local experiences")) return ["Local Favorite", "Date Night"];
 
-  return "Florida local discovery";
+  return ["Local Favorite"];
 }
