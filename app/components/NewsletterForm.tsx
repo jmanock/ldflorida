@@ -20,9 +20,16 @@ export default function NewsletterForm() {
 
     setStatus("submitting");
     setMessage("Saving your deal alerts...");
-    window.gtag?.("event", "newsletter_signup_started", {
+    const startedPayload = {
       site: "localdealsflorida.org",
-      source: "local"
+      source: "local",
+      page_path: window.location.pathname
+    };
+
+    window.gtag?.("event", "newsletter_signup_started", startedPayload);
+    window.dataLayer?.push({
+      event: "newsletter_signup_started",
+      ...startedPayload
     });
 
     try {
@@ -43,9 +50,16 @@ export default function NewsletterForm() {
       setStatus("success");
       setMessage(result.message ?? "You’re in! Florida local deals are on the way.");
       setEmail("");
-      window.gtag?.("event", "newsletter_signup_success", {
+      const successPayload = {
         site: "localdealsflorida.org",
-        source: "local"
+        source: "local",
+        page_path: window.location.pathname
+      };
+
+      window.gtag?.("event", "newsletter_signup_success", successPayload);
+      window.dataLayer?.push({
+        event: "newsletter_signup_success",
+        ...successPayload
       });
     } catch (error) {
       setStatus("error");

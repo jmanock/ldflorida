@@ -20,6 +20,14 @@ export default function FallbackImage({ src, alt, className, loading = "lazy", f
 
     window.gtag?.("event", "image_fallback_used", {
       site: "localdealsflorida.org",
+      source: "local",
+      image_src: src,
+      page_path: window.location.pathname
+    });
+    window.dataLayer?.push({
+      event: "image_fallback_used",
+      site: "localdealsflorida.org",
+      source: "local",
       image_src: src,
       page_path: window.location.pathname
     });

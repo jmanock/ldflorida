@@ -477,6 +477,113 @@ export const landingPages: LandingPageConfig[] = [
     ]
   },
   {
+    slug: "destin-local-deals",
+    title: "Destin Local Deals | Beaches, Family Activities & Things To Do",
+    description:
+      "Find Destin local activity ideas including beaches, boating, family attractions, restaurants, outdoor plans, and Panhandle things to do.",
+    h1: "Destin Local Deals",
+    eyebrow: "Panhandle beach ideas",
+    intro:
+      "Use this Destin local deals page to compare beach activities, boating ideas, family attractions, restaurants, outdoor plans, and useful Panhandle travel links.",
+    image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Destin-style white sand beach and clear Gulf water",
+    dealIds: ["visit-florida-beach-guide", "visit-florida-outdoor-adventure", "naples-beaches-parks", "clearwater-beach-things-to-do"],
+    relatedSlugs: ["florida-beach-activities", "best-beaches-in-florida-guide", "best-family-activities-in-florida", "florida-outdoor-activities"],
+    localContext: [
+      "Useful for beach days, boating plans, family activities, seafood stops, and flexible weather backups.",
+      "Beach access, parking, tour availability, and weather can change quickly in peak seasons.",
+      "Confirm details with official tourism, attraction, restaurant, or activity sources before visiting."
+    ]
+  },
+  {
+    slug: "free-things-to-do-in-orlando",
+    title: "Free Things To Do In Orlando | Parks, Districts & Family Ideas",
+    description:
+      "Find free things to do in Orlando including parks, Disney Springs-style districts, family ideas, rainy day backups, and official local planning links.",
+    h1: "Free Things To Do In Orlando",
+    eyebrow: "Budget Orlando ideas",
+    intro:
+      "Free Orlando plans work best when travelers balance outdoor districts, parks, resort-area browsing, family activities, and indoor backups around weather and parking.",
+    image: "https://images.unsplash.com/photo-1597466599360-3b9775841aec?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Orlando skyline and family-friendly local activity planning",
+    dealIds: ["orlando-free-things-to-do", "orlando-budget-things-to-do", "orlando-official-offers", "orlando-rainy-day-things-to-do"],
+    relatedSlugs: ["orlando-local-deals", "orlando-things-to-do", "florida-free-things-to-do", "best-free-things-to-do-in-florida"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Plan free ideas around logistics",
+        body: "Free admission does not always mean free parking or effortless timing. Confirm hours, parking, weather, and reservations before building the day."
+      }
+    ],
+    planningTips: ["Check parking costs.", "Use indoor backups.", "Pair free districts with nearby dining."]
+  },
+  {
+    slug: "date-night-ideas-in-tampa",
+    title: "Date Night Ideas In Tampa | Restaurants, Events & Waterfront Plans",
+    description:
+      "Find date night ideas in Tampa including restaurants, waterfront walks, museums, events, shows, and Tampa Bay local planning tips.",
+    h1: "Date Night Ideas In Tampa",
+    eyebrow: "Tampa date night guide",
+    intro:
+      "Tampa date nights can combine restaurants, waterfront walks, museums, shows, Ybor City, St. Pete add-ons, and low-pressure event calendars.",
+    image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Tampa Bay restaurant table for date night ideas",
+    dealIds: ["st-pete-luna-happy-hour", "st-pete-lala-date-night", "tampa-downtown-community-events", "tampa-fmopa-under-50"],
+    relatedSlugs: ["tampa-local-deals", "florida-date-night-deals", "florida-food-and-drink-deals", "florida-event-deals"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Choose one anchor and one easy add-on",
+        body: "A dinner reservation, museum, show, market, or waterfront walk works best when paired with a nearby backup instead of a packed schedule."
+      }
+    ],
+    planningTips: ["Reserve restaurants early.", "Check show times.", "Keep parking simple."]
+  },
+  {
+    slug: "rainy-day-activities-in-miami",
+    title: "Rainy Day Activities In Miami | Museums, Food & Indoor Ideas",
+    description:
+      "Find rainy day activities in Miami including museums, restaurants, arts districts, shows, hotel day passes, and flexible indoor planning ideas.",
+    h1: "Rainy Day Activities In Miami",
+    eyebrow: "Miami indoor ideas",
+    intro:
+      "Rainy Miami days can still work with museums, galleries, food halls, hotel day passes, theaters, shopping, and flexible arts or culture plans.",
+    image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Indoor gallery and museum wall for rainy day Miami plans",
+    dealIds: ["miami-arts-culture-deals", "miami-sandrell-rivers-theater-offers", "miami-day-pass-deals", "miami-attraction-deals"],
+    relatedSlugs: ["miami-local-deals", "miami-things-to-do", "florida-rainy-day-activities", "rainy-day-things-to-do-florida"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Stay close to your original neighborhood",
+        body: "Rain and traffic can make cross-county plans harder. Pick indoor ideas near your hotel, beach area, restaurant district, or event venue."
+      }
+    ],
+    planningTips: ["Check timed tickets.", "Avoid storm drives.", "Confirm hours before leaving."]
+  },
+  {
+    slug: "family-activities-in-jacksonville",
+    title: "Family Activities In Jacksonville | Free, Outdoor & Museum Ideas",
+    description:
+      "Find family activities in Jacksonville including museums, parks, markets, free events, riverfront ideas, beaches, and kid-friendly local planning tips.",
+    h1: "Family Activities In Jacksonville",
+    eyebrow: "Jacksonville family guide",
+    intro:
+      "Jacksonville family plans can combine museums, parks, beach time, markets, free events, riverfront districts, and easy Northeast Florida day trips.",
+    image: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Jacksonville cultural district building for family activities",
+    dealIds: ["jacksonville-free-affordable-family-activities", "cummer-museum-free-admission", "jacksonville-riverside-arts-market", "jaxparks-free-events"],
+    relatedSlugs: ["jacksonville-local-deals", "jacksonville-family-deals", "florida-family-deals", "florida-free-things-to-do"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Mix free public spaces with one structured stop",
+        body: "A museum, market, park, beach, or free city event can anchor the day. Confirm hours, parking, weather, and age fit before visiting."
+      }
+    ],
+    planningTips: ["Check park calendars.", "Use beach backups.", "Confirm museum hours."]
+  },
+  {
     slug: "florida-theme-park-deals",
     title: "Florida Theme Park Deals | Orlando Tickets & Park Offers",
     description:
