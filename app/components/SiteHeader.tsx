@@ -11,13 +11,32 @@ const navItems = [
 ];
 
 function trackNavigation(label: string, href: string) {
-  window.gtag?.("event", "navigation_click", {
+  const payload = {
     site: "localdealsflorida.org",
+    source_site: "localdealsflorida.org",
+    destination_site: href.startsWith("https://") ? href : "localdealsflorida.org",
     source: "local",
+    cta_text: label,
+    content_type: "navigation",
+    category: "navigation",
     label,
     href,
     page_path: window.location.pathname
+  };
+
+  window.gtag?.("event", "navigation_click", payload);
+  window.dataLayer?.push({
+    event: "navigation_click",
+    ...payload
   });
+
+  if (href.startsWith("https://")) {
+    window.gtag?.("event", "network_site_click", payload);
+    window.dataLayer?.push({
+      event: "network_site_click",
+      ...payload
+    });
+  }
 }
 
 export default function SiteHeader() {

@@ -33,7 +33,11 @@ function trackNavigation(label: string, href: string) {
   const payload = {
     site: "localdealsflorida.org",
     source_site: "localdealsflorida.org",
+    destination_site: href.startsWith("https://") ? href : "localdealsflorida.org",
     source: "local",
+    cta_text: label,
+    content_type: "footer_link",
+    category: "navigation",
     label,
     href,
     page_path: window.location.pathname
@@ -41,9 +45,17 @@ function trackNavigation(label: string, href: string) {
   const lowerHref = href.toLowerCase();
 
   window.gtag?.("event", "navigation_click", payload);
+  window.dataLayer?.push({
+    event: "navigation_click",
+    ...payload
+  });
 
   if (href.startsWith("https://")) {
     window.gtag?.("event", "network_site_click", payload);
+    window.dataLayer?.push({
+      event: "network_site_click",
+      ...payload
+    });
   } else if (lowerHref.includes("things-to-do") || lowerHref.includes("local-deals")) {
     window.gtag?.("event", "city_guide_click", payload);
   } else if (lowerHref.includes("florida-")) {

@@ -584,6 +584,58 @@ export const landingPages: LandingPageConfig[] = [
     planningTips: ["Check park calendars.", "Use beach backups.", "Confirm museum hours."]
   },
   {
+    slug: "miami-date-night-ideas",
+    title: "Miami Date Night Ideas | Restaurants, Nightlife & Local Experiences",
+    description:
+      "Find Miami date night ideas including restaurants, arts, nightlife, beach walks, hotel day passes, shows, and local weekend planning tips.",
+    h1: "Miami Date Night Ideas",
+    eyebrow: "Miami nights out",
+    intro:
+      "Miami date nights can be built around restaurants, arts districts, live shows, beach walks, hotel day passes, nightlife, or quieter neighborhood plans.",
+    image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Miami restaurant and nightlife setting for date night ideas",
+    dealIds: ["miami-arts-culture-deals", "miami-sandrell-rivers-theater-offers", "miami-day-pass-deals", "miami-official-special-offers"],
+    relatedSlugs: ["miami-local-deals", "miami-things-to-do", "florida-date-night-deals", "best-date-night-ideas-florida"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Choose the neighborhood first",
+        body: "Wynwood, Brickell, Downtown, Miami Beach, and Coral Gables can create very different date nights. Pick the area before choosing restaurants, events, or late-night plans."
+      },
+      {
+        heading: "Keep timing realistic",
+        body: "Traffic, parking, reservations, showtimes, and weather can change the night. Pair one anchor plan with a nearby backup instead of crossing the county twice."
+      }
+    ],
+    planningTips: ["Reserve popular restaurants.", "Check event times.", "Choose one neighborhood."]
+  },
+  {
+    slug: "tampa-weekend-activities",
+    title: "Tampa Weekend Activities | Events, Attractions & Waterfront Ideas",
+    description:
+      "Find Tampa weekend activities including events, museums, restaurants, waterfront plans, family attractions, and Tampa Bay local things to do.",
+    h1: "Tampa Weekend Activities",
+    eyebrow: "Tampa weekend guide",
+    intro:
+      "Tampa weekend activities can include waterfront districts, museums, restaurants, markets, family attractions, shows, sports, and St. Pete or Clearwater add-ons.",
+    image: "https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Tampa outdoor event and local weekend activity planning",
+    dealIds: ["tampa-downtown-community-events", "tampa-fmopa-under-50", "tampa-bay-citypass", "busch-gardens-tampa-offers"],
+    relatedSlugs: ["tampa-local-deals", "tampa-things-to-do", "tampa-events-deals", "florida-weekend-deals"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Build around one Tampa anchor",
+        body: "A museum, event, waterfront walk, restaurant reservation, or family attraction can anchor the weekend. Add nearby plans so parking and drive time stay manageable."
+      },
+      {
+        heading: "Compare Tampa Bay add-ons",
+        body: "St. Pete and Clearwater can be useful add-ons, but weekend traffic and beach parking matter. Confirm times before mixing city and beach plans."
+      }
+    ],
+    planningTips: ["Check event calendars.", "Keep parking simple.", "Use beach add-ons carefully."]
+  },
+  {
     slug: "florida-theme-park-deals",
     title: "Florida Theme Park Deals | Orlando Tickets & Park Offers",
     description:
