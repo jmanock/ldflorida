@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getLandingPage, landingPagePath, landingPages, type LandingPageConfig } from "../../data/landing-pages";
+import { getPiscifunGearPicks } from "../../lib/affiliate/piscifunLinks";
 import { getEnrichedDeals } from "../../lib/local-data";
+import AffiliateGearCard from "../components/AffiliateGearCard";
 import FloridaGetawayBlock from "../components/FloridaGetawayBlock";
 import FallbackImage from "../components/FallbackImage";
 import LocalDealCard, { type LocalDeal } from "../components/LocalDealCard";
@@ -224,6 +226,12 @@ function buildSeoOverview(page: LandingPageConfig) {
   return `${page.intro} Local Deals Florida keeps this page focused on practical, current local searches rather than broad travel inspiration. Use it to compare real source pages for restaurants, events, attractions, free activities, family ideas, date nights, and weekend plans when they fit this topic. Each card is meant to help you understand the value quickly: what the offer is, where it comes from, when it may be useful, and which official source should be checked before you make plans. Related searches help users move naturally between nearby cities, categories, and the broader Florida Deals Hub network.`;
 }
 
+function shouldShowOutdoorGear(page: LandingPageConfig) {
+  const content = `${page.slug} ${page.h1} ${page.description}`.toLowerCase();
+
+  return ["fishing", "beach", "water", "outdoor", "weekend", "rainy", "family"].some((term) => content.includes(term));
+}
+
 export default async function LandingPage({ params }: PageProps) {
   const { slug } = await params;
   const page = getLandingPage(slug);
@@ -233,6 +241,7 @@ export default async function LandingPage({ params }: PageProps) {
   }
 
   const pageDeals = getDealsForPage(page.dealIds);
+  const gearPicks = shouldShowOutdoorGear(page) ? getPiscifunGearPicks() : [];
   const topDeals = pageDeals.slice(0, 3);
   const guideSections = page.guideSections ?? [];
   const cityCluster = getCityCluster(page.slug);
@@ -482,6 +491,23 @@ export default async function LandingPage({ params }: PageProps) {
       ) : null}
 
       <FloridaGetawayBlock />
+
+      {gearPicks.length ? (
+        <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+          <div className="mb-7 max-w-3xl">
+            <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Florida outdoor gear</p>
+            <h2 className="mt-2 text-3xl font-black text-[#163235]">Beach and fishing day essentials</h2>
+            <p className="mt-3 leading-7 text-[#52686b]">
+              Helpful gear sources for Florida fishing trips, beach days, parks, springs, and weekend outdoor plans. Product availability and prices may change.
+            </p>
+          </div>
+          <div className="grid gap-5 md:grid-cols-3">
+            {gearPicks.map((item) => (
+              <AffiliateGearCard ctaText={item.category === "fishing_gear" ? "Florida Fishing Essentials" : "Browse Piscifun Products"} item={item} key={item.title} />
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
         <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8">

@@ -636,6 +636,58 @@ export const landingPages: LandingPageConfig[] = [
     planningTips: ["Check event calendars.", "Keep parking simple.", "Use beach add-ons carefully."]
   },
   {
+    slug: "florida-fishing-trip-gear",
+    title: "Florida Fishing Trip Gear | Beach, Pier & Weekend Essentials",
+    description:
+      "Plan Florida fishing trip gear for beach days, pier fishing, kayak outings, road trips, and weekend outdoor activities with practical packing tips.",
+    h1: "Florida Fishing Trip Gear",
+    eyebrow: "Fishing and outdoor gear",
+    intro:
+      "Florida fishing trips are easier when travelers plan simple, packable gear around the actual day: beach fishing, pier time, kayak outings, road trips, or family weekends.",
+    image: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Florida outdoor waterway for fishing trip gear planning",
+    dealIds: ["visit-florida-outdoor-adventure", "visit-florida-beach-guide", "clearwater-beach-things-to-do", "naples-beaches-parks"],
+    relatedSlugs: ["florida-outdoor-activities", "florida-beach-activities", "best-florida-water-activities", "florida-weekend-deals"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Pack for the specific fishing day",
+        body: "A pier day, beach morning, kayak outing, and charter-adjacent trip all need different gear. Keep the setup compact, weather-aware, and easy to carry."
+      },
+      {
+        heading: "Think beyond rods and reels",
+        body: "Storage, sun protection, line tools, dry bags, footwear, water, snacks, and cleanup supplies can matter as much as the core fishing gear."
+      }
+    ],
+    planningTips: ["Check local fishing rules.", "Pack sun and water protection.", "Keep gear compact for beaches and piers."]
+  },
+  {
+    slug: "best-florida-water-activities",
+    title: "Best Florida Water Activities | Beaches, Springs, Fishing & Boating",
+    description:
+      "Compare the best Florida water activities including beaches, springs, fishing days, boating ideas, kayaking, aquariums, and family-friendly outdoor plans.",
+    h1: "Best Florida Water Activities",
+    eyebrow: "Water activity guide",
+    intro:
+      "Florida water activities can include beach days, springs, kayaking, fishing trips, boating, aquariums, waterfront parks, and family-friendly outdoor plans.",
+    image: "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Florida clear water beach for water activity planning",
+    dealIds: ["visit-florida-beach-guide", "visit-florida-outdoor-adventure", "clearwater-marine-aquarium-visit", "key-west-things-to-do"],
+    relatedSlugs: ["florida-beach-activities", "florida-outdoor-activities", "florida-fishing-trip-gear", "best-family-activities-in-florida"],
+    pageType: "guide",
+    guideSections: [
+      {
+        heading: "Choose water activities by comfort level",
+        body: "Some travelers want an easy beach or aquarium day, while others want kayaking, fishing, snorkeling, boating, or springs. Match the activity to weather, swimming ability, and travel time."
+      },
+      {
+        heading: "Build in weather backups",
+        body: "Florida water days can shift quickly around storms, heat, tides, and wind. Keep a nearby indoor or restaurant backup when planning a full day outdoors."
+      }
+    ],
+    planningTips: ["Check weather and water conditions.", "Confirm reservations.", "Pack light outdoor gear."]
+  },
+  {
     slug: "florida-theme-park-deals",
     title: "Florida Theme Park Deals | Orlando Tickets & Park Offers",
     description:

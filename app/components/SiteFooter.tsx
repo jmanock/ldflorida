@@ -119,7 +119,7 @@ export default function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-[#d8e6e3] px-4 py-4 text-center text-xs font-semibold leading-5 text-[#6f8588] sm:px-6 lg:px-8">
-        Florida Deals Hub may earn a commission when you book through some links. This helps keep our deal alerts free.
+        Some links on this site may earn us a commission at no extra cost to you. This helps keep our deal alerts free.
       </div>
     </footer>
   );
