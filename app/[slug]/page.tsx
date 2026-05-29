@@ -502,9 +502,11 @@ export default async function LandingPage({ params }: PageProps) {
             </p>
           </div>
           <div className="grid gap-5 md:grid-cols-3">
-            {gearPicks.map((item) => (
-              <AffiliateGearCard ctaText={item.category === "fishing_gear" ? "Florida Fishing Essentials" : "Browse Piscifun Products"} item={item} key={item.title} />
-            ))}
+            {gearPicks.map((item) => {
+              const ctaText = item.advertiser === "tidewe" ? "Browse TideWe Outdoor Gear" : item.category === "fishing_gear" ? "Florida Fishing Essentials" : "Browse Piscifun Products";
+
+              return <AffiliateGearCard ctaText={ctaText} item={item} key={item.title} />;
+            })}
           </div>
         </section>
       ) : null}

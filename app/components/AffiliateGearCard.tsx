@@ -4,11 +4,13 @@ import type { PiscifunAffiliateItem } from "../../lib/affiliate/piscifunLinks";
 import FallbackImage from "./FallbackImage";
 
 export default function AffiliateGearCard({ item, ctaText = "Browse Piscifun Products" }: { item: PiscifunAffiliateItem; ctaText?: string }) {
+  const advertiser = item.advertiser ?? "piscifun";
+
   function trackClick() {
     const payload = {
       source_site: "localdealsflorida.org",
       affiliate_program: "awin",
-      advertiser: "piscifun",
+      advertiser,
       item_title: item.title,
       category: item.category,
       cta_text: ctaText,
