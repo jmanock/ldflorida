@@ -7,7 +7,10 @@
     "build": "next build",
     "lint": "tsc --noEmit",
     "start": "next start",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "seo:indexnow": "node scripts/seo-automation.mjs --site=localdealsflorida --mode=indexnow",
+    "seo:validate": "node scripts/seo-automation.mjs --site=localdealsflorida --mode=validate",
+    "seo:report": "node scripts/seo-automation.mjs --site=localdealsflorida --mode=report"
   },
   "dependencies": {
     "lucide-react": "1.11.0",
