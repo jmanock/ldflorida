@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { trackClarityEvent } from "../../lib/clarity";
 
 const cityLinks = [
   { label: "Orlando Local Deals", href: "/orlando-local-deals" },
@@ -49,6 +50,7 @@ function trackNavigation(label: string, href: string) {
     event: "navigation_click",
     ...payload
   });
+  trackClarityEvent("navigation_click", payload);
 
   if (href.startsWith("https://")) {
     window.gtag?.("event", "network_site_click", payload);
@@ -56,6 +58,7 @@ function trackNavigation(label: string, href: string) {
       event: "network_site_click",
       ...payload
     });
+    trackClarityEvent("network_site_click", payload);
   } else if (lowerHref.includes("things-to-do") || lowerHref.includes("local-deals")) {
     window.gtag?.("event", "city_guide_click", payload);
   } else if (lowerHref.includes("florida-")) {

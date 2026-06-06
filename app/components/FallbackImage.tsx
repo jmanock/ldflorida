@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackClarityEvent } from "../../lib/clarity";
 
 const fallbackSrc = "/images/fallbacks/florida-activity-placeholder.svg";
 
@@ -18,19 +19,18 @@ export default function FallbackImage({ src, alt, className, loading = "lazy", f
   function handleError() {
     if (imageSrc === fallbackSrc) return;
 
-    window.gtag?.("event", "image_fallback_used", {
+    const payload = {
       site: "localdealsflorida.org",
       source: "local",
       image_src: src,
       page_path: window.location.pathname
-    });
+    };
+    window.gtag?.("event", "image_fallback_used", payload);
     window.dataLayer?.push({
       event: "image_fallback_used",
-      site: "localdealsflorida.org",
-      source: "local",
-      image_src: src,
-      page_path: window.location.pathname
+      ...payload
     });
+    trackClarityEvent("image_fallback_used", payload);
 
     setImageSrc(fallbackSrc);
   }

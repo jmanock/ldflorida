@@ -1,6 +1,7 @@
 "use client";
 
 import type { PiscifunAffiliateItem } from "../../lib/affiliate/piscifunLinks";
+import { trackClarityEvent } from "../../lib/clarity";
 import FallbackImage from "./FallbackImage";
 
 export default function AffiliateGearCard({ item, ctaText = "Browse Piscifun Products" }: { item: PiscifunAffiliateItem; ctaText?: string }) {
@@ -23,6 +24,7 @@ export default function AffiliateGearCard({ item, ctaText = "Browse Piscifun Pro
       event: "affiliate_click",
       ...payload
     });
+    trackClarityEvent("affiliate_click", payload);
   }
 
   return (

@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowRight, Building2, Hotel, Plane, Sailboat } from "lucide-react";
+import { trackClarityEvent } from "../../lib/clarity";
 
 const sisterSites = [
   {
@@ -31,13 +32,18 @@ const sisterSites = [
 
 export default function SisterSitesSection() {
   function trackNavigation(label: string, href: string) {
-    window.gtag?.("event", "navigation_click", {
+    const payload = {
       site: "localdealsflorida.org",
+      source_site: "localdealsflorida.org",
+      destination_site: href,
       source: "local",
-      label,
-      href,
+      cta_text: label,
       page_path: window.location.pathname
-    });
+    };
+    window.gtag?.("event", "navigation_click", payload);
+    window.gtag?.("event", "network_site_click", payload);
+    trackClarityEvent("navigation_click", payload);
+    trackClarityEvent("network_site_click", payload);
   }
 
   return (

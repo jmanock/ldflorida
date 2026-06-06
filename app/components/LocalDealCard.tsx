@@ -1,6 +1,7 @@
 "use client";
 
 import { MapPin, Ticket } from "lucide-react";
+import { trackClarityEvent } from "../../lib/clarity";
 import { getBestForTags, getDealCta, getDealSourceName, getOfferLabel, getWhyThisDeal } from "../../lib/deal-display";
 import FallbackImage from "./FallbackImage";
 
@@ -86,9 +87,11 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
       cta_text: ctaLabel,
       page_path: window.location.pathname
     });
+    trackClarityEvent("deal_click", payload);
+    trackClarityEvent("local_card_click", payload);
 
     if (deal.category.includes("Event") || deal.cta.toLowerCase().includes("event")) {
-      window.gtag?.("event", "event_click", {
+      const eventPayload = {
         site: "localdealsflorida.org",
         source: "local",
         city: deal.city,
@@ -98,7 +101,9 @@ export default function LocalDealCard({ deal }: { deal: LocalDeal }) {
         cta_text: ctaLabel,
         outbound_url: deal.affiliateReadyUrl,
         page_path: window.location.pathname
-      });
+      };
+      window.gtag?.("event", "event_click", eventPayload);
+      trackClarityEvent("event_click", eventPayload);
     }
   }
 

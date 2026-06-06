@@ -4,6 +4,7 @@ import { ArrowRight, MapPin, RefreshCw, Search, SlidersHorizontal, Ticket } from
 import { useMemo, useState } from "react";
 import deals from "../../data/deals.json";
 import trustRecords from "../../data/local-trust.json";
+import { trackClarityEvent } from "../../lib/clarity";
 import { getBestForTags, getDealCta, getDealSourceName, getOfferLabel, getWhyThisDeal } from "../../lib/deal-display";
 import FallbackImage from "./FallbackImage";
 
@@ -149,9 +150,11 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
       cta_text: ctaLabel,
       page_path: window.location.pathname
     });
+    trackClarityEvent("deal_click", payload);
+    trackClarityEvent("local_card_click", payload);
 
     if (deal.category.includes("Event") || deal.cta.toLowerCase().includes("event")) {
-      window.gtag?.("event", "event_click", {
+      const eventPayload = {
         site: "localdealsflorida.org",
         source: "local",
         city: deal.city,
@@ -161,7 +164,9 @@ function DealCard({ deal, featured = false }: { deal: Deal; featured?: boolean }
         cta_text: ctaLabel,
         outbound_url: deal.affiliateReadyUrl,
         page_path: window.location.pathname
-      });
+      };
+      window.gtag?.("event", "event_click", eventPayload);
+      trackClarityEvent("event_click", eventPayload);
     }
   }
 
@@ -246,10 +251,13 @@ export default function DealExplorer() {
 
   function handleFilterClick(filter: string) {
     setActiveFilter(filter);
-    window.gtag?.("event", "filter_click", {
+    const payload = {
       site: "localdealsflorida.org",
-      filter
-    });
+      filter,
+      page_path: window.location.pathname
+    };
+    window.gtag?.("event", "filter_click", payload);
+    trackClarityEvent("filter_click", payload);
   }
 
   const filteredDeals = useMemo(() => {

@@ -1,6 +1,7 @@
 "use client";
 
 import { Compass, Hotel, Plane, Sailboat } from "lucide-react";
+import { trackClarityEvent } from "../../lib/clarity";
 
 export default function FloridaGetawayBlock() {
   const links = [
@@ -22,6 +23,8 @@ export default function FloridaGetawayBlock() {
 
     window.gtag?.("event", "navigation_click", payload);
     window.gtag?.("event", "network_site_click", payload);
+    trackClarityEvent("navigation_click", payload);
+    trackClarityEvent("network_site_click", payload);
   }
 
   return (

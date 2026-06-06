@@ -2,6 +2,7 @@
 
 import { Mail, ShieldCheck } from "lucide-react";
 import { useState } from "react";
+import { trackClarityEvent } from "../../lib/clarity";
 
 export default function NewsletterForm() {
   const [email, setEmail] = useState("");
@@ -31,6 +32,7 @@ export default function NewsletterForm() {
       event: "newsletter_signup_started",
       ...startedPayload
     });
+    trackClarityEvent("newsletter_signup_started", startedPayload);
 
     try {
       const response = await fetch("/api/newsletter", {
@@ -61,6 +63,7 @@ export default function NewsletterForm() {
         event: "newsletter_signup_success",
         ...successPayload
       });
+      trackClarityEvent("newsletter_signup_success", successPayload);
     } catch (error) {
       setStatus("error");
       setMessage(error instanceof Error ? error.message : "We couldn't save your signup. Please try again.");

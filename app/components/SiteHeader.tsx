@@ -1,6 +1,7 @@
 "use client";
 
 import { Bell } from "lucide-react";
+import { trackClarityEvent } from "../../lib/clarity";
 
 const navItems = [
   { label: "Flights", href: "https://flightdealsflorida.org" },
@@ -29,6 +30,7 @@ function trackNavigation(label: string, href: string) {
     event: "navigation_click",
     ...payload
   });
+  trackClarityEvent("navigation_click", payload);
 
   if (href.startsWith("https://")) {
     window.gtag?.("event", "network_site_click", payload);
@@ -36,6 +38,7 @@ function trackNavigation(label: string, href: string) {
       event: "network_site_click",
       ...payload
     });
+    trackClarityEvent("network_site_click", payload);
   }
 }
 
