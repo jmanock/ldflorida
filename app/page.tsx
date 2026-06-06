@@ -8,6 +8,7 @@ import SisterSitesSection from "./components/SisterSitesSection";
 import SiteFooter from "./components/SiteFooter";
 import SiteHeader from "./components/SiteHeader";
 import deals from "../data/deals.json";
+import weekendContent from "../data/weekend-content.json";
 
 const crossPromos = [
   {
@@ -60,6 +61,16 @@ const weeklySearches = [
   { title: "Florida Restaurant Deals", href: "/florida-restaurant-deals", type: "Food & drink", bestFor: "Food & Drink", text: "Dining specials, food events, brunch, and local finds." },
   { title: "Florida Free Things To Do", href: "/florida-free-things-to-do", type: "Budget guide", bestFor: "Free / Low-Cost", text: "Beaches, parks, free events, and budget-friendly ideas." },
   { title: "Florida Date Night Deals", href: "/florida-date-night-deals", type: "Local experiences", bestFor: "Date Night", text: "Restaurants, shows, nightlife, and local experiences." }
+];
+const popularDestinations = [
+  { title: "Orlando", href: "/orlando-local-deals", image: "https://images.unsplash.com/photo-1597466599360-3b9775841aec?auto=format&fit=crop&w=800&q=78", alt: "Orlando attraction skyline" },
+  { title: "Miami", href: "/miami-local-deals", image: "https://images.unsplash.com/photo-1535498730771-e735b998cd64?auto=format&fit=crop&w=800&q=78", alt: "Miami waterfront skyline" },
+  { title: "Tampa", href: "/tampa-local-deals", image: "https://images.unsplash.com/photo-1559410545-0bdcd187e0a6?auto=format&fit=crop&w=800&q=78", alt: "Tampa waterfront" },
+  { title: "Key West", href: "/key-west-local-deals", image: "https://images.unsplash.com/photo-1543349689-9a4d426bee8e?auto=format&fit=crop&w=800&q=78", alt: "Key West tropical coast" },
+  { title: "Clearwater", href: "/clearwater-local-deals", image: "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=800&q=78", alt: "Clearwater Gulf beach" },
+  { title: "Destin", href: "/destin-local-deals", image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=78", alt: "Destin beach" },
+  { title: "Sarasota", href: "/sarasota-local-deals", image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=78", alt: "Sarasota Gulf Coast" },
+  { title: "Naples", href: "/naples-local-deals", image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=78", alt: "Naples resort and coast" }
 ];
 
 const cityClusters = [
@@ -243,7 +254,7 @@ export default function Home() {
               Find restaurant specials, things to do, weekend events, attractions, and hidden local deals near you.
             </p>
             <p className="mt-4 text-sm font-black uppercase tracking-[0.14em] text-[#087f8c]">
-              Updated: May 2026 · New deals added regularly · Check back for weekend updates
+              Updated: June 2026 · New deals added regularly · Check back for weekend updates
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row">
               <a
@@ -314,6 +325,55 @@ export default function Home() {
       </section>
 
       <DealExplorer />
+
+      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+        <div className="max-w-3xl">
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Popular Florida Destinations</p>
+          <h2 className="mt-2 text-3xl font-black text-[#163235]">Choose a city, then build the day</h2>
+        </div>
+        <div className="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {popularDestinations.map((destination) => (
+            <Link className="group overflow-hidden rounded-[24px] border border-[#d8e6e3] bg-white shadow-lg shadow-[#087f8c]/8 transition hover:-translate-y-1 hover:shadow-xl" href={destination.href} key={destination.href}>
+              <FallbackImage alt={destination.alt} className="aspect-[16/10] w-full object-cover transition duration-300 group-hover:scale-[1.03]" loading="lazy" src={destination.image} />
+              <div className="p-4">
+                <h3 className="text-lg font-black text-[#163235]">{destination.title}</h3>
+                <span className="mt-2 inline-flex items-center gap-2 text-sm font-black text-[#087f8c]">Explore local deals <ArrowRight size={15} /></span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:px-8">
+        <div className="grid gap-5 lg:grid-cols-3">
+          {[
+            { eyebrow: "Trending This Weekend", title: "Make a current weekend plan", items: weekendContent.slice(0, 3) },
+            { eyebrow: "Free Things To Do", title: "Spend less without wasting the day", items: [
+              { title: "Free Things To Do in Florida", description: "Beaches, parks, markets, and public events.", url: "/florida-free-things-to-do" },
+              { title: "Free Family Activities", description: "Budget-friendly ideas for families.", url: "/free-family-activities-florida" },
+              { title: "Cheap Things To Do", description: "Affordable attractions and local plans.", url: "/cheap-things-to-do-in-florida" }
+            ] },
+            { eyebrow: "Florida Events", title: "Find seasonal and local calendars", items: [
+              { title: "Florida Weekend Events", description: "Festivals, markets, and shows.", url: "/florida-weekend-events" },
+              { title: "Summer Events Florida", description: "Evening programs and family fun.", url: "/summer-events-florida" },
+              { title: "Florida Keys Local Events", description: "Island festivals and calendars.", url: "/florida-keys-local-events" }
+            ] }
+          ].map((section) => (
+            <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8" key={section.eyebrow}>
+              <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">{section.eyebrow}</p>
+              <h2 className="mt-2 text-2xl font-black text-[#163235]">{section.title}</h2>
+              <div className="mt-5 grid gap-3">
+                {section.items.map((item) => (
+                  <Link className="rounded-2xl bg-[#f8fbf7] p-4 transition hover:bg-[#eef6f5]" href={item.url} key={item.url}>
+                    <h3 className="font-black text-[#163235]">{item.title}</h3>
+                    <p className="mt-1 text-sm font-semibold leading-6 text-[#52686b]">{item.description}</p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="max-w-3xl">

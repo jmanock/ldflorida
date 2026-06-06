@@ -21,6 +21,17 @@ export type LandingPageConfig = {
     bestFor: string;
     watchFor: string;
   }[];
+  gallery?: {
+    src: string;
+    alt: string;
+    caption: string;
+  }[];
+  hubStories?: {
+    title: string;
+    excerpt: string;
+    href: string;
+    image: string;
+  }[];
 };
 
 type V7LocalSeed = [string, string, string, string, string, string, string, string, string[], string[]];
@@ -85,13 +96,111 @@ const v7LocalProgrammaticPages: LandingPageConfig[] = ([
   planningTips: ["Confirm current hours.", "Check weather and parking.", "Keep one flexible backup nearby."]
 }));
 
+type V11Cluster = "city" | "weekend" | "free" | "family" | "keys" | "seasonal";
+type V11Seed = [string, string, string, string, V11Cluster];
+
+const v11Seeds: V11Seed[] = [
+  ["sarasota-local-deals", "Sarasota Local Deals: Beaches, Arts & Weekend Ideas (2026)", "Compare Sarasota local deals, beaches, arts, family activities, restaurants, events, and current Gulf Coast offers.", "Sarasota Local Deals", "city"],
+  ["panama-city-beach-local-deals", "Panama City Beach Local Deals: Beaches, Family Fun & Events", "Find Panama City Beach local deals, family activities, beach ideas, restaurants, events, and current offers.", "Panama City Beach Local Deals", "city"],
+  ["fort-myers-local-deals", "Fort Myers Local Deals: Beaches, Events & Family Activities", "Find Fort Myers local deals, beaches, family activities, restaurants, events, and Southwest Florida ideas.", "Fort Myers Local Deals", "city"],
+  ["gainesville-local-deals", "Gainesville Local Deals: Events, Food & Outdoor Activities", "Find Gainesville local deals, restaurants, university events, outdoor activities, family ideas, and current offers.", "Gainesville Local Deals", "city"],
+  ["amelia-island-local-deals", "Amelia Island Local Deals: Beaches, Dining & Weekend Ideas", "Find Amelia Island local deals, beaches, restaurants, family activities, events, and Northeast Florida weekend ideas.", "Amelia Island Local Deals", "city"],
+  ["pensacola-local-deals", "Pensacola Local Deals: Beaches, Events & Family Activities", "Find Pensacola local deals, beaches, museums, family activities, restaurants, events, and current offers.", "Pensacola Local Deals", "city"],
+  ["cocoa-beach-local-deals", "Cocoa Beach Local Deals: Beaches, Space Coast & Family Fun", "Find Cocoa Beach local deals, beaches, Space Coast attractions, family activities, restaurants, and weekend ideas.", "Cocoa Beach Local Deals", "city"],
+  ["things-to-do-in-florida-this-weekend", "Things To Do in Florida This Weekend: Events & Local Ideas", "Find things to do in Florida this weekend including events, beaches, family activities, free ideas, dining, and city guides.", "Things To Do in Florida This Weekend", "weekend"],
+  ["things-to-do-in-orlando-this-weekend", "Things To Do in Orlando This Weekend: Events & Family Fun", "Find things to do in Orlando this weekend including attractions, events, family activities, dining, and free ideas.", "Things To Do in Orlando This Weekend", "weekend"],
+  ["things-to-do-in-miami-this-weekend", "Things To Do in Miami This Weekend: Events, Food & Beaches", "Find things to do in Miami this weekend including events, beaches, restaurants, arts, nightlife, and local deals.", "Things To Do in Miami This Weekend", "weekend"],
+  ["things-to-do-in-tampa-this-weekend", "Things To Do in Tampa This Weekend: Events & Waterfront Ideas", "Find things to do in Tampa this weekend including events, restaurants, family activities, waterfront plans, and local deals.", "Things To Do in Tampa This Weekend", "weekend"],
+  ["things-to-do-in-jacksonville-this-weekend", "Things To Do in Jacksonville This Weekend: Events & Family Ideas", "Find things to do in Jacksonville this weekend including events, beaches, markets, family activities, and local deals.", "Things To Do in Jacksonville This Weekend", "weekend"],
+  ["things-to-do-in-key-west-this-weekend", "Things To Do in Key West This Weekend: Events & Island Ideas", "Find things to do in Key West this weekend including events, sunset plans, restaurants, water activities, and local deals.", "Things To Do in Key West This Weekend", "weekend"],
+  ["florida-weekend-events", "Florida Weekend Events: Festivals, Markets & Shows (2026)", "Find Florida weekend events including festivals, markets, shows, waterfront programs, family activities, and city calendars.", "Florida Weekend Events", "weekend"],
+  ["florida-weekend-getaways", "Florida Weekend Getaways: 25 Easy Trips & Local Ideas", "Plan Florida weekend getaways with beaches, cities, family activities, events, restaurants, hotels, and local deals.", "Florida Weekend Getaways", "weekend"],
+  ["free-things-to-do-in-jacksonville", "Free Things To Do in Jacksonville: Parks, Beaches & Markets", "Find free things to do in Jacksonville including parks, beaches, markets, museums, family ideas, and current events.", "Free Things To Do in Jacksonville", "free"],
+  ["free-things-to-do-in-key-west", "Free Things To Do in Key West: Sunset, Walks & Island Ideas", "Find free things to do in Key West including sunset spots, walks, beaches, historic areas, and budget island plans.", "Free Things To Do in Key West", "free"],
+  ["free-things-to-do-in-clearwater", "Free Things To Do in Clearwater: Beaches, Sunsets & Family Ideas", "Find free things to do in Clearwater including beaches, sunsets, parks, family activities, and Gulf Coast ideas.", "Free Things To Do in Clearwater", "free"],
+  ["free-things-to-do-in-destin", "Free Things To Do in Destin: Beaches, Harbor & Family Ideas", "Find free things to do in Destin including beaches, harbor walks, parks, family activities, and Panhandle ideas.", "Free Things To Do in Destin", "free"],
+  ["free-things-to-do-in-sarasota", "Free Things To Do in Sarasota: Beaches, Arts & Parks", "Find free things to do in Sarasota including beaches, arts, parks, family activities, and Gulf Coast events.", "Free Things To Do in Sarasota", "free"],
+  ["free-family-activities-florida", "30 Free Family Activities in Florida for Budget-Friendly Days", "Find free family activities in Florida including beaches, parks, museums, markets, events, and easy local ideas.", "Free Family Activities Florida", "free"],
+  ["cheap-things-to-do-in-florida", "40 Cheap Things To Do in Florida for Families & Travelers", "Find cheap things to do in Florida including attractions, beaches, museums, events, family ideas, and local deals.", "Cheap Things To Do in Florida", "free"],
+  ["family-weekend-trips-florida", "20 Family Weekend Trips in Florida for Easy 2026 Getaways", "Plan family weekend trips in Florida with beaches, attractions, cities, activities, hotels, and budget-friendly ideas.", "Family Weekend Trips Florida", "family"],
+  ["rainy-day-activities-florida", "25 Rainy Day Activities in Florida for Families & Travelers", "Find rainy day activities in Florida including museums, aquariums, indoor attractions, shows, dining, and family ideas.", "Rainy Day Activities Florida", "family"],
+  ["best-family-attractions-florida", "25 Best Family Attractions in Florida Beyond the Theme Parks", "Compare the best family attractions in Florida including museums, aquariums, wildlife, beaches, parks, and local deals.", "Best Family Attractions Florida", "family"],
+  ["kid-friendly-activities-florida", "40 Kid-Friendly Activities in Florida for Fun Family Days", "Find kid-friendly activities in Florida including attractions, beaches, museums, parks, events, and affordable ideas.", "Kid-Friendly Activities Florida", "family"],
+  ["best-playgrounds-florida", "20 Best Playgrounds in Florida for Free Family Fun", "Find the best playgrounds in Florida with parks, splash areas, family day trips, nearby activities, and planning tips.", "Best Playgrounds Florida", "family"],
+  ["family-day-trips-from-orlando", "15 Family Day Trips From Orlando Beyond the Theme Parks", "Plan family day trips from Orlando with beaches, springs, museums, nearby cities, activities, and local deals.", "Family Day Trips From Orlando", "family"],
+  ["family-day-trips-from-tampa", "15 Family Day Trips From Tampa: Beaches, Springs & Cities", "Plan family day trips from Tampa with beaches, springs, museums, nearby cities, activities, and local deals.", "Family Day Trips From Tampa", "family"],
+  ["family-day-trips-from-miami", "15 Family Day Trips From Miami: Keys, Beaches & Nature", "Plan family day trips from Miami with the Keys, beaches, nature, museums, nearby cities, and local deals.", "Family Day Trips From Miami", "family"],
+  ["budget-family-vacations-florida", "15 Budget Family Vacations in Florida With Affordable Activities", "Plan budget family vacations in Florida with affordable hotels, free activities, beaches, attractions, and local deals.", "Budget Family Vacations Florida", "family"],
+  ["florida-keys-special-offers", "Florida Keys Special Offers: Hotels, Activities & Island Deals", "Compare Florida Keys special offers, hotel ideas, activities, family plans, events, and current island deals.", "Florida Keys Special Offers", "keys"],
+  ["florida-keys-weekend-deals", "Florida Keys Weekend Deals: Island Activities & Local Offers", "Find Florida Keys weekend deals, activities, restaurants, events, hotels, and current island offers.", "Florida Keys Weekend Deals", "keys"],
+  ["florida-keys-family-activities", "20 Florida Keys Family Activities for Easy Island Days", "Find Florida Keys family activities including beaches, nature, museums, water activities, events, and local deals.", "Florida Keys Family Activities", "keys"],
+  ["florida-keys-travel-guide", "Florida Keys Travel Guide: Activities, Deals & Island Planning", "Plan a Florida Keys trip with activities, local deals, hotels, events, family ideas, and island travel tips.", "Florida Keys Travel Guide", "keys"],
+  ["florida-keys-discounts", "Florida Keys Discounts: Activities, Attractions & Local Deals", "Find Florida Keys discounts, attraction offers, activity deals, hotel ideas, events, and island planning tips.", "Florida Keys Discounts", "keys"],
+  ["best-florida-keys-attractions", "20 Best Florida Keys Attractions for Island Trips (2026)", "Compare the best Florida Keys attractions including nature, beaches, museums, water activities, and local deals.", "Best Florida Keys Attractions", "keys"],
+  ["florida-keys-local-events", "Florida Keys Local Events: Festivals, Markets & Island Calendars", "Find Florida Keys local events including festivals, markets, arts, family activities, and current island calendars.", "Florida Keys Local Events", "keys"],
+  ["summer-events-florida", "30 Summer Events in Florida: Festivals, Nights & Family Fun", "Find summer events in Florida including festivals, evening programs, family activities, markets, and city calendars.", "Summer Events Florida", "seasonal"],
+  ["fall-events-florida", "25 Fall Events in Florida: Festivals, Food & Family Fun", "Find fall events in Florida including festivals, food events, markets, family activities, and city calendars.", "Fall Events Florida", "seasonal"],
+  ["winter-events-florida", "25 Winter Events in Florida: Festivals, Holidays & Outdoor Fun", "Find winter events in Florida including festivals, holiday programs, markets, family activities, and city calendars.", "Winter Events Florida", "seasonal"],
+  ["spring-events-florida", "25 Spring Events in Florida: Festivals, Beaches & Family Fun", "Find spring events in Florida including festivals, beach programs, markets, family activities, and city calendars.", "Spring Events Florida", "seasonal"],
+  ["fourth-of-july-events-florida", "Fourth of July Events in Florida: Fireworks & Family Fun", "Find Fourth of July events in Florida including fireworks, festivals, waterfront programs, and family activities.", "Fourth of July Events Florida", "seasonal"],
+  ["halloween-events-florida", "Halloween Events in Florida: Family Fun, Festivals & Nights Out", "Find Halloween events in Florida including family activities, festivals, haunted attractions, and city calendars.", "Halloween Events Florida", "seasonal"],
+  ["christmas-events-florida", "Christmas Events in Florida: Lights, Markets & Family Fun", "Find Christmas events in Florida including lights, markets, parades, festivals, and family activities.", "Christmas Events Florida", "seasonal"],
+  ["new-years-events-florida", "New Year's Events in Florida: Fireworks, Parties & Family Fun", "Find New Year's events in Florida including fireworks, celebrations, family activities, dining, and city calendars.", "New Year's Events Florida", "seasonal"],
+  ["spring-break-events-florida", "Spring Break Events in Florida: Beaches, Festivals & Family Ideas", "Find spring break events in Florida including beaches, festivals, family activities, nightlife, and city calendars.", "Spring Break Events Florida", "seasonal"]
+];
+
+const v11ClusterConfig = {
+  city: { image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=82", deals: ["visit-florida-outdoor-adventure", "visit-florida-beach-guide", "naples-events-calendar"], related: ["florida-weekend-deals", "florida-family-deals", "florida-free-things-to-do"] },
+  weekend: { image: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1600&q=82", deals: ["st-pete-pier-events", "las-olas-events", "daytona-beach-events"], related: ["florida-weekend-deals", "florida-event-deals", "best-florida-weekend-activities"] },
+  free: { image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=82", deals: ["jaxparks-free-events", "st-pete-pier-events", "cummer-museum-free-admission"], related: ["florida-free-things-to-do", "best-free-things-to-do-in-florida", "florida-family-deals"] },
+  family: { image: "https://images.unsplash.com/photo-1597466599360-3b9775841aec?auto=format&fit=crop&w=1600&q=82", deals: ["orlando-budget-things-to-do", "clearwater-marine-aquarium-visit", "jaxparks-free-events"], related: ["florida-family-deals", "best-family-activities-in-florida", "florida-weekend-deals"] },
+  keys: { image: "https://images.unsplash.com/photo-1543349689-9a4d426bee8e?auto=format&fit=crop&w=1600&q=82", deals: ["key-west-fantasy-fest-events", "visit-florida-beach-guide", "visit-florida-outdoor-adventure"], related: ["key-west-local-deals", "things-to-do-in-key-west", "florida-water-activities"] },
+  seasonal: { image: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1600&q=82", deals: ["st-pete-pier-events", "las-olas-events", "naples-events-calendar"], related: ["florida-event-deals", "florida-local-events-guide", "florida-weekend-deals"] }
+};
+
+const v11Gallery = [
+  { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80", alt: "Florida beach activity", caption: "Use weather and access details to shape the day." },
+  { src: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80", alt: "Florida local event", caption: "Confirm current schedules with the official source." },
+  { src: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80", alt: "Florida outdoor local activity", caption: "Keep one flexible nearby backup in the plan." }
+];
+
+const v11HubStories = [
+  { title: "Florida Weekend Getaways", excerpt: "Build an easy Florida weekend around destinations, activities, and places to stay.", href: "https://floridadealshub.com/florida-weekend-getaways", image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=75" },
+  { title: "Best Places To Visit in Florida", excerpt: "Compare Florida destinations before choosing where to spend the day or weekend.", href: "https://floridadealshub.com/best-places-to-visit-in-florida", image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=75" },
+  { title: "Florida Family Vacation Guide", excerpt: "Pair local activities with family-friendly destinations and practical trip planning.", href: "https://floridadealshub.com/florida-family-vacation-guide", image: "https://images.unsplash.com/photo-1597466599360-3b9775841aec?auto=format&fit=crop&w=700&q=75" }
+];
+
+const v11Pages: LandingPageConfig[] = v11Seeds.map(([slug, title, description, h1, cluster]) => {
+  const config = v11ClusterConfig[cluster];
+  return {
+    slug, title, description, h1,
+    eyebrow: cluster === "seasonal" ? "Seasonal Florida events" : cluster === "city" ? "Florida city local deals" : `${cluster} activity guide`,
+    intro: `${h1} helps locals and travelers compare practical activities, current source pages, and nearby trip ideas before making plans.`,
+    image: config.image,
+    imageAlt: `${h1} visual guide`,
+    dealIds: config.deals,
+    relatedSlugs: config.related.filter((item) => item !== slug),
+    pageType: "guide",
+    gallery: v11Gallery.map((image) => ({ ...image, alt: `${h1}: ${image.alt}` })),
+    hubStories: v11HubStories,
+    localContext: ["Local attractions, events, family activities, and restaurant ideas.", "Seasonal highlights and free or low-cost options when relevant.", "Nearby hotels, flights, cruises, and Florida Deals Hub planning links."],
+    guideSections: [
+      { heading: `How to plan ${h1.toLowerCase()}`, body: "Start with the destination, weather, group needs, budget, and travel time. Confirm official hours, event dates, parking, tickets, and reservation rules before leaving." },
+      { heading: "Seasonal highlights and local events", body: "Florida activities change with weather, school calendars, holidays, festivals, and venue schedules. Use official calendars for the latest details." },
+      { heading: "Restaurants, family activities, and nearby stays", body: "Pair one main attraction or event with a nearby restaurant, family-friendly backup, or hotel when the local day becomes an overnight trip." }
+    ],
+    planningTips: ["Confirm current details.", "Keep travel time realistic.", "Pair one anchor activity with a flexible backup."]
+  };
+});
+
 export const landingPages: LandingPageConfig[] = [
   ...v7LocalProgrammaticPages,
+  ...v11Pages,
   {
     slug: "orlando-local-deals",
-    title: "Orlando Local Deals | Attractions, Events & Family Activities",
+    title: "Orlando Local Deals (2026): Attractions, Activities & Discounts",
     description:
-      "Explore Orlando local deals including attractions, restaurants, family activities, events, and Florida weekend ideas.",
+      "Find Orlando local deals, activity discounts, attractions, restaurants, family activities, events, and current 2026 weekend ideas.",
     h1: "Orlando Local Deals",
     eyebrow: "Central Florida local finds",
     intro:
@@ -324,9 +433,9 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "florida-free-things-to-do",
-    title: "Free Things To Do In Florida | Beaches, Parks & Local Activities",
+    title: "50 Free Things To Do in Florida for Families & Travelers",
     description:
-      "Discover free things to do in Florida including beaches, parks, family activities, outdoor attractions, and local experiences.",
+      "Discover 50 free things to do in Florida including beaches, parks, family activities, outdoor attractions, events, and local experiences.",
     h1: "Free Things To Do In Florida",
     eyebrow: "Free and low-cost local finds",
     intro:
@@ -503,9 +612,9 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "key-west-local-deals",
-    title: "Key West Local Deals | Events, Tours & Island Things To Do",
+    title: "Key West Local Deals & Florida Keys Specials (2026)",
     description:
-      "Find Key West local deals and activity ideas including island tours, festivals, waterfront experiences, nightlife, museums, and free things to do.",
+      "Find Key West local deals, Florida Keys specials, island tours, festivals, waterfront experiences, nightlife, and free things to do.",
     h1: "Key West Local Deals",
     eyebrow: "Island activities and local events",
     intro:
@@ -771,9 +880,9 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "florida-outdoor-activities",
-    title: "Florida Outdoor Activities | Parks, Springs, Trails & Local Ideas",
+    title: "25 Best Outdoor Activities in Florida (2026 Guide)",
     description:
-      "Explore Florida outdoor activities including parks, beaches, springs, trails, paddling, wildlife viewing, and local activity ideas across the state.",
+      "Explore 25 of the best outdoor activities in Florida including parks, beaches, springs, trails, paddling, wildlife, and local ideas.",
     h1: "Florida Outdoor Activities",
     eyebrow: "Parks, trails, water, and wildlife",
     intro:
@@ -894,9 +1003,9 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "best-florida-weekend-activities",
-    title: "Best Florida Weekend Activities | Events, Beaches & Local Plans",
+    title: "50 Fun Florida Weekend Activities for Families & Travelers",
     description:
-      "Plan Florida weekend activities with local events, beaches, attractions, markets, restaurants, free things to do, and family-friendly ideas.",
+      "Plan 50 fun Florida weekend activities with events, beaches, attractions, markets, restaurants, free things to do, and family ideas.",
     h1: "Best Florida Weekend Activities",
     eyebrow: "Weekend activity guide",
     intro:
@@ -1482,7 +1591,7 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "florida-local-events-guide",
-    title: "Florida Local Events Guide | Festivals, Markets & Weekend Ideas",
+    title: "Florida Local Events Guide (2026): Festivals, Markets & Weekends",
     description:
       "Find Florida local events including festivals, markets, concerts, museum events, family activities, city calendars, and weekend things to do.",
     h1: "Florida Local Events Guide",

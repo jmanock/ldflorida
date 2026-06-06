@@ -14,7 +14,17 @@ import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
 
 const baseUrl = "https://localdealsflorida.org";
-const freshnessNote = "Updated: May 2026 • Local offers and events may change • Confirm details with the official source";
+const freshnessNote = "Updated: June 2026 • Local offers and events may change • Confirm details with the official source";
+const defaultGallery = [
+  { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80", alt: "Florida beach activity", caption: "Compare weather, parking, and access before heading out." },
+  { src: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80", alt: "Florida local event", caption: "Confirm current event schedules with the official source." },
+  { src: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80", alt: "Florida outdoor activity", caption: "Keep a flexible nearby backup in the day plan." }
+];
+const defaultHubStories = [
+  { title: "Florida Weekend Getaways", excerpt: "Build an easy Florida weekend around destinations, activities, and places to stay.", href: "https://floridadealshub.com/florida-weekend-getaways", image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=75" },
+  { title: "Best Places To Visit in Florida", excerpt: "Compare Florida destinations before choosing where to spend the day or weekend.", href: "https://floridadealshub.com/best-places-to-visit-in-florida", image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=75" },
+  { title: "Florida Family Vacation Guide", excerpt: "Pair local activities with family-friendly destinations and practical trip planning.", href: "https://floridadealshub.com/florida-family-vacation-guide", image: "https://images.unsplash.com/photo-1597466599360-3b9775841aec?auto=format&fit=crop&w=700&q=75" }
+];
 const evergreenSearches = [
   { label: "Orlando Local Deals", href: "/orlando-local-deals" },
   { label: "Miami Weekend Deals", href: "/miami-weekend-deals" },
@@ -241,6 +251,8 @@ export default async function LandingPage({ params }: PageProps) {
   }
 
   const pageDeals = getDealsForPage(page.dealIds);
+  const gallery = page.gallery ?? defaultGallery;
+  const hubStories = page.hubStories ?? defaultHubStories;
   const gearPicks = shouldShowOutdoorGear(page) ? getPiscifunGearPicks() : [];
   const topDeals = pageDeals.slice(0, 3);
   const guideSections = page.guideSections ?? [];
@@ -423,6 +435,21 @@ export default async function LandingPage({ params }: PageProps) {
         </div>
       </section>
 
+      <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+        <div className="max-w-3xl">
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Destination gallery</p>
+          <h2 className="mt-2 text-3xl font-black text-[#163235]">See the kinds of local plans this guide supports</h2>
+        </div>
+        <div className="mt-7 grid gap-5 md:grid-cols-3">
+          {gallery.map((image) => (
+            <figure className="overflow-hidden rounded-[24px] border border-[#d8e6e3] bg-white shadow-lg shadow-[#087f8c]/8" key={image.src}>
+              <FallbackImage alt={image.alt} className="aspect-[4/3] w-full object-cover" loading="lazy" src={image.src} />
+              <figcaption className="p-4 text-sm font-bold leading-6 text-[#52686b]">{image.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Top Local Deals Right Now</p>
@@ -491,6 +518,25 @@ export default async function LandingPage({ params }: PageProps) {
       ) : null}
 
       <FloridaGetawayBlock />
+
+      <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+        <div className="max-w-3xl">
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Related Florida Travel Stories</p>
+          <h2 className="mt-2 text-3xl font-black text-[#163235]">Keep planning with Florida Deals Hub</h2>
+        </div>
+        <div className="mt-7 grid gap-5 md:grid-cols-3">
+          {hubStories.map((story) => (
+            <a className="group overflow-hidden rounded-[24px] border border-[#d8e6e3] bg-white shadow-lg shadow-[#087f8c]/8 transition hover:-translate-y-1 hover:shadow-xl" href={story.href} key={story.href}>
+              <FallbackImage alt={`${story.title} Florida travel story`} className="aspect-[16/10] w-full object-cover transition duration-300 group-hover:scale-[1.03]" loading="lazy" src={story.image} />
+              <div className="p-5">
+                <h3 className="text-lg font-black text-[#163235]">{story.title}</h3>
+                <p className="mt-2 text-sm font-semibold leading-6 text-[#52686b]">{story.excerpt}</p>
+                <span className="mt-4 inline-flex text-sm font-black text-[#087f8c]">Read travel story</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
 
       {gearPicks.length ? (
         <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">

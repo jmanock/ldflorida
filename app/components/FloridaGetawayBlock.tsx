@@ -23,8 +23,10 @@ export default function FloridaGetawayBlock() {
 
     window.gtag?.("event", "navigation_click", payload);
     window.gtag?.("event", "network_site_click", payload);
+    window.gtag?.("event", "local_affiliate_click", payload);
     trackClarityEvent("navigation_click", payload);
     trackClarityEvent("network_site_click", payload);
+    trackClarityEvent("local_affiliate_click", payload);
   }
 
   return (

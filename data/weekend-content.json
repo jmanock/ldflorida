@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Florida weekend events",
+    "description": "Markets, festivals, shows, waterfront programs, and city calendars to verify before heading out.",
+    "url": "/florida-weekend-events",
+    "destination": "Florida",
+    "category": "Events",
+    "label": "Trending this weekend",
+    "lastUpdated": "June 2026"
+  },
+  {
+    "title": "Things to do in Orlando this weekend",
+    "description": "Theme park extras, local attractions, family activities, and Central Florida event ideas.",
+    "url": "/things-to-do-in-orlando-this-weekend",
+    "destination": "Orlando",
+    "category": "Weekend activities",
+    "label": "Weekend idea",
+    "lastUpdated": "June 2026"
+  },
+  {
+    "title": "Things to do in Miami this weekend",
+    "description": "Beach plans, arts, dining, events, and waterfront ideas around Miami.",
+    "url": "/things-to-do-in-miami-this-weekend",
+    "destination": "Miami",
+    "category": "Weekend activities",
+    "label": "Weekend idea",
+    "lastUpdated": "June 2026"
+  },
+  {
+    "title": "Free things to do in Florida",
+    "description": "Parks, beaches, markets, public events, and budget-friendly local plans.",
+    "url": "/florida-free-things-to-do",
+    "destination": "Florida",
+    "category": "Free activities",
+    "label": "Popular Florida search",
+    "lastUpdated": "June 2026"
+  }
+]
