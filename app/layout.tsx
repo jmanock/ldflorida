@@ -23,9 +23,9 @@ const websiteSchema = {
 };
 
 export const metadata: Metadata = {
-  title: "Local Deals Florida | Attractions, Events & Things To Do",
+  title: "Things To Do In Florida: Local Events, Attractions & Weekend Ideas",
   description:
-    "Discover Florida local deals, attractions, restaurants, events, family activities, date night ideas, free things to do, and weekend plans.",
+    "Find things to do in Florida including local events, attractions, restaurants, family activities, date night ideas, free outings, and weekend plans.",
   keywords: [
     "Florida local deals",
     "restaurants deals Florida",
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
     "Fort Lauderdale deals"
   ],
   openGraph: {
-    title: "Local Deals Florida | Attractions, Events & Things To Do",
+    title: "Things To Do In Florida: Local Events, Attractions & Weekend Ideas",
     description:
-      "Discover Florida local deals, attractions, restaurants, events, family activities, date night ideas, free things to do, and weekend plans.",
+      "Find Florida events, attractions, restaurants, family activities, free outings, and weekend ideas.",
     type: "website",
     locale: "en_US",
     siteName: "Local Deals Florida",

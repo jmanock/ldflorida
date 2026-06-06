@@ -1515,10 +1515,10 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "orlando-things-to-do",
-    title: "Things To Do In Orlando | Attractions, Family Activities & Local Deals",
+    title: "Things To Do In Orlando: Theme Parks, Free Activities & Weekend Ideas",
     description:
-      "Explore things to do in Orlando including attractions, family activities, restaurants, theme park areas, weekend ideas, and local deals.",
-    h1: "Things To Do In Orlando",
+      "Explore things to do in Orlando including theme parks, free activities, family attractions, restaurants, rainy-day plans, and weekend ideas.",
+    h1: "Things To Do In Orlando For Families, Weekends And Free Time",
     eyebrow: "Orlando city guide",
     intro:
       "Orlando is Florida's biggest attraction hub, but the city also works for family activities, free ideas, restaurant districts, rainy-day plans, events, shopping, and budget-friendly local discoveries.",
