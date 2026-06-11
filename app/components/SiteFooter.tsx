@@ -4,23 +4,22 @@ import Link from "next/link";
 import { trackClarityEvent } from "../../lib/clarity";
 
 const cityLinks = [
-  { label: "Orlando Local Deals", href: "/orlando-local-deals" },
-  { label: "Miami Local Deals", href: "/miami-local-deals" },
-  { label: "Tampa Local Deals", href: "/tampa-local-deals" },
-  { label: "Fort Lauderdale Local Deals", href: "/fort-lauderdale-local-deals" },
-  { label: "Jacksonville Local Deals", href: "/jacksonville-local-deals" },
-  { label: "St. Augustine Local Deals", href: "/st-augustine-local-deals" },
-  { label: "Daytona Beach Local Deals", href: "/daytona-beach-local-deals" }
+  { label: "Things To Do In Orlando", href: "/things-to-do-in-orlando" },
+  { label: "Things To Do In Miami", href: "/things-to-do-in-miami" },
+  { label: "Things To Do In Tampa", href: "/things-to-do-in-tampa" },
+  { label: "Things To Do In Key West", href: "/things-to-do-in-key-west" },
+  { label: "Port Canaveral Activities", href: "/things-to-do-near-port-canaveral" },
+  { label: "St. Augustine Things To Do", href: "/things-to-do-in-st-augustine" }
 ];
 
 const categoryLinks = [
-  { label: "Florida Restaurant Deals", href: "/florida-restaurant-deals" },
-  { label: "Florida Attraction Deals", href: "/florida-attraction-deals" },
-  { label: "Florida Event Deals", href: "/florida-event-deals" },
-  { label: "Florida Family Deals", href: "/florida-family-deals" },
-  { label: "Florida Weekend Deals", href: "/florida-weekend-deals" },
-  { label: "Florida Free Things To Do", href: "/florida-free-things-to-do" },
-  { label: "Florida Date Night Deals", href: "/florida-date-night-deals" }
+  { label: "Disney World Guide", href: "/disney-world-guide" },
+  { label: "Universal Orlando Guide", href: "/universal-orlando-guide" },
+  { label: "Disney vs Universal", href: "/disney-vs-universal" },
+  { label: "Everglades Airboat Tours", href: "/everglades-airboat-tours" },
+  { label: "Miami Boat Tours", href: "/miami-boat-tours" },
+  { label: "Key West Sunset Cruises", href: "/key-west-sunset-cruises" },
+  { label: "Free Things To Do", href: "/free-things-to-do-in-florida" }
 ];
 
 const networkLinks = [
@@ -73,7 +72,7 @@ export default function SiteFooter() {
         <div>
           <p className="text-xl font-black">Local Deals Florida</p>
           <p className="mt-3 max-w-md leading-7 text-[#52686b]">
-            Local, useful, everyday Florida deals for restaurants, events, attractions, hidden gems, and things to do near you.
+            Florida attractions, tours, boat rides, museums, outdoor adventures, family activities, and useful things-to-do guides.
           </p>
         </div>
         <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
@@ -88,7 +87,7 @@ export default function SiteFooter() {
             </div>
           </div>
           <div>
-            <h3 className="font-black">Local Deal Categories</h3>
+            <h3 className="font-black">Attraction Guides</h3>
             <div className="mt-3 grid gap-2 text-sm font-semibold text-[#52686b]">
               {categoryLinks.map((link) => (
                 <Link href={link.href} key={link.href} onClick={() => trackNavigation(link.label, link.href)}>

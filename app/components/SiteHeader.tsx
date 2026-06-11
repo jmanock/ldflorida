@@ -4,11 +4,14 @@ import { Bell } from "lucide-react";
 import { trackClarityEvent } from "../../lib/clarity";
 
 const navItems = [
-  { label: "Flights", href: "https://flightdealsflorida.org" },
-  { label: "Hotels", href: "https://hoteldealsflorida.org" },
-  { label: "Cruises", href: "https://cruisedealsflorida.org" },
-  { label: "Local Deals", href: "/", active: true },
-  { label: "Florida Deals Hub", href: "https://floridadealshub.com" }
+  { label: "Home", href: "/", active: true },
+  { label: "Orlando", href: "/things-to-do-in-orlando" },
+  { label: "Theme Parks", href: "/florida-theme-park-deals" },
+  { label: "Tours", href: "/florida-water-activities" },
+  { label: "Free Things", href: "/free-things-to-do-in-florida" },
+  { label: "Weekend", href: "/best-florida-weekend-activities" },
+  { label: "Cruise Add-Ons", href: "/things-to-do-near-port-canaveral" },
+  { label: "Travel Deals", href: "https://floridadealshub.com" }
 ];
 
 function trackNavigation(label: string, href: string) {
@@ -52,10 +55,10 @@ export default function SiteHeader() {
           </span>
           <span className="leading-tight">
             <span className="block text-base font-black">Local Deals Florida</span>
-            <span className="block text-xs font-bold text-[#6f8588]">Part of Florida Deals Hub</span>
+            <span className="block text-xs font-bold text-[#6f8588]">Florida Attractions & Activities</span>
           </span>
         </a>
-        <div className="hidden items-center gap-1 rounded-full bg-[#eef6f5] p-1 md:flex">
+        <div className="hidden items-center gap-1 rounded-full bg-[#eef6f5] p-1 xl:flex">
           {navItems.map((site) => (
             <a
               className={`rounded-full px-4 py-2 text-sm font-bold transition hover:bg-white hover:text-[#087f8c] ${
@@ -73,7 +76,7 @@ export default function SiteHeader() {
         <a
           className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-[#163235] px-3 text-sm font-bold text-white shadow-md shadow-[#163235]/15 transition hover:bg-[#07515a] sm:px-4"
           href="#alerts"
-          aria-label="Get deal alerts"
+          aria-label="Get activity alerts"
           onClick={() => trackNavigation("Get Alerts", "#alerts")}
           style={{ color: "#ffffff" }}
         >
@@ -81,7 +84,7 @@ export default function SiteHeader() {
           <span>Alerts</span>
         </a>
       </nav>
-      <nav className="deal-scroll flex gap-2 overflow-x-auto border-t border-[#d8e6e3] px-4 py-2 text-xs font-black text-[#52686b] sm:px-6 md:hidden" aria-label="Mobile navigation">
+      <nav className="deal-scroll flex gap-2 overflow-x-auto border-t border-[#d8e6e3] px-4 py-2 text-xs font-black text-[#52686b] sm:px-6 xl:hidden" aria-label="Mobile navigation">
         {navItems.map((site) => (
           <a
             aria-current={site.active ? "page" : undefined}

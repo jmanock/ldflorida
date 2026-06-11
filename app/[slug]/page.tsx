@@ -5,6 +5,7 @@ import { getLandingPage, landingPagePath, landingPages, type LandingPageConfig }
 import { getPiscifunGearPicks } from "../../lib/affiliate/piscifunLinks";
 import { getEnrichedDeals } from "../../lib/local-data";
 import AffiliateGearCard from "../components/AffiliateGearCard";
+import { ActivityCTAGroup } from "../components/ActivityCTAs";
 import FloridaGetawayBlock from "../components/FloridaGetawayBlock";
 import FallbackImage from "../components/FallbackImage";
 import LocalDealCard, { type LocalDeal } from "../components/LocalDealCard";
@@ -137,6 +138,10 @@ function getCityCluster(slug: string) {
 }
 
 function buildFaqs(page: LandingPageConfig) {
+  if (page.customFaqs?.length) {
+    return page.customFaqs;
+  }
+
   const topic = page.h1.toLowerCase();
   const cleanTopic = topic.replace(/^best\s+/, "");
 
@@ -363,7 +368,7 @@ export default async function LandingPage({ params }: PageProps) {
                 href="#local-finds"
                 style={{ color: "#ffffff" }}
               >
-                View Local Finds
+                Explore Activity Ideas
               </a>
               <a
                 className="inline-flex h-[52px] items-center justify-center rounded-full border border-[#c7dad7] bg-white/90 px-7 text-base font-black text-[#163235] shadow-xl shadow-[#087f8c]/10 transition hover:border-[#087f8c] hover:text-[#087f8c]"
@@ -452,8 +457,8 @@ export default async function LandingPage({ params }: PageProps) {
 
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
-          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Top Local Deals Right Now</p>
-          <h2 className="mt-2 text-3xl font-black text-[#163235]">Start with these current local finds</h2>
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Featured attractions and activities</p>
+          <h2 className="mt-2 text-3xl font-black text-[#163235]">Start with useful official activity sources</h2>
           <p className="mt-3 leading-7 text-[#52686b]">
             These picks are selected for clear value, useful source pages, and everyday Florida plans. Details may change, so confirm the current offer before you go.
           </p>
@@ -472,8 +477,8 @@ export default async function LandingPage({ params }: PageProps) {
 
       <section id="local-finds" className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
-          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Current local finds</p>
-          <h2 className="mt-2 text-3xl font-black text-[#163235]">Check current details before you go</h2>
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Plan your visit</p>
+          <h2 className="mt-2 text-3xl font-black text-[#163235]">Compare options, then check current details</h2>
           <p className="mt-3 leading-7 text-[#52686b]">
             These cards link to real local offer pages, official event calendars, tourism boards, venues, museums, restaurants, and attraction pages.
             Deals may change, and availability may vary by date.
@@ -518,6 +523,7 @@ export default async function LandingPage({ params }: PageProps) {
       ) : null}
 
       <FloridaGetawayBlock />
+      <ActivityCTAGroup slug={page.slug} />
 
       <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
@@ -560,7 +566,7 @@ export default async function LandingPage({ params }: PageProps) {
       <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
         <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8">
           <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Helpful notes</p>
-          <h2 className="mt-2 text-2xl font-black text-[#163235]">Local deal FAQ</h2>
+          <h2 className="mt-2 text-2xl font-black text-[#163235]">Attraction and activity FAQ</h2>
           <div className="mt-5 grid gap-4 md:grid-cols-2">
             {faqs.map((faq) => (
               <div key={faq.question}>
@@ -594,9 +600,9 @@ export default async function LandingPage({ params }: PageProps) {
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.85fr_1fr] lg:items-center">
           <div>
             <p className="text-sm font-black uppercase tracking-[0.18em] text-[#ffb000]">Deal alerts</p>
-            <h2 className="mt-3 text-3xl font-black sm:text-4xl">Get Florida Local Deals Delivered</h2>
+            <h2 className="mt-3 text-3xl font-black sm:text-4xl">Get Florida Attraction Ideas & Weekend Alerts</h2>
             <p className="mt-3 max-w-xl text-base leading-7 text-white/76">
-              Join free alerts for restaurant specials, events, attractions, and local deals near you. Free alerts. No spam. Local offers and events can change quickly.
+              Get Florida attraction ideas, weekend activity alerts, and travel deal updates. Free alerts, useful planning ideas, and no spam.
             </p>
           </div>
           <NewsletterForm />

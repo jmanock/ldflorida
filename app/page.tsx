@@ -35,9 +35,9 @@ const crossPromos = [
 ];
 
 const stats = [
-  ["40+", "local finds"],
-  ["10", "Florida markets"],
-  ["Free", "deal alerts"]
+  ["Theme Parks", "and attractions"],
+  ["Florida-wide", "activity guides"],
+  ["Free", "activity alerts"]
 ];
 
 const popularSearches = [
@@ -63,14 +63,14 @@ const weeklySearches = [
   { title: "Florida Date Night Deals", href: "/florida-date-night-deals", type: "Local experiences", bestFor: "Date Night", text: "Restaurants, shows, nightlife, and local experiences." }
 ];
 const popularDestinations = [
-  { title: "Orlando", href: "/orlando-local-deals", image: "https://images.unsplash.com/photo-1597466599360-3b9775841aec?auto=format&fit=crop&w=800&q=78", alt: "Orlando attraction skyline" },
-  { title: "Miami", href: "/miami-local-deals", image: "https://images.unsplash.com/photo-1535498730771-e735b998cd64?auto=format&fit=crop&w=800&q=78", alt: "Miami waterfront skyline" },
-  { title: "Tampa", href: "/tampa-local-deals", image: "https://images.unsplash.com/photo-1559410545-0bdcd187e0a6?auto=format&fit=crop&w=800&q=78", alt: "Tampa waterfront" },
-  { title: "Key West", href: "/key-west-local-deals", image: "https://images.unsplash.com/photo-1543349689-9a4d426bee8e?auto=format&fit=crop&w=800&q=78", alt: "Key West tropical coast" },
-  { title: "Clearwater", href: "/clearwater-local-deals", image: "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=800&q=78", alt: "Clearwater Gulf beach" },
-  { title: "Destin", href: "/destin-local-deals", image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=78", alt: "Destin beach" },
-  { title: "Sarasota", href: "/sarasota-local-deals", image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=78", alt: "Sarasota Gulf Coast" },
-  { title: "Naples", href: "/naples-local-deals", image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=78", alt: "Naples resort and coast" }
+  { title: "Orlando", href: "/things-to-do-in-orlando", image: "https://images.unsplash.com/photo-1597466599360-3b9775841aec?auto=format&fit=crop&w=800&q=78", alt: "Orlando attraction skyline" },
+  { title: "Miami", href: "/things-to-do-in-miami", image: "https://images.unsplash.com/photo-1535498730771-e735b998cd64?auto=format&fit=crop&w=800&q=78", alt: "Miami waterfront skyline" },
+  { title: "Tampa", href: "/things-to-do-in-tampa", image: "https://images.unsplash.com/photo-1559410545-0bdcd187e0a6?auto=format&fit=crop&w=800&q=78", alt: "Tampa waterfront" },
+  { title: "Key West", href: "/things-to-do-in-key-west", image: "https://images.unsplash.com/photo-1543349689-9a4d426bee8e?auto=format&fit=crop&w=800&q=78", alt: "Key West tropical coast" },
+  { title: "St. Augustine", href: "/things-to-do-in-st-augustine", image: "https://images.unsplash.com/photo-1573290162413-93c432da4c7a?auto=format&fit=crop&w=800&q=78", alt: "St. Augustine historic district" },
+  { title: "Port Canaveral / Space Coast", href: "/things-to-do-near-port-canaveral", image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=800&q=78", alt: "Space Coast rocket launch" },
+  { title: "Clearwater", href: "/things-to-do-in-clearwater", image: "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=800&q=78", alt: "Clearwater Gulf beach" },
+  { title: "Jacksonville", href: "/things-to-do-in-jacksonville", image: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=800&q=78", alt: "Jacksonville cultural district" }
 ];
 
 const cityClusters = [
@@ -146,14 +146,21 @@ const cityClusters = [
 ];
 
 const activityTypes = [
-  { title: "Attractions", href: "/florida-attraction-deals", bestFor: "Tourists", text: "Theme parks, museums, tours, wildlife stops, and local attraction pages." },
-  { title: "Restaurants", href: "/florida-restaurant-deals", bestFor: "Food & Drink", text: "Dining specials, brunch ideas, food events, markets, and date-night restaurants." },
-  { title: "Events", href: "/florida-event-deals", bestFor: "Weekend Activity", text: "Shows, markets, festivals, venue calendars, and city events worth checking." },
+  { title: "Theme Parks", href: "/florida-theme-park-deals", bestFor: "Big Attraction Days", text: "Disney World, Universal Orlando, SeaWorld, Busch Gardens, and practical park guides." },
+  { title: "Tours & Experiences", href: "/best-things-to-do-in-florida", bestFor: "Florida Discovery", text: "City tours, wildlife experiences, cultural stops, and useful planning guides." },
+  { title: "Boat Tours & Water Activities", href: "/florida-water-activities", bestFor: "On The Water", text: "Boat tours, sunset cruises, airboat rides, beaches, and waterfront activities." },
+  { title: "Museums & Aquariums", href: "/florida-rainy-day-activities", bestFor: "Indoor Plans", text: "Museums, aquariums, cultural attractions, and weather-friendly outings." },
+  { title: "Outdoor Adventures", href: "/florida-outdoor-activities", bestFor: "Nature", text: "Parks, beaches, wildlife, springs, walking districts, and outdoor plans." },
   { title: "Family Activities", href: "/florida-family-deals", bestFor: "Families", text: "Kid-friendly attractions, museums, aquariums, public events, and easy day plans." },
-  { title: "Free Things To Do", href: "/florida-free-things-to-do", bestFor: "Free / Low-Cost", text: "Beaches, parks, public spaces, free admission windows, and budget-friendly ideas." },
-  { title: "Date Night Ideas", href: "/florida-date-night-deals", bestFor: "Date Night", text: "Restaurants, nightlife, theater, waterfront walks, and local experience ideas." },
-  { title: "Outdoor Activities", href: "/florida-outdoor-activities", bestFor: "Outdoor Activity", text: "Parks, beaches, walking districts, trails, and weather-friendly outdoor plans." },
-  { title: "Rainy Day Activities", href: "/florida-rainy-day-activities", bestFor: "Rainy Day", text: "Museums, aquariums, theaters, galleries, restaurants, and indoor backups." }
+  { title: "Free Things To Do", href: "/free-things-to-do-in-florida", bestFor: "Free / Low-Cost", text: "Beaches, parks, public spaces, free events, and affordable family ideas." },
+  { title: "Weekend Activities", href: "/best-florida-weekend-activities", bestFor: "Quick Trips", text: "Build a Florida weekend around attractions, events, beaches, and local experiences." }
+];
+
+const cruiseAddOns = [
+  { title: "Kennedy Space Center Before a Cruise", href: "/kennedy-space-center-guide", text: "Plan a full Space Coast day with enough buffer before or after sailing." },
+  { title: "Things To Do Near Port Canaveral", href: "/things-to-do-near-port-canaveral", text: "Compare Cocoa Beach, space attractions, food, hotels, and outdoor ideas." },
+  { title: "Miami Cruise Port Activities", href: "/miami-boat-tours", text: "Add Biscayne Bay, waterfront sightseeing, or a Miami activity day." },
+  { title: "Key West Shore-Style Activities", href: "/key-west-sunset-cruises", text: "Compare sailing, sunset trips, water activities, and island timing." }
 ];
 
 const planningGuides = [
@@ -175,16 +182,16 @@ const editorPicks = [
 
 const homeFaqs = [
   {
-    question: "Are these Florida local deals current?",
-    answer: "Pages are updated regularly, but local offers, event schedules, prices, and availability can change. Always confirm details with the official source before visiting."
+    question: "How should I use these Florida attraction guides?",
+    answer: "Use the guides to compare options and build a practical day, then confirm current hours, tickets, weather policies, and availability with the official source before visiting."
   },
   {
-    question: "Where do the local deal links go?",
-    answer: "Cards point to real source pages such as tourism boards, city calendars, attractions, venues, restaurants, museums, and official event pages."
+    question: "Where do the attraction links go?",
+    answer: "Cards point to useful source pages such as tourism boards, attractions, museums, official event calendars, and venue pages."
   },
   {
     question: "Can I compare cities and activity types?",
-    answer: "Yes. Use the city clusters, category pages, comparison guides, and related searches to compare attractions, restaurants, events, beaches, and free activities."
+    answer: "Yes. Use destination guides, attraction categories, comparison pages, and related searches to compare theme parks, tours, water activities, museums, and free ideas."
   },
   {
     question: "Is Local Deals Florida part of a larger network?",
@@ -245,13 +252,13 @@ export default function Home() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/85 px-4 py-2 text-sm font-black text-[#087f8c] shadow-lg shadow-[#087f8c]/10">
               <Sparkles size={16} aria-hidden="true" />
-              Local finds, hidden gems, and everyday value
+              Florida Attractions & Activities
             </div>
             <h1 className="mt-6 max-w-3xl text-4xl font-black leading-[0.98] text-[#163235] sm:mt-7 sm:text-6xl lg:text-7xl">
-              Best Local Deals Across Florida
+              Find the Best Things To Do In Florida
             </h1>
             <p className="mt-5 max-w-2xl text-lg font-semibold leading-8 text-[#385154] sm:mt-6 sm:text-xl">
-              Find restaurant specials, things to do, weekend events, attractions, and hidden local deals near you.
+              Explore theme parks, tours, attractions, boat rides, family activities, free things to do, and weekend experiences across Florida.
             </p>
             <p className="mt-4 text-sm font-black uppercase tracking-[0.14em] text-[#087f8c]">
               Updated: June 2026 · New deals added regularly · Check back for weekend updates
@@ -259,16 +266,16 @@ export default function Home() {
             <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row">
               <a
                 className="inline-flex h-[52px] items-center justify-center rounded-full bg-[#087f8c] px-7 text-base font-black text-white shadow-xl shadow-[#087f8c]/25 transition hover:bg-[#07515a]"
-                href="#deals"
+                href="/things-to-do-in-orlando"
                 style={{ color: "#ffffff" }}
               >
-                View Local Deals
+                Explore Orlando Attractions
               </a>
               <a
                 className="inline-flex h-[52px] items-center justify-center rounded-full border border-[#c7dad7] bg-white/90 px-7 text-base font-black text-[#163235] shadow-xl shadow-[#087f8c]/10 transition hover:border-[#087f8c] hover:text-[#087f8c]"
-                href="#alerts"
+                href="#activities"
               >
-                Get Alerts
+                Browse Florida Activities
               </a>
             </div>
             <div className="mt-8 hidden max-w-xl grid-cols-3 gap-2 sm:mt-10 sm:grid sm:gap-3">
@@ -337,10 +344,29 @@ export default function Home() {
               <FallbackImage alt={destination.alt} className="aspect-[16/10] w-full object-cover transition duration-300 group-hover:scale-[1.03]" loading="lazy" src={destination.image} />
               <div className="p-4">
                 <h3 className="text-lg font-black text-[#163235]">{destination.title}</h3>
-                <span className="mt-2 inline-flex items-center gap-2 text-sm font-black text-[#087f8c]">Explore local deals <ArrowRight size={15} /></span>
+                <span className="mt-2 inline-flex items-center gap-2 text-sm font-black text-[#087f8c]">Explore things to do <ArrowRight size={15} /></span>
               </div>
             </Link>
           ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:px-8">
+        <div className="rounded-[28px] bg-[#163235] p-6 text-white shadow-xl shadow-[#163235]/15 sm:p-8">
+          <div className="max-w-3xl">
+            <p className="text-sm font-black uppercase tracking-[0.18em] text-[#ffb000]">Cruise add-on activities</p>
+            <h2 className="mt-2 text-3xl font-black">Make the day before or after a Florida cruise count</h2>
+            <p className="mt-3 max-w-2xl leading-7 text-white/76">Use port-area attraction guides to plan a useful hotel night, relaxed beach stop, or memorable activity with enough schedule buffer.</p>
+          </div>
+          <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {cruiseAddOns.map((item) => (
+              <Link className="rounded-[20px] bg-white/10 p-5 transition hover:bg-white/16" href={item.href} key={item.href}>
+                <h3 className="font-black text-white">{item.title}</h3>
+                <p className="mt-2 text-sm font-semibold leading-6 text-white/72">{item.text}</p>
+                <span className="mt-4 inline-flex items-center gap-2 text-sm font-black text-[#ffcf67]">Plan the activity <ArrowRight size={15} /></span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -429,7 +455,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:px-8">
+      <section id="activities" className="mx-auto max-w-7xl scroll-mt-28 px-4 pb-14 sm:px-6 lg:px-8">
         <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8">
           <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Featured Florida Cities</p>
           <h2 className="mt-2 text-3xl font-black text-[#163235]">Plan by city and activity type</h2>
@@ -463,7 +489,7 @@ export default function Home() {
         <div className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8">
             <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Explore Florida Activity Types</p>
-            <h2 className="mt-2 text-3xl font-black text-[#163235]">Things to do categories</h2>
+            <h2 className="mt-2 text-3xl font-black text-[#163235]">Top Florida attraction categories</h2>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               {activityTypes.map((item) => (
                 <Link className="rounded-[20px] border border-[#d8e6e3] bg-[#f8fbf7] p-4 transition hover:border-[#087f8c] hover:bg-white" href={item.href} key={item.href}>
@@ -496,9 +522,9 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.85fr_1fr] lg:items-center">
           <div>
             <p className="text-sm font-black uppercase tracking-[0.18em] text-[#ffb000]">Deal alerts</p>
-            <h2 className="mt-3 text-3xl font-black sm:text-4xl">Get Florida Local Deals Delivered</h2>
+            <h2 className="mt-3 text-3xl font-black sm:text-4xl">Get Florida Attraction Ideas & Weekend Alerts</h2>
             <p className="mt-3 max-w-xl text-base leading-7 text-white/76">
-              Join free alerts for restaurant specials, events, attractions, and local deals near you. Free alerts. No spam. Local offers and events can change quickly.
+              Get Florida attraction ideas, weekend activity alerts, and travel deal updates. Free alerts, useful planning ideas, and no spam.
             </p>
           </div>
           <NewsletterForm />

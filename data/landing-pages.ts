@@ -32,7 +32,13 @@ export type LandingPageConfig = {
     href: string;
     image: string;
   }[];
+  customFaqs?: {
+    question: string;
+    answer: string;
+  }[];
 };
+
+import { attractionAuthorityPages } from "./attraction-pages";
 
 type V7LocalSeed = [string, string, string, string, string, string, string, string, string[], string[]];
 
@@ -196,6 +202,7 @@ const v11Pages: LandingPageConfig[] = v11Seeds.map(([slug, title, description, h
 export const landingPages: LandingPageConfig[] = [
   ...v7LocalProgrammaticPages,
   ...v11Pages,
+  ...attractionAuthorityPages,
   {
     slug: "orlando-local-deals",
     title: "Orlando Local Deals (2026): Attractions, Activities & Discounts",

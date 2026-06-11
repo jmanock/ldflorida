@@ -24,9 +24,9 @@ const websiteSchema = {
 };
 
 export const metadata: Metadata = {
-  title: "Things To Do In Florida: Local Events, Attractions & Weekend Ideas",
+  title: "Things To Do In Florida | Attractions, Tours & Activities",
   description:
-    "Find things to do in Florida including local events, attractions, restaurants, family activities, date night ideas, free outings, and weekend plans.",
+    "Explore Florida attractions, theme parks, tours, boat rides, museums, family activities, free things to do, and weekend experiences.",
   keywords: [
     "Florida local deals",
     "restaurants deals Florida",
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     "Fort Lauderdale deals"
   ],
   openGraph: {
-    title: "Things To Do In Florida: Local Events, Attractions & Weekend Ideas",
+    title: "Things To Do In Florida | Attractions, Tours & Activities",
     description:
-      "Find Florida events, attractions, restaurants, family activities, free outings, and weekend ideas.",
+      "Explore Florida attractions, theme parks, tours, boat rides, family activities, free outings, and weekend ideas.",
     type: "website",
     locale: "en_US",
     siteName: "Local Deals Florida",
@@ -51,13 +51,13 @@ export const metadata: Metadata = {
         url: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&h=630&q=85",
         width: 1200,
         height: 630,
-        alt: "Florida local restaurant patio with warm evening light"
+        alt: "Florida attractions and activities guide"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Local Deals Florida | Attractions, Events & Things To Do",
+    title: "Things To Do In Florida | Attractions, Tours & Activities",
     description:
       "Discover Florida local deals, attractions, restaurants, events, family activities, date night ideas, free things to do, and weekend plans.",
     images: ["https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&h=630&q=85"]

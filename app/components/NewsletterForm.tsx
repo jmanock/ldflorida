@@ -7,7 +7,7 @@ import { trackClarityEvent } from "../../lib/clarity";
 export default function NewsletterForm() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-  const [message, setMessage] = useState("Free alerts. No spam. Local offers and events can change quickly.");
+  const [message, setMessage] = useState("Free attraction ideas and weekend alerts. No spam.");
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -20,7 +20,7 @@ export default function NewsletterForm() {
     }
 
     setStatus("submitting");
-    setMessage("Saving your deal alerts...");
+    setMessage("Saving your attraction alerts...");
     const startedPayload = {
       site: "localdealsflorida.org",
       source: "local",
@@ -50,7 +50,7 @@ export default function NewsletterForm() {
       }
 
       setStatus("success");
-      setMessage(result.message ?? "You’re in! Florida local deals are on the way.");
+      setMessage(result.message ?? "You’re in! Florida attraction ideas are on the way.");
       setEmail("");
       const successPayload = {
         site: "localdealsflorida.org",
@@ -93,7 +93,7 @@ export default function NewsletterForm() {
           disabled={status === "submitting"}
           type="submit"
         >
-          {status === "submitting" ? "Sending..." : "Send Me Deals"}
+          {status === "submitting" ? "Sending..." : "Send Activity Ideas"}
         </button>
       </div>
       <p
