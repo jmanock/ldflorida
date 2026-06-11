@@ -51,15 +51,15 @@ function ActivityCTA({ href, title, description, buttonText, icon: Icon, affilia
 }
 
 export function AttractionCTA() {
-  return <ActivityCTA buttonText="Compare Florida Attractions" category="attractions" description="Explore official attraction sources, family ideas, and current planning details." href="/florida-attraction-deals" icon={Ticket} title="Planning an attraction day?" />;
+  return <ActivityCTA buttonText="Compare Florida Attractions" category="attractions" description="Compare featured attractions, family experiences, and useful planning details before checking current ticket options." href="/best-attractions-in-florida" icon={Ticket} title="Popular Attractions" />;
 }
 
 export function TourCTA() {
-  return <ActivityCTA buttonText="Find Tours & Activities" category="tours" description="Compare outdoor experiences, water activities, city guides, and tour ideas." href="/florida-water-activities" icon={Compass} title="Looking for a Florida tour?" />;
+  return <ActivityCTA buttonText="Find Tours & Activities" category="tours" description="Compare outdoor experiences, water activities, city guides, and tour ideas that fit the rest of the trip." href="/florida-vacation-activities" icon={Compass} title="Recommended Activities" />;
 }
 
 export function TicketCTA() {
-  return <ActivityCTA buttonText="Plan Your Orlando Visit" category="tickets" description="Use the Orlando attraction guide before checking current ticket options with official sources." href="/things-to-do-in-orlando" icon={Ticket} title="Comparing theme park tickets?" />;
+  return <ActivityCTA buttonText="Compare Orlando Attractions" category="tickets" description="Compare theme parks, tours, and family experiences before checking current ticket options with approved providers." href="/orlando-attractions" icon={Ticket} title="Popular Orlando Attractions" />;
 }
 
 export function BoatRentalCTA() {
@@ -78,6 +78,10 @@ export function CruiseCTA() {
   return <ActivityCTA buttonText="Plan a Florida Cruise" category="cruises" description="Pair Port Canaveral, Miami, Tampa, and Jacksonville sailings with useful local activities." href="https://cruisedealsflorida.org" icon={Sailboat} title="Adding activities to a cruise?" />;
 }
 
+export function VacationPackageCTA() {
+  return <ActivityCTA buttonText="Explore Vacation Packages" category="vacation_packages" description="Connect attractions with hotels, transportation, estimated budgets, and complete Florida vacation ideas." href="https://floridadealshub.com/vacation-packages" icon={Building2} title="Build a complete vacation" />;
+}
+
 export function ActivityCTAGroup({ slug }: { slug: string }) {
   const isWater = /boat|water|sunset|everglades|key-west|miami/.test(slug);
   const isCruise = /port-canaveral|kennedy|cruise/.test(slug);
@@ -86,13 +90,15 @@ export function ActivityCTAGroup({ slug }: { slug: string }) {
   return (
     <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
       <div className="mb-6 max-w-3xl">
-        <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Plan the next step</p>
-        <h2 className="mt-2 text-3xl font-black text-[#163235]">Turn activity ideas into a practical Florida day</h2>
+        <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Attraction booking paths</p>
+        <h2 className="mt-2 text-3xl font-black text-[#163235]">Popular attractions, family experiences, and things to do nearby</h2>
+        <p className="mt-3 leading-7 text-[#52686b]">Use these planning paths to compare the experience first, then confirm current tickets, schedules, availability, and provider terms. Approved attraction partner links can be added here without changing every page.</p>
       </div>
-      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
         {isWater ? <BoatRentalCTA /> : isOrlando ? <TicketCTA /> : <AttractionCTA />}
         {isCruise ? <CruiseCTA /> : <TourCTA />}
-        {isOrlando ? <FlightCTA /> : <HotelCTA />}
+        <HotelCTA />
+        <VacationPackageCTA />
       </div>
     </section>
   );
