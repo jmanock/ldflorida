@@ -232,5 +232,97 @@ export const attractionAuthorityPages: LandingPageConfig[] = [
       { heading: "Free family activity ideas", body: "Parks, beaches, library programs, public gardens, community events, and self-guided walks can help families build affordable Florida days." }
     ],
     planningTips: ["Check parking costs.", "Confirm event dates.", "Bring a weather backup."]
+  },
+  {
+    slug: "orlando-attractions",
+    title: "Orlando Attractions | Theme Parks, Tours & Family Activities",
+    description: "Compare Orlando attractions including Disney, Universal, SeaWorld, Kennedy Space Center, tours, family activities, and practical planning guides.",
+    h1: "Orlando Attractions",
+    eyebrow: "Orlando attraction authority",
+    intro: "Orlando attractions range from full-day theme parks to wildlife experiences, indoor activities, tours, and easy family plans.",
+    image: "https://images.unsplash.com/photo-1597466599360-3b9775841aec?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Orlando theme park attraction",
+    dealIds: ["disney-world-special-offers", "universal-orlando-offers", "orlando-seaworld-limited-time-offers", "orlando-gatorland-visit-orlando-special"],
+    relatedSlugs: ["things-to-do-in-orlando", "disney-area-attractions", "universal-orlando-guide", "kennedy-space-center-guide"],
+    pageType: "guide",
+    gallery: orlandoGallery,
+    guideSections: [
+      { heading: "Featured Orlando attractions", body: "Start with Disney World, Universal Orlando, SeaWorld, and Kennedy Space Center, then compare the time, cost, and energy each experience requires." },
+      { heading: "Popular activities beyond theme parks", body: "Airboat tours, wildlife attractions, museums, entertainment districts, and indoor activities create useful lighter days." },
+      { heading: "Family-friendly Orlando activities", body: "Match attractions to ages, height requirements, stroller needs, weather, and realistic rest time." }
+    ]
+  },
+  {
+    slug: "disney-area-attractions",
+    title: "Disney Area Attractions | Things To Do Near Walt Disney World",
+    description: "Find Disney-area attractions, family activities, restaurants, indoor ideas, tours, and practical things to do near Walt Disney World.",
+    h1: "Disney Area Attractions",
+    eyebrow: "Disney-area activity guide",
+    intro: "A Disney-area stay can include more than park days. Nearby activities help families create lower-pressure arrival days, rest days, and weather backups.",
+    image: "https://images.unsplash.com/photo-1597466599360-3b9775841aec?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Orlando theme park castle",
+    dealIds: ["disney-world-special-offers", "orlando-free-things-to-do", "orlando-rainy-day-things-to-do", "orlando-official-offers"],
+    relatedSlugs: ["disney-world-guide", "orlando-attractions", "disney-vs-universal", "things-to-do-in-orlando"],
+    pageType: "guide",
+    gallery: orlandoGallery,
+    guideSections: [
+      { heading: "Featured Disney-area activities", body: "Compare entertainment districts, family attractions, mini golf, restaurants, and resort-area experiences near the main park corridors." },
+      { heading: "Popular rest-day ideas", body: "Pool time, easy dining, free entertainment areas, and short indoor activities can protect energy during a longer park trip." },
+      { heading: "Family planning tips", body: "Keep drive time, parking, bedtime, and the next park morning in mind before adding another ticketed experience." }
+    ]
+  },
+  {
+    slug: "florida-family-attractions",
+    title: "Florida Family Attractions | Theme Parks, Museums & Activities",
+    description: "Compare Florida family attractions including theme parks, museums, aquariums, beaches, wildlife experiences, and practical activity guides.",
+    h1: "Florida Family Attractions",
+    eyebrow: "Family attraction guide",
+    intro: "Florida family attractions work best when the activity fits the children, weather, destination, transportation, and pace of the overall trip.",
+    image: "https://images.unsplash.com/photo-1597466599360-3b9775841aec?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Florida family attraction",
+    dealIds: ["disney-world-special-offers", "universal-orlando-offers", "clearwater-marine-aquarium-visit", "cummer-museum-free-admission"],
+    relatedSlugs: ["orlando-attractions", "best-family-activities-in-florida", "free-things-to-do-in-florida", "kennedy-space-center-guide"],
+    pageType: "guide",
+    guideSections: [
+      { heading: "Featured family attractions", body: "Theme parks, Kennedy Space Center, aquariums, museums, wildlife experiences, and beaches can each anchor a family day." },
+      { heading: "Popular activities by age", body: "Young children, teens, and multi-generational groups often need different activity lengths, ride requirements, and break schedules." },
+      { heading: "Build a flexible family day", body: "Choose one main attraction and one nearby backup rather than filling every hour." }
+    ]
+  },
+  {
+    slug: "best-attractions-in-florida",
+    title: "Best Attractions In Florida | Theme Parks, Space & Nature",
+    description: "Explore the best attractions in Florida, from Orlando theme parks and Kennedy Space Center to beaches, museums, wildlife, and water activities.",
+    h1: "Best Attractions In Florida",
+    eyebrow: "Florida attraction guide",
+    intro: "Florida's strongest attractions span theme parks, space exploration, beaches, historic districts, wildlife, museums, and experiences on the water.",
+    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Florida outdoor attraction",
+    dealIds: ["disney-world-special-offers", "universal-orlando-offers", "visit-florida-outdoor-adventure", "visit-florida-beach-guide"],
+    relatedSlugs: ["orlando-attractions", "florida-family-attractions", "florida-vacation-activities", "best-things-to-do-in-florida"],
+    pageType: "guide",
+    guideSections: [
+      { heading: "Featured Florida attractions", body: "Start with Orlando theme parks, Kennedy Space Center, the Everglades, historic St. Augustine, and Florida's beaches." },
+      { heading: "Popular activities by destination", body: "Choose attractions that fit naturally with the hotel area, airport, cruise port, or road-trip route." },
+      { heading: "Family-friendly and flexible options", body: "Balance major ticketed attractions with beaches, museums, parks, and weather-friendly backups." }
+    ]
+  },
+  {
+    slug: "florida-vacation-activities",
+    title: "Florida Vacation Activities | Attractions, Tours & Family Ideas",
+    description: "Plan Florida vacation activities including attractions, tours, boat rides, theme parks, beaches, museums, and family-friendly experiences.",
+    h1: "Florida Vacation Activities",
+    eyebrow: "Vacation activity planner",
+    intro: "The best Florida vacation activities connect naturally to where you stay, how you travel, and how much time the group actually has.",
+    image: "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Florida vacation water activity",
+    dealIds: ["visit-florida-outdoor-adventure", "visit-florida-beach-guide", "orlando-official-offers", "miami-attraction-deals"],
+    relatedSlugs: ["best-attractions-in-florida", "florida-family-attractions", "florida-water-activities", "best-things-to-do-in-florida"],
+    pageType: "guide",
+    guideSections: [
+      { heading: "Featured vacation activities", body: "Theme parks, beaches, boat tours, wildlife, museums, and historic areas can each become the anchor for a Florida trip." },
+      { heading: "Popular activities by travel style", body: "Families, couples, cruise travelers, and weekend visitors need different schedules and activity mixes." },
+      { heading: "Turn activities into a package", body: "Compare nearby hotels, flights, transportation, and broader vacation package ideas before booking." }
+    ]
   }
 ];
