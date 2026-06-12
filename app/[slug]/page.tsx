@@ -13,6 +13,9 @@ import NewsletterForm from "../components/NewsletterForm";
 import SisterSitesSection from "../components/SisterSitesSection";
 import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
+import TransferBookingCard from "../components/TransferBookingCard";
+import TravelBookingCard from "../components/TravelBookingCard";
+import { transferAndTravelSlugs } from "../../lib/revenuePartners";
 
 const baseUrl = "https://localdealsflorida.org";
 const freshnessNote = "Updated: June 2026 • Local offers and events may change • Confirm details with the official source";
@@ -262,6 +265,7 @@ export default async function LandingPage({ params }: PageProps) {
   const topDeals = pageDeals.slice(0, 3);
   const guideSections = page.guideSections ?? [];
   const cityCluster = getCityCluster(page.slug);
+  const showTransferAndTravel = transferAndTravelSlugs.has(page.slug);
   const relatedPages = page.relatedSlugs
     .map((relatedSlug) => getLandingPage(relatedSlug))
     .filter((relatedPage): relatedPage is LandingPageConfig => Boolean(relatedPage));
@@ -524,6 +528,7 @@ export default async function LandingPage({ params }: PageProps) {
 
       <FloridaGetawayBlock />
       <ActivityCTAGroup slug={page.slug} />
+      {showTransferAndTravel ? <section className="mx-auto grid max-w-7xl gap-5 px-4 pb-12 sm:px-6 md:grid-cols-2 lg:px-8"><TransferBookingCard slug={page.slug} /><TravelBookingCard /></section> : null}
 
       <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
