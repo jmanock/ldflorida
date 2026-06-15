@@ -15,7 +15,8 @@ import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
 import TransferBookingCard from "../components/TransferBookingCard";
 import TravelBookingCard from "../components/TravelBookingCard";
-import { transferAndTravelSlugs } from "../../lib/revenuePartners";
+import { ConversionScrollAnalytics, QuickDealCard, RecommendedPartnerCard } from "../components/ConversionCards";
+import { conversionSlugs, transferAndTravelSlugs } from "../../lib/revenuePartners";
 
 const baseUrl = "https://localdealsflorida.org";
 const freshnessNote = "Updated: June 2026 • Local offers and events may change • Confirm details with the official source";
@@ -266,6 +267,7 @@ export default async function LandingPage({ params }: PageProps) {
   const guideSections = page.guideSections ?? [];
   const cityCluster = getCityCluster(page.slug);
   const showTransferAndTravel = transferAndTravelSlugs.has(page.slug);
+  const showConversionCards = conversionSlugs.has(page.slug);
   const relatedPages = page.relatedSlugs
     .map((relatedSlug) => getLandingPage(relatedSlug))
     .filter((relatedPage): relatedPage is LandingPageConfig => Boolean(relatedPage));
@@ -340,6 +342,7 @@ export default async function LandingPage({ params }: PageProps) {
       <JsonLd data={itemListSchema} />
       {articleSchema ? <JsonLd data={articleSchema} /> : null}
       <SiteHeader />
+      {showConversionCards ? <ConversionScrollAnalytics /> : null}
 
       <section className="relative overflow-hidden bg-[#f7fbf3]">
         <div className="absolute inset-0">
@@ -528,6 +531,7 @@ export default async function LandingPage({ params }: PageProps) {
 
       <FloridaGetawayBlock />
       <ActivityCTAGroup slug={page.slug} />
+      {showConversionCards ? <section className="mx-auto grid max-w-7xl gap-5 px-4 pb-12 sm:px-6 md:grid-cols-2 lg:px-8"><QuickDealCard /><RecommendedPartnerCard /></section> : null}
       {showTransferAndTravel ? <section className="mx-auto grid max-w-7xl gap-5 px-4 pb-12 sm:px-6 md:grid-cols-2 lg:px-8"><TransferBookingCard slug={page.slug} /><TravelBookingCard /></section> : null}
 
       <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">

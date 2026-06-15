@@ -5,5 +5,6 @@ export const transferAndTravelSlugs = new Set([
   "orlando-local-deals", "florida-free-things-to-do", "florida-outdoor-activities",
   "best-florida-weekend-activities"
 ]);
+export const conversionSlugs = new Set(["orlando-local-deals", "key-west-local-deals", "best-things-to-do-in-florida", "best-florida-attractions"]);
 export const getTransferAffiliateUrl = (site: string, slug: string) =>
   `${AIRPORT_TRANSFER_AFFILIATE_URL}${encodeURIComponent(`${site}:${slug}`)}`;
