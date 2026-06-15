@@ -15,6 +15,7 @@ import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
 import TransferBookingCard from "../components/TransferBookingCard";
 import TravelBookingCard from "../components/TravelBookingCard";
+import WeekendGuideAnalytics from "../components/WeekendGuideAnalytics";
 import { ConversionScrollAnalytics, QuickDealCard, RecommendedPartnerCard } from "../components/ConversionCards";
 import { conversionSlugs, transferAndTravelSlugs } from "../../lib/revenuePartners";
 
@@ -268,6 +269,7 @@ export default async function LandingPage({ params }: PageProps) {
   const cityCluster = getCityCluster(page.slug);
   const showTransferAndTravel = transferAndTravelSlugs.has(page.slug);
   const showConversionCards = conversionSlugs.has(page.slug);
+  const isWeekendGuide = page.slug.includes("weekend");
   const relatedPages = page.relatedSlugs
     .map((relatedSlug) => getLandingPage(relatedSlug))
     .filter((relatedPage): relatedPage is LandingPageConfig => Boolean(relatedPage));
@@ -343,6 +345,7 @@ export default async function LandingPage({ params }: PageProps) {
       {articleSchema ? <JsonLd data={articleSchema} /> : null}
       <SiteHeader />
       {showConversionCards ? <ConversionScrollAnalytics /> : null}
+      {isWeekendGuide ? <WeekendGuideAnalytics /> : null}
 
       <section className="relative overflow-hidden bg-[#f7fbf3]">
         <div className="absolute inset-0">
