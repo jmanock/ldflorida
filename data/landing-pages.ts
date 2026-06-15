@@ -204,6 +204,25 @@ export const landingPages: LandingPageConfig[] = [
   ...v11Pages,
   ...attractionAuthorityPages,
   {
+    slug: "family-activities-in-orlando",
+    title: "Family Activities In Orlando | Attractions, Free Ideas & Weekend Plans",
+    description: "Find family activities in Orlando including attractions, free ideas, indoor backups, weekend plans, and official activity sources.",
+    h1: "Family Activities In Orlando",
+    eyebrow: "Orlando family activity guide",
+    intro: "Plan an Orlando family day around one anchor attraction, practical travel time, meals, rest breaks, and a flexible weather backup.",
+    image: "https://images.unsplash.com/photo-1597466599360-3b9775841aec?auto=format&fit=crop&w=1600&q=82",
+    imageAlt: "Orlando family vacation activity planning",
+    dealIds: ["orlando-official-offers", "disney-world-special-offers", "universal-orlando-offers", "orlando-rainy-day-things-to-do"],
+    relatedSlugs: ["orlando-local-deals", "things-to-do-in-orlando", "free-things-to-do-in-orlando", "best-florida-attractions"],
+    pageType: "guide",
+    guideSections: [
+      { heading: "Choose one family anchor", body: "Start with the attraction or activity that matters most, then add nearby food, free time, and a realistic backup." },
+      { heading: "Balance paid and free activities", body: "Mix major attractions with parks, resort walks, pools, or lower-cost local ideas so every day does not depend on another large ticket purchase." },
+      { heading: "Keep weather and energy flexible", body: "Orlando heat, rain, crowds, and long park days can change the plan. Keep one indoor or low-pressure option available." }
+    ],
+    planningTips: ["Choose one anchor activity.", "Keep drive times short.", "Save an indoor backup."]
+  },
+  {
     slug: "orlando-local-deals",
     title: "Orlando Local Deals (2026): Attractions, Activities & Discounts",
     description:
