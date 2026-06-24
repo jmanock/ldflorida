@@ -41,8 +41,8 @@ export const attractionAuthorityPages: LandingPageConfig[] = [
   },
   {
     slug: "disney-world-guide",
-    title: "Disney World Guide for Florida Visitors | Parks, Hotels & Planning",
-    description: "Use this Disney World guide to compare parks, plan tickets, choose where to stay, understand transportation, and build a family-friendly Orlando trip.",
+    title: "Disney World Guide (2026): Parks, Hotels, Tickets & Family Tips",
+    description: "Use this 2026 Disney World guide to compare parks, ticket planning, hotels, transportation, family activities, Orlando attractions and local deals.",
     h1: "Disney World Guide for Florida Visitors",
     eyebrow: "Orlando theme park guide",
     intro: "A useful Disney World plan starts with the travelers in your group, the experiences they value most, and enough time to avoid turning every day into a race.",

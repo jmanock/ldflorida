@@ -24,9 +24,9 @@ const websiteSchema = {
 };
 
 export const metadata: Metadata = {
-  title: "Things To Do In Florida | Attractions, Tours & Activities",
+  title: "Things To Do In Florida (2026): Attractions, Local Deals & Weekend Ideas",
   description:
-    "Explore Florida attractions, theme parks, tours, boat rides, museums, family activities, free things to do, and weekend experiences.",
+    "Find Florida attractions, local deals, family activities, free things to do, weekend ideas, tours, events and city guides for 2026.",
   keywords: [
     "Florida local deals",
     "restaurants deals Florida",
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     "Fort Lauderdale deals"
   ],
   openGraph: {
-    title: "Things To Do In Florida | Attractions, Tours & Activities",
+    title: "Things To Do In Florida (2026): Attractions, Local Deals & Weekend Ideas",
     description:
-      "Explore Florida attractions, theme parks, tours, boat rides, family activities, free outings, and weekend ideas.",
+      "Explore Florida attractions, local deals, theme parks, tours, family activities, free outings, and weekend ideas for 2026.",
     type: "website",
     locale: "en_US",
     siteName: "Local Deals Florida",
@@ -57,9 +57,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Things To Do In Florida | Attractions, Tours & Activities",
+    title: "Things To Do In Florida (2026): Attractions, Local Deals & Weekend Ideas",
     description:
-      "Discover Florida local deals, attractions, restaurants, events, family activities, date night ideas, free things to do, and weekend plans.",
+      "Discover Florida local deals, attractions, events, family activities, date night ideas, free things to do, and weekend plans.",
     images: ["https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&h=630&q=85"]
   },
   alternates: {

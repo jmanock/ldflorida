@@ -2,6 +2,7 @@
 
 import { Building2, Compass, Hotel, Plane, Sailboat, Ticket, Waves, type LucideIcon } from "lucide-react";
 import { trackClarityEvent } from "../../lib/clarity";
+import { SAMBOAT_AFFILIATE_URL } from "../../lib/revenuePartners";
 
 type CTAProps = {
   href: string;
@@ -42,6 +43,7 @@ function ActivityCTA({ href, title, description, buttonText, icon: Icon, affilia
         href={href}
         onClick={trackClick}
         rel={affiliate ? "sponsored noopener noreferrer" : href.startsWith("https://") ? "noopener noreferrer" : undefined}
+        target={affiliate ? "_blank" : undefined}
         style={{ color: "#ffffff" }}
       >
         {buttonText}
@@ -63,7 +65,7 @@ export function TicketCTA() {
 }
 
 export function BoatRentalCTA() {
-  return <ActivityCTA buttonText="Explore Boat Day Options" category="boat_rentals" description="Compare Miami boat-day planning, water activities, group needs, and weather considerations." href="/miami-boat-rentals" icon={Waves} title="Planning time on the water?" />;
+  return <ActivityCTA affiliate buttonText="Compare Florida Boat Rentals" category="boat_rentals" description="Compare available boats, yachts, catamarans, and day charters for a Florida water day." href={SAMBOAT_AFFILIATE_URL} icon={Waves} title="Planning time on the water?" />;
 }
 
 export function HotelCTA() {

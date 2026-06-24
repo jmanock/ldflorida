@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { CalendarDays, Compass, Hotel, MapPin, Ticket, Waves } from "lucide-react";
 import { getLandingPage, landingPagePath, landingPages, type LandingPageConfig } from "../../data/landing-pages";
 import { getPiscifunGearPicks } from "../../lib/affiliate/piscifunLinks";
 import { getEnrichedDeals } from "../../lib/local-data";
@@ -20,7 +21,7 @@ import { ConversionScrollAnalytics, QuickDealCard, RecommendedPartnerCard } from
 import { conversionSlugs, transferAndTravelSlugs } from "../../lib/revenuePartners";
 
 const baseUrl = "https://localdealsflorida.org";
-const freshnessNote = "Updated: June 2026 • Local offers and events may change • Confirm details with the official source";
+const freshnessNote = "Updated: June 23, 2026 • Local offers and events may change • Confirm details with the official source";
 const defaultGallery = [
   { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80", alt: "Florida beach activity", caption: "Compare weather, parking, and access before heading out." },
   { src: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80", alt: "Florida local event", caption: "Confirm current event schedules with the official source." },
@@ -39,6 +40,35 @@ const evergreenSearches = [
   { label: "Florida Attraction Deals", href: "/florida-attraction-deals" },
   { label: "Free Things To Do In Florida", href: "/florida-free-things-to-do" },
   { label: "Florida Date Night Deals", href: "/florida-date-night-deals" }
+];
+const priorityAttractionCluster = [
+  { label: "Best Things To Do In Florida", href: "/best-things-to-do-in-florida" },
+  { label: "Best Florida Attractions", href: "/best-florida-attractions" },
+  { label: "Orlando Local Deals", href: "/orlando-local-deals" },
+  { label: "Key West Local Deals", href: "/key-west-local-deals" },
+  { label: "Fort Lauderdale Local Deals", href: "/fort-lauderdale-local-deals" },
+  { label: "Disney World Guide", href: "/disney-world-guide" },
+  { label: "Free Things To Do In Florida", href: "/florida-free-things-to-do" },
+  { label: "Florida Outdoor Activities", href: "/florida-outdoor-activities" },
+  { label: "Best Family Activities In Florida", href: "/best-family-activities-in-florida" }
+];
+const cityGuideLinks = [
+  { label: "Orlando", href: "/orlando-local-deals", copy: "Theme parks, family attractions, and Central Florida activities." },
+  { label: "Miami", href: "/miami-local-deals", copy: "Beaches, culture, dining, nightlife, and waterfront plans." },
+  { label: "Tampa", href: "/tampa-local-deals", copy: "Museums, events, waterfront districts, and Gulf Coast add-ons." },
+  { label: "Key West", href: "/key-west-local-deals", copy: "Island tours, sunsets, water activities, and walkable local stops." },
+  { label: "Fort Lauderdale", href: "/fort-lauderdale-local-deals", copy: "Beaches, boating, Las Olas, cruise add-ons, and waterfront activities." },
+  { label: "Jacksonville", href: "/jacksonville-local-deals", copy: "Riverfront, beaches, museums, markets, and family ideas." },
+  { label: "St. Augustine", href: "/st-augustine-local-deals", copy: "Historic sites, museums, beaches, tours, and walkable weekend ideas." },
+  { label: "Clearwater", href: "/clearwater-local-deals", copy: "Beach days, aquarium visits, sunsets, and Gulf activities." }
+];
+const seasonalGuides = [
+  { season: "Summer", href: "/summer-things-to-do-in-florida", copy: "Evening events, water activities, indoor backups, and storm-aware plans." },
+  { season: "Rainy Day", href: "/rainy-day-things-to-do-florida", copy: "Museums, aquariums, indoor attractions, restaurants, and flexible backups." },
+  { season: "Weekend", href: "/best-weekend-activities-florida", copy: "Short-trip ideas, city calendars, beaches, festivals, and easy local plans." },
+  { season: "Family-Friendly", href: "/best-family-activities-in-florida", copy: "Kid-friendly attractions, parks, museums, free activities, and simple day plans." },
+  { season: "Free Things To Do", href: "/florida-free-things-to-do", copy: "Beaches, parks, markets, public spaces, and budget-friendly activity ideas." },
+  { season: "Outdoor Activities", href: "/florida-outdoor-activities", copy: "Parks, springs, trails, beaches, wildlife, boating, and weather-aware plans." }
 ];
 const topDealLabels = ["Top Pick", "Family Favorite", "Weekend Pick"];
 const cityClusters = {
@@ -140,6 +170,187 @@ function getCityCluster(slug: string) {
   if (slug.includes("miami")) return cityClusters.miami;
   if (slug.includes("tampa")) return cityClusters.tampa;
   return null;
+}
+
+function AttractionDiscoveryCards() {
+  const cards = [
+    { title: "Theme Parks & Big Attractions", href: "/florida-theme-park-deals", copy: "Compare Orlando parks, major attractions, current offer pages, and full-day planning.", icon: Ticket },
+    { title: "Museums & Culture", href: "/best-rainy-day-activities-florida", copy: "Find museums, aquariums, galleries, historic sites, and weather-friendly options.", icon: Compass },
+    { title: "Beaches & Water Activities", href: "/best-florida-water-activities", copy: "Plan beach days, boating, fishing, springs, sunset stops, and waterfront activities.", icon: Waves },
+    { title: "City Guides & Weekend Ideas", href: "/best-weekend-activities-florida", copy: "Move from statewide inspiration into city calendars, local events, dining, and nearby plans.", icon: MapPin }
+  ];
+
+  return (
+    <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="max-w-3xl">
+        <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Explore Florida attractions</p>
+        <h2 className="mt-2 text-3xl font-black text-[#163235]">Choose the kind of activity day you want.</h2>
+      </div>
+      <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        {cards.map((card) => {
+          const Icon = card.icon;
+          return (
+            <Link className="group rounded-[24px] border border-[#d8e6e3] bg-white p-6 shadow-lg shadow-[#087f8c]/8 transition hover:-translate-y-1 hover:border-[#087f8c]" href={card.href} key={card.href}>
+              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#dff6f8] text-[#087f8c]"><Icon className="h-6 w-6" /></div>
+              <h3 className="mt-5 text-xl font-black text-[#163235]">{card.title}</h3>
+              <p className="mt-3 text-sm font-semibold leading-6 text-[#52686b]">{card.copy}</p>
+              <span className="mt-5 inline-flex text-sm font-black text-[#087f8c]">Explore guide</span>
+            </Link>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function CityToCityLinks() {
+  return (
+    <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+      <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8 sm:p-8">
+        <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Explore by city</p>
+        <h2 className="mt-2 text-3xl font-black text-[#163235]">Compare Florida destinations before building the day.</h2>
+        <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {cityGuideLinks.map((city) => (
+            <Link className="rounded-[22px] bg-[#eef6f5] p-5 transition hover:bg-[#dff6f8]" href={city.href} key={city.href}>
+              <h3 className="text-lg font-black text-[#163235]">{city.label} local guide</h3>
+              <p className="mt-2 text-sm font-semibold leading-6 text-[#52686b]">{city.copy}</p>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SeasonalActivitySections() {
+  return (
+    <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+      <div className="max-w-3xl">
+        <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Florida by season</p>
+        <h2 className="mt-2 text-3xl font-black text-[#163235]">Adjust activities for weather, crowds, and seasonal events.</h2>
+      </div>
+      <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        {seasonalGuides.map((item) => (
+          <Link className="rounded-[24px] border border-[#d8e6e3] bg-white p-6 shadow-lg shadow-[#087f8c]/8 transition hover:-translate-y-1 hover:border-[#087f8c]" href={item.href} key={item.season}>
+            <CalendarDays className="h-6 w-6 text-[#087f8c]" />
+            <h3 className="mt-4 text-xl font-black text-[#163235]">{item.season} in Florida</h3>
+            <p className="mt-3 text-sm font-semibold leading-6 text-[#52686b]">{item.copy}</p>
+            <span className="mt-5 inline-flex text-sm font-black text-[#087f8c]">View {item.season.toLowerCase()} ideas</span>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function NearbyAttractions({ slug }: { slug: string }) {
+  const links = slug.includes("orlando")
+    ? [
+        ["Orlando Attractions", "/orlando-attractions"],
+        ["Things To Do In Orlando", "/things-to-do-in-orlando"],
+        ["Disney Area Attractions", "/disney-area-attractions"],
+        ["Free Things To Do In Orlando", "/free-things-to-do-in-orlando"]
+      ]
+    : slug.includes("key-west")
+      ? [
+          ["Things To Do In Key West", "/things-to-do-in-key-west"],
+          ["Best Florida Keys Attractions", "/best-florida-keys-attractions"],
+          ["Florida Water Activities", "/florida-water-activities"],
+          ["Florida Beach Activities", "/florida-beach-activities"]
+        ]
+      : [
+          ["Orlando Attractions", "/orlando-attractions"],
+          ["Things To Do In Tampa", "/things-to-do-in-tampa"],
+          ["Things To Do In St. Augustine", "/things-to-do-in-st-augustine"],
+          ["Best Florida Keys Attractions", "/best-florida-keys-attractions"]
+        ];
+
+  return (
+    <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+      <div className="rounded-[28px] bg-[#163235] p-6 text-white shadow-xl shadow-[#087f8c]/15 sm:p-8">
+        <p className="text-sm font-black uppercase tracking-[0.18em] text-[#ffb000]">Nearby attractions</p>
+        <h2 className="mt-2 text-3xl font-black">Add another useful stop without overloading the day.</h2>
+        <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {links.map(([label, href]) => (
+            <Link className="rounded-2xl bg-white/10 px-4 py-4 text-sm font-black text-white ring-1 ring-white/15 transition hover:bg-white/18" href={href} key={href}>{label}</Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function InlineNewsletterCta() {
+  return (
+    <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+      <div className="flex flex-col gap-5 rounded-[28px] border border-[#d8e6e3] bg-[#dff6f8] p-6 sm:p-8 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Florida attraction alerts</p>
+          <h2 className="mt-2 text-2xl font-black text-[#163235]">Get new activity ideas and weekend plans.</h2>
+          <p className="mt-2 text-sm font-semibold text-[#52686b]">Free alerts. No spam. Event and attraction details may change.</p>
+        </div>
+        <a className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-full bg-[#163235] px-6 text-sm font-black text-white" href="#alerts">Get Local Deal Alerts</a>
+      </div>
+    </section>
+  );
+}
+
+function ContinuePlanningSection() {
+  const links = [
+    { title: "Hotels near your plans", href: "https://hoteldealsflorida.org/florida-budget-hotels", copy: "Compare budget, beach, and family hotel options before turning an activity day into a trip.", icon: Hotel },
+    { title: "Flights into Florida", href: "https://flightdealsflorida.org/google-flights-vs-skyscanner-for-florida-routes", copy: "Compare Florida airports, route ideas, and flight search tools before choosing dates.", icon: Compass },
+    { title: "Weekend cruises", href: "https://cruisedealsflorida.org/weekend-cruises-from-florida", copy: "Add local activities before or after a short Florida cruise from Miami, Tampa, Jacksonville, or Port Canaveral.", icon: Waves },
+    { title: "Vacation packages", href: "https://floridadealshub.com/vacation-packages", copy: "Connect attractions with hotels, flights, cruises, and family vacation planning.", icon: MapPin }
+  ];
+
+  return (
+    <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+      <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8 sm:p-8">
+        <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Continue planning</p>
+        <h2 className="mt-2 text-3xl font-black text-[#163235]">Turn the local idea into a complete Florida trip.</h2>
+        <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {links.map((link) => {
+            const Icon = link.icon;
+            return (
+              <a className="rounded-[22px] bg-[#eef6f5] p-5 transition hover:bg-[#dff6f8]" href={link.href} key={link.href}>
+                <Icon className="h-6 w-6 text-[#087f8c]" />
+                <h3 className="mt-4 text-lg font-black text-[#163235]">{link.title}</h3>
+                <p className="mt-2 text-sm font-semibold leading-6 text-[#52686b]">{link.copy}</p>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function getComparisonRows(page: LandingPageConfig, isPriorityAttractionPage: boolean) {
+  if (page.comparisonRows?.length) return page.comparisonRows;
+  if (!isPriorityAttractionPage) return [];
+
+  return [
+    {
+      option: "Free vs paid activities",
+      bestFor: "Budget travelers, families, and locals comparing parks, beaches, museums, tours, and major attractions.",
+      watchFor: "Parking, timed tickets, capacity, seasonal hours, and whether a paid anchor saves time."
+    },
+    {
+      option: "Indoor vs outdoor activities",
+      bestFor: "Florida days where heat, storms, sun exposure, or young kids make backup plans important.",
+      watchFor: "Weather, drive time, ticket windows, shade, rain policies, and indoor crowd levels."
+    },
+    {
+      option: "Family vs adult activities",
+      bestFor: "Travelers deciding between kid-friendly attractions, date-night ideas, nightlife, tours, beaches, or food districts.",
+      watchFor: "Age rules, stroller access, late hours, activity length, transportation, and food options."
+    },
+    {
+      option: "Orlando vs Miami activities",
+      bestFor: "Visitors deciding between theme-park and family activity days or beach, culture, nightlife, and waterfront plans.",
+      watchFor: "Airport choice, hotel location, traffic, attraction density, weather, and total trip budget."
+    }
+  ];
 }
 
 function buildFaqs(page: LandingPageConfig) {
@@ -270,11 +481,14 @@ export default async function LandingPage({ params }: PageProps) {
   const showTransferAndTravel = transferAndTravelSlugs.has(page.slug);
   const showConversionCards = conversionSlugs.has(page.slug);
   const isWeekendGuide = page.slug.includes("weekend");
+  const isPriorityAttractionPage = priorityAttractionCluster.some((link) => link.href === `/${page.slug}`);
+  const comparisonRows = getComparisonRows(page, isPriorityAttractionPage);
   const relatedPages = page.relatedSlugs
     .map((relatedSlug) => getLandingPage(relatedSlug))
     .filter((relatedPage): relatedPage is LandingPageConfig => Boolean(relatedPage));
   const relatedSearchLinks = [
     { label: "Local Deals Florida", href: "/" },
+    ...priorityAttractionCluster.filter((link) => link.href !== `/${page.slug}`),
     ...evergreenSearches,
     ...relatedPages.map((relatedPage) => ({ label: relatedPage.h1, href: landingPagePath(relatedPage.slug) }))
   ].filter((link, index, links) => links.findIndex((candidate) => candidate.href === link.href) === index).slice(0, 10);
@@ -320,6 +534,20 @@ export default async function LandingPage({ params }: PageProps) {
       url: deal.affiliateReadyUrl
     }))
   };
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: page.h1,
+    description: page.description,
+    url: `${baseUrl}/${page.slug}`,
+    dateModified: "2026-06-23",
+    about: ["Florida attractions", "Things to do in Florida", "Local activities", "Florida travel planning"],
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Local Deals Florida",
+      url: baseUrl
+    }
+  };
   const articleSchema =
     page.pageType === "guide" || page.pageType === "comparison"
       ? {
@@ -328,6 +556,12 @@ export default async function LandingPage({ params }: PageProps) {
           headline: page.title,
           description: page.description,
           image: page.image,
+          dateModified: "2026-06-23",
+          author: {
+            "@type": "Organization",
+            name: "Local Deals Florida",
+            url: baseUrl
+          },
           mainEntityOfPage: `${baseUrl}/${page.slug}`,
           publisher: {
             "@type": "Organization",
@@ -342,6 +576,7 @@ export default async function LandingPage({ params }: PageProps) {
       <JsonLd data={breadcrumbs} />
       <JsonLd data={faqSchema} />
       <JsonLd data={itemListSchema} />
+      <JsonLd data={collectionSchema} />
       {articleSchema ? <JsonLd data={articleSchema} /> : null}
       <SiteHeader />
       {showConversionCards ? <ConversionScrollAnalytics /> : null}
@@ -391,6 +626,11 @@ export default async function LandingPage({ params }: PageProps) {
         </div>
       </section>
 
+      {isPriorityAttractionPage ? <AttractionDiscoveryCards /> : null}
+      {isPriorityAttractionPage ? <CityToCityLinks /> : null}
+      {isPriorityAttractionPage ? <SeasonalActivitySections /> : null}
+      {isPriorityAttractionPage ? <InlineNewsletterCta /> : null}
+
       <section className="mx-auto max-w-7xl px-4 pt-12 sm:px-6 lg:px-8">
         <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8">
           <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Local planning guide</p>
@@ -423,7 +663,7 @@ export default async function LandingPage({ params }: PageProps) {
               </div>
             </div>
           ) : null}
-          {page.comparisonRows ? (
+          {comparisonRows.length ? (
             <div className="mt-6 overflow-hidden rounded-[22px] border border-[#d8e6e3]">
               <div className="grid bg-[#163235] px-5 py-4 text-sm font-black uppercase tracking-[0.14em] text-white md:grid-cols-3">
                 <p>Option</p>
@@ -431,7 +671,7 @@ export default async function LandingPage({ params }: PageProps) {
                 <p className="hidden md:block">Watch For</p>
               </div>
               <div className="divide-y divide-[#d8e6e3] bg-white">
-                {page.comparisonRows.map((row) => (
+                {comparisonRows.map((row) => (
                   <div className="grid gap-3 px-5 py-4 text-sm font-semibold leading-6 text-[#52686b] md:grid-cols-3" key={row.option}>
                     <p className="font-black text-[#163235]">{row.option}</p>
                     <p>
@@ -536,6 +776,8 @@ export default async function LandingPage({ params }: PageProps) {
       <ActivityCTAGroup slug={page.slug} />
       {showConversionCards ? <section className="mx-auto grid max-w-7xl gap-5 px-4 pb-12 sm:px-6 md:grid-cols-2 lg:px-8"><QuickDealCard /><RecommendedPartnerCard /></section> : null}
       {showTransferAndTravel ? <section className="mx-auto grid max-w-7xl gap-5 px-4 pb-12 sm:px-6 md:grid-cols-2 lg:px-8"><TransferBookingCard slug={page.slug} /><TravelBookingCard /></section> : null}
+      {isPriorityAttractionPage ? <NearbyAttractions slug={page.slug} /> : null}
+      {isPriorityAttractionPage ? <ContinuePlanningSection /> : null}
 
       <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
@@ -574,6 +816,8 @@ export default async function LandingPage({ params }: PageProps) {
           </div>
         </section>
       ) : null}
+
+      {isPriorityAttractionPage ? <InlineNewsletterCta /> : null}
 
       <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
         <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8">

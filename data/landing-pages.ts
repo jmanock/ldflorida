@@ -224,9 +224,9 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "orlando-local-deals",
-    title: "Orlando Local Deals (2026): Attractions, Activities & Discounts",
+    title: "Orlando Things To Do (2026): Attractions, Local Deals & Family Ideas",
     description:
-      "Find Orlando local deals, activity discounts, attractions, restaurants, family activities, events, and current 2026 weekend ideas.",
+      "Find Orlando attractions, local deals, family activities, free ideas and weekend plans near Disney, Universal and Central Florida destinations.",
     h1: "Orlando Local Deals",
     eyebrow: "Central Florida local finds",
     intro:
@@ -240,7 +240,7 @@ export const landingPages: LandingPageConfig[] = [
       "orlando-budget-things-to-do",
       "orlando-free-things-to-do"
     ],
-    relatedSlugs: ["orlando-things-to-do-deals", "florida-attraction-deals", "florida-family-deals", "florida-local-deals-under-50"],
+    relatedSlugs: ["best-things-to-do-in-florida", "best-florida-attractions", "key-west-local-deals", "orlando-things-to-do-deals", "florida-attraction-deals", "florida-family-deals"],
     localContext: [
       "Useful for attraction days, visiting family, and Central Florida weekend planning.",
       "Includes official source pages for theme parks, budget ideas, and free things to do.",
@@ -283,9 +283,9 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "fort-lauderdale-local-deals",
-    title: "Fort Lauderdale Local Deals | Restaurants, Events & Things To Do",
+    title: "Fort Lauderdale Things To Do (2026): Attractions, Beaches & Local Deals",
     description:
-      "Find Fort Lauderdale local deals including attraction offers, restaurants, boating, nightlife, weekend events, and things to do near the beach.",
+      "Find Fort Lauderdale attractions, beach ideas, boating, restaurants, nightlife, weekend events and local deals for 2026.",
     h1: "Fort Lauderdale Local Deals",
     eyebrow: "Beach, boating, and local offers",
     intro:
@@ -459,9 +459,9 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "florida-free-things-to-do",
-    title: "50 Free Things To Do in Florida for Families & Travelers",
+    title: "50 Free Things To Do In Florida (2026): Parks, Beaches & Family Ideas",
     description:
-      "Discover 50 free things to do in Florida including beaches, parks, family activities, outdoor attractions, events, and local experiences.",
+      "Discover 50 free things to do in Florida for 2026, including beaches, parks, family activities, outdoor attractions, events and local ideas.",
     h1: "Free Things To Do In Florida",
     eyebrow: "Free and low-cost local finds",
     intro:
@@ -638,9 +638,9 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "key-west-local-deals",
-    title: "Key West Local Deals & Florida Keys Specials (2026)",
+    title: "Key West Things To Do (2026): Island Attractions, Tours & Local Deals",
     description:
-      "Find Key West local deals, Florida Keys specials, island tours, festivals, waterfront experiences, nightlife, and free things to do.",
+      "Find Key West attractions, island tours, waterfront activities, festivals, nightlife, local deals and practical Florida Keys planning ideas.",
     h1: "Key West Local Deals",
     eyebrow: "Island activities and local events",
     intro:
@@ -648,7 +648,7 @@ export const landingPages: LandingPageConfig[] = [
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1600&q=82",
     imageAlt: "Tropical Key West pool and palm trees",
     dealIds: ["key-west-things-to-do", "key-west-fantasy-fest-events", "key-west-historic-seaport", "visit-florida-beach-guide"],
-    relatedSlugs: ["florida-beach-activities", "florida-weekend-deals", "florida-date-night-deals", "best-florida-festivals-guide"],
+    relatedSlugs: ["best-things-to-do-in-florida", "best-florida-attractions", "orlando-local-deals", "things-to-do-in-key-west", "florida-beach-activities", "florida-weekend-deals"],
     localContext: [
       "Useful for comparing island tours, waterfront districts, festival weekends, and walkable local experiences.",
       "Check event schedules, tour availability, parking, and weather before building a full day around one activity.",
@@ -996,9 +996,9 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "best-family-activities-in-florida",
-    title: "Best Family Activities In Florida | Attractions, Parks & Local Ideas",
+    title: "Best Family Activities In Florida (2026): Attractions, Parks & Local Ideas",
     description:
-      "Find the best family activities in Florida including attractions, parks, museums, beaches, free events, aquariums, and weekend ideas.",
+      "Find the best family activities in Florida for 2026, including attractions, parks, museums, beaches, free events, aquariums and weekend ideas.",
     h1: "Best Family Activities In Florida",
     eyebrow: "Family activity guide",
     intro:
@@ -1485,9 +1485,9 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "best-things-to-do-in-florida",
-    title: "Best Things To Do In Florida | Attractions, Events & Local Ideas",
+    title: "25 Best Things To Do In Florida (2026): Attractions, Beaches & Cities",
     description:
-      "Explore the best things to do in Florida including attractions, beaches, restaurants, events, family activities, free ideas, and city guides.",
+      "Explore the best things to do in Florida for 2026, including theme parks, beaches, museums, family attractions, events and city-by-city guides.",
     h1: "Best Things To Do In Florida",
     eyebrow: "Florida activity guide",
     intro:
@@ -1495,7 +1495,7 @@ export const landingPages: LandingPageConfig[] = [
     image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=82",
     imageAlt: "People relaxing near a sunny Florida waterfront park",
     dealIds: ["orlando-official-offers", "miami-official-special-offers", "visit-florida-beach-guide", "visit-florida-outdoor-adventure", "daytona-beach-events"],
-    relatedSlugs: ["florida-things-to-do-deals", "florida-attraction-deals", "florida-free-things-to-do", "best-weekend-activities-florida"],
+    relatedSlugs: ["best-florida-attractions", "orlando-local-deals", "key-west-local-deals", "florida-things-to-do-deals", "florida-attraction-deals", "florida-free-things-to-do"],
     pageType: "guide",
     guideSections: [
       {
@@ -1584,9 +1584,9 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "best-florida-attractions",
-    title: "Best Florida Attractions | Theme Parks, Museums & Local Activities",
+    title: "20 Best Florida Attractions (2026): Theme Parks, Museums & Wildlife",
     description:
-      "Explore Florida attractions including theme parks, museums, aquariums, historic sites, wildlife stops, city passes, and local activity ideas.",
+      "Compare Florida's best attractions for 2026, from theme parks and aquariums to museums, historic sites, wildlife stops and family activities.",
     h1: "Best Florida Attractions",
     eyebrow: "Attractions guide",
     intro:
@@ -1594,7 +1594,7 @@ export const landingPages: LandingPageConfig[] = [
     image: "https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?auto=format&fit=crop&w=1600&q=82",
     imageAlt: "Florida attraction ride with blue sky",
     dealIds: ["disney-world-special-offers", "universal-orlando-offers", "orlando-gatorland-visit-orlando-special", "tampa-bay-citypass", "st-augustine-attraction-coupons"],
-    relatedSlugs: ["florida-attraction-deals", "florida-theme-park-deals", "theme-parks-vs-local-attractions-florida", "how-to-save-money-on-florida-attractions"],
+    relatedSlugs: ["best-things-to-do-in-florida", "orlando-local-deals", "key-west-local-deals", "florida-attraction-deals", "florida-theme-park-deals", "theme-parks-vs-local-attractions-florida"],
     pageType: "guide",
     guideSections: [
       {
