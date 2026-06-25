@@ -29,6 +29,14 @@ function ActivityCTA({ href, title, description, buttonText, icon: Icon, affilia
     window.gtag?.("event", affiliate ? "affiliate_click" : "guide_click", payload);
     window.dataLayer?.push({ event: affiliate ? "affiliate_click" : "guide_click", ...payload });
     trackClarityEvent(affiliate ? "affiliate_click" : "guide_click", payload);
+    window.gtag?.("event", "attraction_cta_click", payload);
+    window.dataLayer?.push({ event: "attraction_cta_click", ...payload });
+    trackClarityEvent("attraction_cta_click", payload);
+    if (href.startsWith("https://")) {
+      window.gtag?.("event", "cross_site_click", payload);
+      window.dataLayer?.push({ event: "cross_site_click", ...payload });
+      trackClarityEvent("cross_site_click", payload);
+    }
   }
 
   return (

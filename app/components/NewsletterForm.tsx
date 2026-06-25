@@ -91,6 +91,12 @@ export default function NewsletterForm() {
         <button
           className="h-[52px] rounded-full bg-[#ffb000] px-7 font-black text-[#163235] transition hover:bg-[#ffc84d] disabled:cursor-not-allowed disabled:opacity-70"
           disabled={status === "submitting"}
+          onClick={() => {
+            const payload = { site: "localdealsflorida.org", source: "local", page_path: window.location.pathname };
+            window.gtag?.("event", "newsletter_cta_click", payload);
+            window.dataLayer?.push({ event: "newsletter_cta_click", ...payload });
+            trackClarityEvent("newsletter_cta_click", payload);
+          }}
           type="submit"
         >
           {status === "submitting" ? "Sending..." : "Send Activity Ideas"}
