@@ -7,6 +7,7 @@ import NewsletterForm from "./components/NewsletterForm";
 import SisterSitesSection from "./components/SisterSitesSection";
 import SiteFooter from "./components/SiteFooter";
 import SiteHeader from "./components/SiteHeader";
+import TravelEssentialsBlock from "./components/TravelEssentialsBlock";
 import deals from "../data/deals.json";
 import weekendContent from "../data/weekend-content.json";
 
@@ -619,6 +620,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <TravelEssentialsBlock slug="home" />
 
       <SisterSitesSection />
       <SiteFooter />

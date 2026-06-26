@@ -15,6 +15,7 @@ import SisterSitesSection from "../components/SisterSitesSection";
 import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
 import TransferBookingCard from "../components/TransferBookingCard";
+import TravelEssentialsBlock from "../components/TravelEssentialsBlock";
 import TravelBookingCard from "../components/TravelBookingCard";
 import WeekendGuideAnalytics from "../components/WeekendGuideAnalytics";
 import { ConversionScrollAnalytics, QuickDealCard, RecommendedPartnerCard } from "../components/ConversionCards";
@@ -774,6 +775,7 @@ export default async function LandingPage({ params }: PageProps) {
 
       <FloridaGetawayBlock />
       <ActivityCTAGroup slug={page.slug} />
+      <TravelEssentialsBlock slug={page.slug} />
       {showConversionCards ? <section className="mx-auto grid max-w-7xl gap-5 px-4 pb-12 sm:px-6 md:grid-cols-2 lg:px-8"><QuickDealCard /><RecommendedPartnerCard /></section> : null}
       {showTransferAndTravel ? <section className="mx-auto grid max-w-7xl gap-5 px-4 pb-12 sm:px-6 md:grid-cols-2 lg:px-8"><TransferBookingCard slug={page.slug} /><TravelBookingCard /></section> : null}
       {isPriorityAttractionPage ? <NearbyAttractions slug={page.slug} /> : null}
