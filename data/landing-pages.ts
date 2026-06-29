@@ -224,7 +224,7 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "orlando-local-deals",
-    title: "Orlando Things To Do (2026): Attractions, Local Deals & Family Ideas",
+    title: "Orlando Things To Do: Attractions, Local Deals & Family Ideas",
     description:
       "Find Orlando attractions, local deals, family activities, free ideas and weekend plans near Disney, Universal and Central Florida destinations.",
     h1: "Orlando Local Deals",
@@ -283,7 +283,7 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "fort-lauderdale-local-deals",
-    title: "Fort Lauderdale Things To Do (2026): Attractions, Beaches & Local Deals",
+    title: "Fort Lauderdale Things To Do: Beaches, Boating & Local Deals",
     description:
       "Find Fort Lauderdale attractions, beach ideas, boating, restaurants, nightlife, weekend events and local deals for 2026.",
     h1: "Fort Lauderdale Local Deals",
@@ -351,7 +351,7 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "st-augustine-local-deals",
-    title: "St. Augustine Local Deals | Attractions, Events & Things To Do",
+    title: "St. Augustine Things To Do: Historic Sites, Events & Local Deals",
     description:
       "Find St. Augustine local deals including attraction coupons, free things to do, art events, historic district ideas, tours, and local experiences.",
     h1: "St. Augustine Local Deals",
@@ -619,7 +619,7 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "clearwater-local-deals",
-    title: "Clearwater Local Deals | Beaches, Events & Family Activities",
+    title: "Clearwater Things To Do: Beach Ideas, Events & Family Activities",
     description:
       "Find Clearwater local deals and activity ideas including beaches, Pier 60 events, family attractions, outdoor activities, and Gulf Coast things to do.",
     h1: "Clearwater Local Deals",
@@ -638,7 +638,7 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "key-west-local-deals",
-    title: "Key West Things To Do (2026): Island Attractions, Tours & Local Deals",
+    title: "Key West Things To Do: Island Attractions, Tours & Local Deals",
     description:
       "Find Key West attractions, island tours, waterfront activities, festivals, nightlife, local deals and practical Florida Keys planning ideas.",
     h1: "Key West Local Deals",
@@ -906,7 +906,7 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "florida-outdoor-activities",
-    title: "25 Best Outdoor Activities in Florida (2026 Guide)",
+    title: "Florida Outdoor Activities: Beaches, Springs, Parks & Local Ideas",
     description:
       "Explore 25 of the best outdoor activities in Florida including parks, beaches, springs, trails, paddling, wildlife, and local ideas.",
     h1: "Florida Outdoor Activities",
@@ -996,7 +996,7 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "best-family-activities-in-florida",
-    title: "Best Family Activities In Florida (2026): Attractions, Parks & Local Ideas",
+    title: "Best Family Activities In Florida: Attractions, Parks & Local Ideas",
     description:
       "Find the best family activities in Florida for 2026, including attractions, parks, museums, beaches, free events, aquariums and weekend ideas.",
     h1: "Best Family Activities In Florida",
@@ -1485,7 +1485,7 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "best-things-to-do-in-florida",
-    title: "25 Best Things To Do In Florida (2026): Attractions, Beaches & Cities",
+    title: "Things To Do In Florida: Attractions, Weekend Ideas & Local Deals",
     description:
       "Explore the best things to do in Florida for 2026, including theme parks, beaches, museums, family attractions, events and city-by-city guides.",
     h1: "Best Things To Do In Florida",
@@ -1551,7 +1551,7 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "best-rainy-day-activities-florida",
-    title: "Best Rainy Day Activities In Florida | Indoor Ideas & Attractions",
+    title: "Best Rainy Day Activities In Florida: Indoor Ideas & Attractions",
     description:
       "Find the best rainy day activities in Florida including museums, aquariums, indoor attractions, restaurants, theaters, shopping, and family ideas.",
     h1: "Best Rainy Day Activities In Florida",
@@ -1584,7 +1584,7 @@ export const landingPages: LandingPageConfig[] = [
   },
   {
     slug: "best-florida-attractions",
-    title: "20 Best Florida Attractions (2026): Theme Parks, Museums & Wildlife",
+    title: "Best Florida Attractions: Theme Parks, Museums & Wildlife",
     description:
       "Compare Florida's best attractions for 2026, from theme parks and aquariums to museums, historic sites, wildlife stops and family activities.",
     h1: "Best Florida Attractions",

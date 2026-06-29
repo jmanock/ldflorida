@@ -166,6 +166,48 @@ function JsonLd({ data }: { data: Record<string, unknown> }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
+function LocalQuickAnswer({ page }: { page: LandingPageConfig }) {
+  return (
+    <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8" aria-labelledby="local-quick-answer-title">
+      <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="rounded-[28px] border border-[#c7dad7] bg-white p-6 shadow-xl shadow-[#087f8c]/8 sm:p-8">
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Quick answer</p>
+          <h2 id="local-quick-answer-title" className="mt-3 text-3xl font-black text-[#163235]">
+            Pick the activity, then build the rest of the day around it.
+          </h2>
+          <ul className="mt-5 grid gap-3 text-sm font-semibold leading-6 text-[#52686b]">
+            <li>• Start with the attraction, beach, museum, event, tour, or neighborhood that fits the trip.</li>
+            <li>• Check parking, weather, hours, age rules, ticket terms, and whether reservations are needed.</li>
+            <li>• Keep one indoor or low-cost backup nearby for rainy afternoons or sold-out time slots.</li>
+            <li>• Connect {page.h1.toLowerCase()} with hotels, flights, vacation packages, and nearby destinations.</li>
+            <li>• Confirm the latest details with the official source before visiting or buying tickets.</li>
+          </ul>
+          <p className="mt-5 text-sm font-black text-[#163235]">
+            Best for: families, weekend travelers, beach days, rainy-day backups, local events, and attraction planning.
+          </p>
+        </div>
+        <div className="rounded-[28px] border border-[#d8e6e3] bg-[#f8fbf7] p-6 shadow-xl shadow-[#087f8c]/8 sm:p-8">
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Continue planning</p>
+          <div className="mt-5 grid gap-3">
+            <a className="rounded-2xl bg-white px-4 py-3 text-sm font-black text-[#163235] hover:bg-[#dff6f8] hover:text-[#087f8c]" href="#local-finds">
+              Compare local activity ideas
+            </a>
+            <a className="rounded-2xl bg-white px-4 py-3 text-sm font-black text-[#163235] hover:bg-[#dff6f8] hover:text-[#087f8c]" href="#local-faq">
+              Read activity FAQ
+            </a>
+            <a className="rounded-2xl bg-white px-4 py-3 text-sm font-black text-[#163235] hover:bg-[#dff6f8] hover:text-[#087f8c]" href="https://hoteldealsflorida.org/florida-budget-hotels">
+              Compare nearby hotels
+            </a>
+            <a className="rounded-2xl bg-white px-4 py-3 text-sm font-black text-[#163235] hover:bg-[#dff6f8] hover:text-[#087f8c]" href="https://floridadealshub.com/vacation-packages">
+              Build a Florida vacation package
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function getCityCluster(slug: string) {
   if (slug.includes("orlando")) return cityClusters.orlando;
   if (slug.includes("miami")) return cityClusters.miami;
@@ -627,6 +669,8 @@ export default async function LandingPage({ params }: PageProps) {
         </div>
       </section>
 
+      <LocalQuickAnswer page={page} />
+
       {isPriorityAttractionPage ? <AttractionDiscoveryCards /> : null}
       {isPriorityAttractionPage ? <CityToCityLinks /> : null}
       {isPriorityAttractionPage ? <SeasonalActivitySections /> : null}
@@ -691,7 +735,7 @@ export default async function LandingPage({ params }: PageProps) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+      <section id="local-faq" className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Destination gallery</p>
           <h2 className="mt-2 text-3xl font-black text-[#163235]">See the kinds of local plans this guide supports</h2>
