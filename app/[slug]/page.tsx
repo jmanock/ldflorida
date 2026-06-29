@@ -11,6 +11,7 @@ import FloridaGetawayBlock from "../components/FloridaGetawayBlock";
 import FallbackImage from "../components/FallbackImage";
 import LocalDealCard, { type LocalDeal } from "../components/LocalDealCard";
 import NewsletterForm from "../components/NewsletterForm";
+import ReadingProgressBar from "../components/ReadingProgressBar";
 import SisterSitesSection from "../components/SisterSitesSection";
 import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
@@ -535,6 +536,13 @@ export default async function LandingPage({ params }: PageProps) {
     ...evergreenSearches,
     ...relatedPages.map((relatedPage) => ({ label: relatedPage.h1, href: landingPagePath(relatedPage.slug) }))
   ].filter((link, index, links) => links.findIndex((candidate) => candidate.href === link.href) === index).slice(0, 10);
+  const readersAlsoPlanned = [
+    { label: "Compare nearby hotels", href: "https://hoteldealsflorida.org/florida-budget-hotels" },
+    { label: "Find flights into Florida", href: "https://flightdealsflorida.org/google-flights-florida" },
+    { label: "Build a vacation package", href: "https://floridadealshub.com/vacation-packages" },
+    { label: "Check weekend cruises", href: "https://cruisedealsflorida.org/weekend-cruises-from-florida" },
+    { label: "Browse free things to do", href: "/florida-free-things-to-do" }
+  ];
   const faqs = buildFaqs(page);
   const breadcrumbs = {
     "@context": "https://schema.org",
@@ -616,6 +624,7 @@ export default async function LandingPage({ params }: PageProps) {
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#f8fbf7] text-[#163235]">
+      <ReadingProgressBar />
       <JsonLd data={breadcrumbs} />
       <JsonLd data={faqSchema} />
       <JsonLd data={itemListSchema} />
@@ -894,6 +903,16 @@ export default async function LandingPage({ params }: PageProps) {
                 {link.label}
               </Link>
             ))}
+          </div>
+          <div className="mt-8 rounded-[24px] border border-[#d8e6e3] bg-[#f8fbf7] p-5">
+            <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Readers also planned</p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+              {readersAlsoPlanned.map((item) => (
+                <a className="rounded-2xl bg-white px-4 py-3 text-sm font-black text-[#163235] hover:text-[#087f8c]" href={item.href} key={item.href}>
+                  {item.label}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>

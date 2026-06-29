@@ -60,9 +60,14 @@ export default function TravelEssentialsBlock({ slug }: { slug: string }) {
   return (
     <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8" aria-labelledby="travel-essentials-title">
       <div className="rounded-[28px] border border-[#d8e6e3] bg-white p-6 shadow-xl shadow-[#087f8c]/8">
-        <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Travel essentials</p>
-        <h2 id="travel-essentials-title" className="mt-2 text-3xl font-black text-[#163235]">Don’t forget the activity-day basics.</h2>
+        <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Travel Toolkit</p>
+        <h2 id="travel-essentials-title" className="mt-2 text-3xl font-black text-[#163235]">Before the activity day, check what makes it easier.</h2>
         <p className="mt-3 max-w-3xl font-semibold leading-7 text-[#52686b]">Theme parks, beach days, boat days, and city exploring are easier when the bag, comfort, and memory-keeping pieces are handled first.</p>
+        <div className="mt-6 grid gap-3 text-sm font-black text-[#163235] sm:grid-cols-2 lg:grid-cols-4">
+          {["Tickets or source checked?", "Hotel nearby?", "Transfer or parking planned?", "Backpack and charger ready?"].map((item) => (
+            <span className="rounded-2xl border border-[#d8e6e3] bg-white px-4 py-3" key={item}>✓ {item}</span>
+          ))}
+        </div>
         <div className="mt-7 grid gap-5 md:grid-cols-3">
           {items.map((item) => {
             const Icon = item.advertiser === "samboat" ? Sailboat : item.category === "camera_pack" ? Camera : Backpack;
