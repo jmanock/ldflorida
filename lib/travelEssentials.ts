@@ -3,7 +3,7 @@ export type TravelEssentialItem = {
   description: string;
   cta: string;
   affiliateUrl: string;
-  advertiser: "outfitr" | "nomatic" | "samboat";
+  advertiser: "outfitr" | "nomatic" | "samboat" | "petpivot";
   category: string;
 };
 
@@ -16,6 +16,8 @@ export const NOMATIC_TRAVEL_BAGS_SALE_URL =
   "https://www.awin1.com/awclick.php?gid=532276&mid=90033&awinaffid=2881665&linkid=4060937";
 export const NOMATIC_CAMERA_PACK_URL =
   "https://www.awin1.com/awclick.php?gid=605175&mid=90033&awinaffid=2881665&linkid=4779684";
+export const PETPIVOT_URL =
+  "https://www.awin1.com/awclick.php?gid=334034&mid=124298&awinaffid=2881665&linkid=3709779&clickref=";
 
 export const attractionTravelEssentials: TravelEssentialItem[] = [
   {
@@ -43,3 +45,12 @@ export const attractionTravelEssentials: TravelEssentialItem[] = [
     category: "travel_bags"
   }
 ];
+
+export const petTravelEssential: TravelEssentialItem = {
+  title: "Pet-friendly trip supplies",
+  description: "Planning a pet-friendly Florida day? Check pet travel basics before you build the outing around restaurants, parks, or hotels.",
+  cta: "Browse Pet Travel Picks",
+  affiliateUrl: PETPIVOT_URL,
+  advertiser: "petpivot",
+  category: "pet_travel"
+};

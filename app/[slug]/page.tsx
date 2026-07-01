@@ -18,6 +18,7 @@ import SiteHeader from "../components/SiteHeader";
 import TransferBookingCard from "../components/TransferBookingCard";
 import TravelEssentialsBlock from "../components/TravelEssentialsBlock";
 import TravelBookingCard from "../components/TravelBookingCard";
+import TrackedRelatedLink from "../components/TrackedRelatedLink";
 import WeekendGuideAnalytics from "../components/WeekendGuideAnalytics";
 import { ConversionScrollAnalytics, QuickDealCard, RecommendedPartnerCard } from "../components/ConversionCards";
 import { conversionSlugs, transferAndTravelSlugs } from "../../lib/revenuePartners";
@@ -908,9 +909,9 @@ export default async function LandingPage({ params }: PageProps) {
             <p className="text-sm font-black uppercase tracking-[0.18em] text-[#087f8c]">Readers also planned</p>
             <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
               {readersAlsoPlanned.map((item) => (
-                <a className="rounded-2xl bg-white px-4 py-3 text-sm font-black text-[#163235] hover:text-[#087f8c]" href={item.href} key={item.href}>
+                <TrackedRelatedLink className="rounded-2xl bg-white px-4 py-3 text-sm font-black text-[#163235] hover:text-[#087f8c]" href={item.href} label={item.label} key={item.href}>
                   {item.label}
-                </a>
+                </TrackedRelatedLink>
               ))}
             </div>
           </div>

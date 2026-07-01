@@ -27,6 +27,10 @@ export default function EditorialPolicyPage() {
         {
           heading: "Guide updates",
           body: "Our city guides, comparison pages, seasonal pages, and activity guides are updated as the Florida Deals Hub network grows. We focus on usefulness, internal linking, clear source attribution, descriptive images, and practical planning context."
+        },
+        {
+          heading: "Affiliate disclosure",
+          body: "Some links may be sponsored or affiliate links. We may earn a commission if you book or buy through them, at no extra cost to you. Affiliate relationships do not change our goal of keeping local guides practical, clearly labeled, and useful."
         }
       ]}
     />

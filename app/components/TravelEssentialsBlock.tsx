@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Backpack, Camera, Sailboat } from "lucide-react";
 import { trackClarityEvent } from "../../lib/clarity";
 import { SAMBOAT_AFFILIATE_URL } from "../../lib/revenuePartners";
-import { attractionTravelEssentials, type TravelEssentialItem } from "../../lib/travelEssentials";
+import { attractionTravelEssentials, petTravelEssential, type TravelEssentialItem } from "../../lib/travelEssentials";
 
 const rel = "sponsored nofollow noopener noreferrer";
 
@@ -12,6 +12,7 @@ function eventForAdvertiser(advertiser: TravelEssentialItem["advertiser"]) {
   if (advertiser === "outfitr") return "affiliate_click_outfitr";
   if (advertiser === "nomatic") return "affiliate_click_nomatic";
   if (advertiser === "samboat") return "affiliate_click_attraction";
+  if (advertiser === "petpivot") return "affiliate_click_petpivot";
   return "travel_essentials_click";
 }
 
@@ -23,6 +24,7 @@ function emit(event: string, payload: Record<string, string | number>) {
 
 export default function TravelEssentialsBlock({ slug }: { slug: string }) {
   const isWaterPage = /boat|yacht|water|beach|key-west|clearwater|miami/.test(slug);
+  const isPetPage = /pet/.test(slug);
   const items: TravelEssentialItem[] = isWaterPage
     ? [
         ...attractionTravelEssentials.slice(0, 2),
@@ -35,7 +37,9 @@ export default function TravelEssentialsBlock({ slug }: { slug: string }) {
           category: "boat_rentals"
         }
       ]
-    : attractionTravelEssentials;
+    : isPetPage
+      ? [petTravelEssential, ...attractionTravelEssentials.slice(0, 2)]
+      : attractionTravelEssentials;
 
   useEffect(() => {
     emit("travel_essentials_view", { source_site: "localdealsflorida.org", page_type: "local_attraction", page_path: window.location.pathname, item_count: items.length });
@@ -46,13 +50,18 @@ export default function TravelEssentialsBlock({ slug }: { slug: string }) {
       source_site: "localdealsflorida.org",
       affiliate_program: "awin",
       advertiser: item.advertiser,
+      affiliate_partner: item.advertiser,
       category: item.category,
       cta_text: item.cta,
       item_title: item.title,
       outbound_url: item.affiliateUrl,
+      page_topic: slug,
+      placement_type: "travel_toolkit",
+      tool_type: item.category,
       page_path: window.location.pathname
     };
     emit("travel_essentials_click", payload);
+    emit("toolkit_click", payload);
     emit(eventForAdvertiser(item.advertiser), payload);
     emit("affiliate_click", payload);
   }
